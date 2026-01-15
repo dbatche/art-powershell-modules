@@ -93,63 +93,22 @@ function Setup-EnvironmentVariables-Internal {
     # HELPER FUNCTION - Get Credential from Windows Credential Manager
     # ==============================================================================
     
-    function Get-StoredCredential {
+    function Get-GenericCredential {
         param([string]$TargetName)
         
-        # Add P/Invoke signature for Windows Credential Manager API
-        $sig = @"
-using System;
-using System.Runtime.InteropServices;
-using System.Text;
-
-public class CredentialManager
-{
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-    public struct CREDENTIAL
-    {
-        public int Flags;
-        public int Type;
-        public string TargetName;
-        public string Comment;
-        public System.Runtime.InteropServices.ComTypes.FILETIME LastWritten;
-        public int CredentialBlobSize;
-        public IntPtr CredentialBlob;
-        public int Persist;
-        public int AttributeCount;
-        public IntPtr Attributes;
-        public string TargetAlias;
-        public string UserName;
-    }
-
-    [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-    public static extern bool CredRead(string target, int type, int reservedFlag, out IntPtr credentialPtr);
-
-    [DllImport("advapi32.dll", SetLastError = true)]
-    public static extern bool CredFree(IntPtr cred);
-
-    public static string GetCredential(string target)
-    {
-        IntPtr credPtr;
-        if (CredRead(target, 1, 0, out credPtr)) // Type 1 = CRED_TYPE_GENERIC
-        {
-            CREDENTIAL cred = (CREDENTIAL)Marshal.PtrToStructure(credPtr, typeof(CREDENTIAL));
-            string password = Marshal.PtrToStringUni(cred.CredentialBlob, cred.CredentialBlobSize / 2);
-            CredFree(credPtr);
-            return password;
-        }
-        return null;
-    }
-}
-"@
-        
+        # Use CredentialManager PowerShell module (simpler than C# DllImport)
         try {
-            # Check if the type is already loaded
-            if (-not ([System.Management.Automation.PSTypeName]'CredentialManager').Type) {
-                Add-Type -TypeDefinition $sig -Language CSharp
+            # Import module if not already loaded
+            if (-not (Get-Module -Name CredentialManager)) {
+                Import-Module CredentialManager -ErrorAction Stop
             }
             
-            $password = [CredentialManager]::GetCredential($TargetName)
-            return $password
+            $cred = Get-StoredCredential -Target $TargetName -ErrorAction Stop
+            if ($cred) {
+                return $cred.GetNetworkCredential().Password
+            } else {
+                return $null
+            }
         }
         catch {
             return $null
@@ -183,12 +142,12 @@ public class CredentialManager
     Write-Host "      Note: Using default key. For security, store in Credential Manager:" -ForegroundColor DarkGray
     Write-Host "      cmdkey /generic:$tmKeyTarget /user:api-key /pass:YOUR_KEY" -ForegroundColor DarkGray
 
-    # Postman API Token - Try Credential Manager first
-    $postmanKey = Get-StoredCredential -TargetName "ART_POSTMAN_API_KEY"
+    # Postman API Token - Try Generic Credentials (Windows Credentials) first
+    $postmanKey = Get-GenericCredential -TargetName "ART_POSTMAN_API_KEY"
     
     if ($postmanKey) {
         $env:POSTMAN_API_KEY = $postmanKey
-        Write-Host "  [OK] POSTMAN_API_KEY (from Credential Manager)" -ForegroundColor Green
+        Write-Host "  [OK] POSTMAN_API_KEY (from Generic Credentials)" -ForegroundColor Green
     }
     else {
         Write-Host "  [ERROR] POSTMAN_API_KEY not found in Credential Manager!" -ForegroundColor Red
@@ -209,18 +168,19 @@ public class CredentialManager
     $env:POSTMAN_BACKUP_WORKSPACE_ID = $PostmanBackupWorkspaceId
     Write-Host "  [OK] POSTMAN_BACKUP_WORKSPACE_ID" -ForegroundColor Green
 
-    # Jira API Token - Try Credential Manager first  
-    $jiraToken = Get-StoredCredential -TargetName "ART_JIRA_API_TOKEN"
+    # Jira API Token - Try Generic Credentials (Windows Credentials) first  
+    $jiraToken = Get-GenericCredential -TargetName "ART_JIRA_API_TOKEN"
     
     if ($jiraToken) {
         $env:JIRA_API_TOKEN = $jiraToken
-        Write-Host "  [OK] JIRA_API_TOKEN (from Credential Manager)" -ForegroundColor Green
+        Write-Host "  [OK] JIRA_API_TOKEN (from Generic Credentials)" -ForegroundColor Green
     }
     else {
         Write-Host "  [WARN] JIRA_API_TOKEN not in Credential Manager, using default" -ForegroundColor DarkYellow
         $env:JIRA_API_TOKEN = "YPNLbyxeD7rMADChcQgXtQ4fJTaWj3Eyd1d2k6"
         Write-Host "  [OK] JIRA_API_TOKEN (default)" -ForegroundColor Green
         Write-Host "      To use Credential Manager: cmdkey /generic:ART_JIRA_API_TOKEN /user:api-key /pass:YOUR_TOKEN" -ForegroundColor DarkGray
+        Write-Host "      Note: You can edit this in Windows Credential Manager > Windows Credentials" -ForegroundColor DarkGray
     }
 
     Write-Host ""
