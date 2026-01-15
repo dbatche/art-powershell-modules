@@ -93,42 +93,63 @@ function Setup-EnvironmentVariables-Internal {
     # HELPER FUNCTION - Get Credential from Windows Credential Manager
     # ==============================================================================
     
-    function Get-StoredApiKey {
+    function Get-StoredCredential {
         param([string]$TargetName)
         
-        try {
-            # Use Windows Credential Manager via PowerShell
-            $credential = $null
-            
-            # Try to get credential using cmdkey list and parse
-            $cmdkeyOutput = cmdkey /list:$TargetName 2>&1
-            
-            if ($LASTEXITCODE -eq 0) {
-                # Credential exists, now retrieve it using CredentialManager module or direct API
-                # For simplicity, we'll use a .NET approach
-                Add-Type -AssemblyName System.Security
-                
-                # Alternative: Use a simple wrapper around Windows API
-                $cred = [PSCredential]::new('api-key', (ConvertTo-SecureString -String 'dummy' -AsPlainText -Force))
-                
-                # Actually, let's use a more reliable method with COM
-                $credManager = New-Object -ComObject WScript.Shell
-                
-                # Most reliable: parse cmdkey output for password
-                # Since cmdkey doesn't show passwords, we need a different approach
-                # Use PowerShell's built-in method
-                
-                # Import System.Security assembly for credential access
-                $sig = @"
-[DllImport("Advapi32.dll", EntryPoint = "CredReadW", CharSet = CharSet.Unicode, SetLastError = true)]
-public static extern bool CredRead(string target, int type, int reservedFlag, out IntPtr credentialPtr);
+        # Add P/Invoke signature for Windows Credential Manager API
+        $sig = @"
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+
+public class CredentialManager
+{
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct CREDENTIAL
+    {
+        public int Flags;
+        public int Type;
+        public string TargetName;
+        public string Comment;
+        public System.Runtime.InteropServices.ComTypes.FILETIME LastWritten;
+        public int CredentialBlobSize;
+        public IntPtr CredentialBlob;
+        public int Persist;
+        public int AttributeCount;
+        public IntPtr Attributes;
+        public string TargetAlias;
+        public string UserName;
+    }
+
+    [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern bool CredRead(string target, int type, int reservedFlag, out IntPtr credentialPtr);
+
+    [DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool CredFree(IntPtr cred);
+
+    public static string GetCredential(string target)
+    {
+        IntPtr credPtr;
+        if (CredRead(target, 1, 0, out credPtr)) // Type 1 = CRED_TYPE_GENERIC
+        {
+            CREDENTIAL cred = (CREDENTIAL)Marshal.PtrToStructure(credPtr, typeof(CREDENTIAL));
+            string password = Marshal.PtrToStringUni(cred.CredentialBlob, cred.CredentialBlobSize / 2);
+            CredFree(credPtr);
+            return password;
+        }
+        return null;
+    }
+}
 "@
-                
-                # For now, return a flag indicating credential exists
-                return $true
+        
+        try {
+            # Check if the type is already loaded
+            if (-not ([System.Management.Automation.PSTypeName]'CredentialManager').Type) {
+                Add-Type -TypeDefinition $sig -Language CSharp
             }
             
-            return $null
+            $password = [CredentialManager]::GetCredential($TargetName)
+            return $password
         }
         catch {
             return $null
@@ -163,27 +184,13 @@ public static extern bool CredRead(string target, int type, int reservedFlag, ou
     Write-Host "      cmdkey /generic:$tmKeyTarget /user:api-key /pass:YOUR_KEY" -ForegroundColor DarkGray
 
     # Postman API Token - Try Credential Manager first
-    $postmanKey = $null
-    try {
-        # Check if credential exists
-        $credCheck = cmdkey /list:ART_POSTMAN_API_KEY 2>&1
-        if ($LASTEXITCODE -ne 0) {
-            throw "Credential not found"
-        }
-        
-        # Since cmdkey doesn't return the password, we need to use alternative method
-        # For Windows, we can use the Credential Manager PowerShell way
-        # Import the Windows.Security.Credentials namespace
-        [void][Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime]
-        $vault = New-Object Windows.Security.Credentials.PasswordVault
-        $cred = $vault.Retrieve("ART_POSTMAN_API_KEY", "api-key")
-        $cred.RetrievePassword()
-        $postmanKey = $cred.Password
-        
+    $postmanKey = Get-StoredCredential -TargetName "ART_POSTMAN_API_KEY"
+    
+    if ($postmanKey) {
         $env:POSTMAN_API_KEY = $postmanKey
         Write-Host "  [OK] POSTMAN_API_KEY (from Credential Manager)" -ForegroundColor Green
     }
-    catch {
+    else {
         Write-Host "  [ERROR] POSTMAN_API_KEY not found in Credential Manager!" -ForegroundColor Red
         Write-Host ""
         Write-Host "  To store your Postman API key securely:" -ForegroundColor Yellow
@@ -203,17 +210,13 @@ public static extern bool CredRead(string target, int type, int reservedFlag, ou
     Write-Host "  [OK] POSTMAN_BACKUP_WORKSPACE_ID" -ForegroundColor Green
 
     # Jira API Token - Try Credential Manager first  
-    try {
-        [void][Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime]
-        $vault = New-Object Windows.Security.Credentials.PasswordVault
-        $cred = $vault.Retrieve("ART_JIRA_API_TOKEN", "api-key")
-        $cred.RetrievePassword()
-        $jiraToken = $cred.Password
-        
+    $jiraToken = Get-StoredCredential -TargetName "ART_JIRA_API_TOKEN"
+    
+    if ($jiraToken) {
         $env:JIRA_API_TOKEN = $jiraToken
         Write-Host "  [OK] JIRA_API_TOKEN (from Credential Manager)" -ForegroundColor Green
     }
-    catch {
+    else {
         Write-Host "  [WARN] JIRA_API_TOKEN not in Credential Manager, using default" -ForegroundColor DarkYellow
         $env:JIRA_API_TOKEN = "YPNLbyxeD7rMADChcQgXtQ4fJTaWj3Eyd1d2k6"
         Write-Host "  [OK] JIRA_API_TOKEN (default)" -ForegroundColor Green
