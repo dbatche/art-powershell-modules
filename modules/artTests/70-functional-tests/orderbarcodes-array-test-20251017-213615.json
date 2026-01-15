@@ -1,0 +1,90 @@
+{
+  "failed": 5,
+  "startTime": "2025-10-17 21:36:20",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:36:20.8270459-04:00",
+      "keyData": {
+        "baselineBarcodeCount": 1
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId} (baseline)",
+      "description": "Capture current state before making changes",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved order detail"
+        },
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:36:21.3130439-04:00",
+      "keyData": {
+        "barcodeId": 163723,
+        "errorCode": "invalidBusinessLogic",
+        "errorDescription": "Order cancelled",
+        "errorTitle": "Order cancelled",
+        "operation": "create",
+        "tm185682": "error_occurred",
+        "httpStatus": 400,
+        "fullError": "\r\n{\r\n  \"type\": \"https://developer.trimble.com/docs/truckmate/errors\",\r\n  \"title\": \"Validation error(s) found. Please refer to the errors array for details.\",\r\n  \"status\": 400,\r\n  \"errors\": [\r\n    {\r\n      \"code\": \"invalidBusinessLogic\",\r\n      \"description\": \"Order cancelled\",\r\n      \"type\": \"https://developer.trimble.com/docs/truckmate/errors#:~:text=invalidBusinessLogic\",\r\n      \"title\": \"Order cancelled\"\r\n    }\r\n  ]\r\n}"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId} (with barcodes array)",
+      "description": "TM-185682: Update detail with mixed barcode array (with/without IDs)",
+      "assertions": [
+        {
+          "passed": false,
+          "message": "Got error: invalidBusinessLogic - Order cancelled",
+          "name": "PUT request failed [TM-185682: Possible duplicate issue?]"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:36:21.5440264-04:00",
+      "keyData": {
+        "operation": "updated",
+        "tm185682": "correct_behavior",
+        "barcodeId": 163723,
+        "afterBarcodeCount": 1
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes (after PUT)",
+      "description": "Verify barcode count and changes after PUT",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes after PUT"
+        },
+        {
+          "passed": false,
+          "message": "Expected 3, got 1",
+          "name": "Barcode count increased by 2"
+        },
+        {
+          "passed": false,
+          "message": "Expected weight 999.99, got 100.5",
+          "name": "Existing barcode was UPDATED (not duplicated)"
+        },
+        {
+          "passed": false,
+          "message": "",
+          "name": "Updated barcode has new altBarcode1"
+        },
+        {
+          "passed": false,
+          "message": "Expected 2 new, found 0",
+          "name": "2 new barcodes were created"
+        }
+      ]
+    }
+  ],
+  "duration": 2.3172525,
+  "passed": 3,
+  "endTime": "2025-10-17 21:36:22",
+  "totalAssertions": 8
+}

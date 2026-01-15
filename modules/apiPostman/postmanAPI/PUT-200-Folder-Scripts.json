@@ -1,0 +1,17 @@
+[
+  {
+    "Endpoint": "currencyRates",
+    "TestScript": "if (utils.testStatusCode(200).status) {\n    utils.validateJsonSchemaIfCode(200);\n\n    if(pm.request.url.query.get('$select')){\n        utils.validateSelectParameter(null);\n    }else{\n        let responseJson = pm.response.json();\n        let jsonRequest = JSON.parse(pm.request.body.raw);\n        jsonRequest.currencyRateId = parseInt(pm.request.url.path.at(-1));\n\n        utils.validateFieldValuesIfCode(200, responseJson, jsonRequest);\n    }\n}",
+    "PreReqScript": ""
+  },
+  {
+    "Endpoint": "driverPayments",
+    "TestScript": "if (utils.testStatusCode(200).status) {\n    utils.validateJsonSchemaIfCode(200);\n\n    if(pm.request.url.query.get('$select')){\n        utils.validateSelectParameter(null);\n    }else{\n        let responseJson = pm.response.json();\n        let jsonRequest = JSON.parse(pm.request.body.raw);\n        jsonRequest.driverPaymentId = parseInt(pm.request.url.path.at(-1));\n\n        //if taxable not provided, populates from driver pay code if provided.\n        if ((jsonRequest.paymentCode == pm.variables.get('DRIVER_PAY_CODE')) && (!jsonRequest.taxable)){\n            jsonRequest.taxable = 'True';\n        }\n\n\n        utils.validateFieldValuesIfCode(200, responseJson, jsonRequest);\n    }\n}",
+    "PreReqScript": ""
+  },
+  {
+    "Endpoint": "driverDeductions",
+    "TestScript": "if (utils.testStatusCode(200).status) {\n    utils.validateJsonSchemaIfCode(200);\n\n    if(pm.request.url.query.get('$select')){\n        utils.validateSelectParameter(null);\n    }else{\n        let responseJson = pm.response.json();\n        let jsonRequest = JSON.parse(pm.request.body.raw);\n        jsonRequest.driverDeductionId = parseInt(pm.request.url.path.at(-1));\n\n        utils.validateFieldValuesIfCode(200, responseJson, jsonRequest);\n    }\n}",
+    "PreReqScript": ""
+  }
+]

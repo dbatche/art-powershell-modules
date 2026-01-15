@@ -1,0 +1,17 @@
+{
+  "failed": 0,
+  "startTime": "2025-10-17 21:23:03",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:23:03.4551612-04:00",
+      "keyData": {},
+      "assertions": [],
+      "name": "POST /orders",
+      "description": "Create test order (quote type)"
+    }
+  ],
+  "duration": 3.535382,
+  "passed": 0,
+  "endTime": "2025-10-17 21:23:06",
+  "totalAssertions": 0
+}

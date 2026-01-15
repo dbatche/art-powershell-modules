@@ -1,0 +1,85 @@
+14:30:18Preparing run.
+14:30:22Running...
+364
+14:35:11
+POST https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista
+365
+14:35:15
+invalidBusinessLogic - trailerId TM-180923
+366
+14:35:15
+POST https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista
+367
+14:35:19
+istaId
+368
+14:35:19
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista/
+369
+14:35:22
+getResponseBodySchema called but no schema found for get 
+370
+14:35:22
+Failed: utils.validateJsonSchema called but aborted because no schema found. Check OpenAPI
+371
+14:35:22
+expected 'undefined' to not deeply equal 'undefined'
+372
+14:35:22
+Failed: EXPECTED $.istaId: NaN | ACTUAL $.istaId: undefined
+373
+14:35:22
+expected false to equal true
+374
+14:35:24
+$select
+375
+14:35:24
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista/?$select=otherAmount,apInvoiceId
+376
+14:35:27
+Failed: EXPECTED Status Code:  200 | ACTUAL Status Code: 400
+377
+14:35:27
+expected response to have status code 200 but got 400
+378
+14:35:28
+istaId
+379
+14:35:28
+DELETE https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista/
+380
+14:35:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/2/ista/
+381
+14:35:30
+Failed: EXPECTED Status Code:  204 | ACTUAL Status Code: 405
+382
+14:35:30
+expected response to have status code 204 but got 405
+383
+14:35:30
+Failed: Standard DELETE response (No Content)
+384
+14:35:30
+expected 486 to equal +0
+385
+14:35:30
+confirmResourceDeleted - delete all child entities: true
+386
+14:35:30
+Failed: Expect not all records deleted
+387
+14:35:30
+Cannot read properties of undefined (reading 'length')
+388
+14:35:30
+invalidBusinessLogic - already posted (parent)
+389
+14:35:30
+DELETE https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices/1071/ista/6
+390
+14:35:35
+Finance - apInvoices finished
+14:35:35Run failed.
+Online

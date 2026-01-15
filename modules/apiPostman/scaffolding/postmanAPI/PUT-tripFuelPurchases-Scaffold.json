@@ -1,0 +1,321 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "PUT tripFuelPurchases Scaffold",
+    "description": "Generated scaffold for PUT tripFuelPurchases/tripFuelPurchaseId endpoint"
+  },
+  "item": [
+    {
+      "name": "tripFuelPurchaseId",
+      "item": [
+        {
+          "name": "PUT",
+          "item": [
+            {
+              "item": [
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "// TODO: Set up test data\n// pm.globals.set('tripFuelPurchaseId', 123);",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "minimal fields",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "tripFuelPurchases",
+                        "{{tripFuelPurchaseId}}"
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "{ \"field1\": \"value1\" }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "PUT"
+                  }
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "Request body based on openAPI",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "tripFuelPurchases",
+                        "{{tripFuelPurchaseId}}"
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "{ \"field1\": \"value1\", \"field2\": 123 }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "PUT"
+                  }
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "$select",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}?$select=field1,field2",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "tripFuelPurchases",
+                        "{{tripFuelPurchaseId}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "key": "$select",
+                          "value": "field1,field2"
+                        }
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "{ \"field1\": \"value1\" }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "PUT"
+                  }
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "blank string",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "tripFuelPurchases",
+                        "{{tripFuelPurchaseId}}"
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "{ \"stringField\": \"\", \"otherField\": \"valid value\" }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "PUT"
+                  }
+                }
+              ],
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "if (utils.testStatusCode(200).status) {",
+                      "    utils.validateJsonSchemaIfCode(200);",
+                      "    ",
+                      "    if(pm.request.url.query.get('$select')){",
+                      "        utils.validateSelectParameter(null);",
+                      "    }else{",
+                      "        let responseJson = pm.response.json();",
+                      "        let jsonRequest = JSON.parse(pm.request.body.raw);",
+                      "        jsonRequest.tripFuelPurchaseId = parseInt(pm.request.url.path.at(-1));",
+                      "        ",
+                      "        // TODO: Add any endpoint-specific business logic here",
+                      "        ",
+                      "        utils.validateFieldValuesIfCode(200, responseJson, jsonRequest);",
+                      "    }",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "200",
+              "description": "Successful update tests"
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "exec": "tm_utils.testInvalidDbValueResponse();",
+                            "type": "text/javascript"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "exec": "",
+                            "type": "text/javascript"
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "name": "random invalidDBValue",
+                      "request": {
+                        "url": {
+                          "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ],
+                          "path": [
+                            "tripFuelPurchases",
+                            "{{tripFuelPurchaseId}}"
+                          ]
+                        },
+                        "header": [],
+                        "body": {
+                          "raw": "{ \"invalidField\": 999999 }",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          },
+                          "mode": "raw"
+                        },
+                        "method": "PUT"
+                      }
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "exec": "pm.test(\"Status is 409\", () => pm.response.to.have.status(409));",
+                            "type": "text/javascript"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "exec": "",
+                            "type": "text/javascript"
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "name": "409 - Resource Conflict",
+                      "request": {
+                        "url": {
+                          "raw": "{{DOMAIN}}/tripFuelPurchases/{{tripFuelPurchaseId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ],
+                          "path": [
+                            "tripFuelPurchases",
+                            "{{tripFuelPurchaseId}}"
+                          ]
+                        },
+                        "header": [],
+                        "body": {
+                          "raw": "{ \"field1\": \"duplicate value\" }",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          },
+                          "mode": "raw"
+                        },
+                        "method": "PUT"
+                      }
+                    }
+                  ],
+                  "name": "invalidBusinessLogic",
+                  "description": "Business rule validation tests"
+                }
+              ],
+              "name": "4xx",
+              "description": "Error response tests"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "tripFuelPurchases - POST minimal test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "request": {
+                "url": {
+                  "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                  "variable": [
+                    {
+                      "key": "fuelTaxId",
+                      "value": "{{fuelTaxId}}"
+                    }
+                  ],
+                  "protocol": "https",
+                  "path": [
+                    "fuelTaxes",
+                    "{{fuelTaxId}}",
+                    "tripFuelPurchases"
+                  ],
+                  "host": [
+                    "{{DOMAIN}}"
+                  ]
+                },
+                "header": [],
+                "description": "Test POST with minimum required fields for creating a trip fuel purchase",
+                "body": {
+                  "mode": "raw",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "raw": ""
+                },
+                "method": "POST"
+              },
+              "name": "minimum fields - TM-180940",
+              "event": [
+                {
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Set parent fuelTaxId",
+                      "const fuelTaxId = pm.globals.get('fuelTaxId') || 2;",
+                      "pm.variables.set('fuelTaxId', fuelTaxId);",
+                      "",
+                      "// Build minimal request body",
+                      "const requestBody = [{",
+                      "    fuelVolume1: 50.0,",
+                      "    purchaseDate: \"${new Date().toISOString().split('.')[0]}\",",
+                      "    purchaseJurisdiction: 'CA'",
+                      "}];",
+                      "",
+                      "pm.request.body.raw = JSON.stringify(requestBody);"
+                    ]
+                  },
+                  "listen": "prerequest"
+                }
+              ]
+            }
+          ],
+          "name": "201"
+        }
+      ],
+      "name": "POST"
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "POST tripFuelPurchases Scaffold",
+    "description": "Generated scaffold for POST tripFuelPurchases endpoint"
+  },
+  "item": [
+    {
+      "name": "POST",
+      "item": [
+        {
+          "item": [
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": "",
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                },
+                {
+                  "script": {
+                    "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Build minimal request body\nconst requestBody = [{\n    // TODO: Add minimum required fields from OpenAPI schema\n    field1: 'value1'\n}];\n\npm.request.body.raw = JSON.stringify(requestBody);",
+                    "type": "text/javascript"
+                  },
+                  "listen": "prerequest"
+                }
+              ],
+              "name": "minimum fields",
+              "request": {
+                "url": {
+                  "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                  "host": [
+                    "{{DOMAIN}}"
+                  ],
+                  "path": [
+                    "fuelTaxes",
+                    "{{fuelTaxId}}",
+                    "tripFuelPurchases"
+                  ]
+                },
+                "header": [],
+                "body": {
+                  "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": "",
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                },
+                {
+                  "script": {
+                    "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Build comprehensive request body\nconst requestBody = [{\n    // TODO: Add all fields from OpenAPI schema\n    field1: 'value1',\n    field2: 123,\n    field3: '2025-10-10T10:00:00'\n}];\n\npm.request.body.raw = JSON.stringify(requestBody);",
+                    "type": "text/javascript"
+                  },
+                  "listen": "prerequest"
+                }
+              ],
+              "name": "all fields",
+              "request": {
+                "url": {
+                  "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                  "host": [
+                    "{{DOMAIN}}"
+                  ],
+                  "path": [
+                    "fuelTaxes",
+                    "{{fuelTaxId}}",
+                    "tripFuelPurchases"
+                  ]
+                },
+                "header": [],
+                "body": {
+                  "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": "",
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                },
+                {
+                  "script": {
+                    "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Build array with multiple items\nconst requestBody = [\n    { field1: 'item1' },\n    { field1: 'item2' },\n    { field1: 'item3' }\n];\n\npm.request.body.raw = JSON.stringify(requestBody);",
+                    "type": "text/javascript"
+                  },
+                  "listen": "prerequest"
+                }
+              ],
+              "name": "array",
+              "request": {
+                "url": {
+                  "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                  "host": [
+                    "{{DOMAIN}}"
+                  ],
+                  "path": [
+                    "fuelTaxes",
+                    "{{fuelTaxId}}",
+                    "tripFuelPurchases"
+                  ]
+                },
+                "header": [],
+                "body": {
+                  "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": "",
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                },
+                {
+                  "script": {
+                    "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Build request body\nconst requestBody = [{\n    field1: 'value1',\n    field2: 123\n}];\n\npm.request.body.raw = JSON.stringify(requestBody);",
+                    "type": "text/javascript"
+                  },
+                  "listen": "prerequest"
+                }
+              ],
+              "name": "$select",
+              "request": {
+                "url": {
+                  "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases?$select=field1,field2",
+                  "host": [
+                    "{{DOMAIN}}"
+                  ],
+                  "path": [
+                    "fuelTaxes",
+                    "{{fuelTaxId}}",
+                    "tripFuelPurchases"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "key": "$select",
+                      "value": "field1,field2"
+                    }
+                  ]
+                },
+                "header": [],
+                "body": {
+                  "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            }
+          ],
+          "event": [
+            {
+              "script": {
+                "exec": [
+                  "if (utils.testStatusCode(201).status) {",
+                  "    utils.validateJsonSchemaIfCode(201);",
+                  "    ",
+                  "    if(pm.request.url.query.get('$select')){",
+                  "        utils.validateSelectParameter('tripFuelPurchases');",
+                  "    }else{",
+                  "        let responseJson = pm.response.json();",
+                  "        let jsonRequest = JSON.parse(pm.request.body.raw);",
+                  "        ",
+                  "        // Validate array response",
+                  "        if (responseJson.tripFuelPurchases && responseJson.tripFuelPurchases.length > 0) {",
+                  "            utils.validateFieldValuesIfCode(201, ",
+                  "                responseJson.tripFuelPurchases[0], ",
+                  "                jsonRequest[0]);",
+                  "        }",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              },
+              "listen": "test"
+            }
+          ],
+          "name": "201",
+          "description": "Successful creation tests"
+        },
+        {
+          "item": [
+            {
+              "item": [
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "tm_utils.testInvalidDbValueResponse();",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Build request with invalid data\nconst requestBody = [{\n    invalidField: 999999\n}];\n\npm.request.body.raw = JSON.stringify(requestBody);",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "random invalidDBValue",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "fuelTaxes",
+                        "{{fuelTaxId}}",
+                        "tripFuelPurchases"
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "POST"
+                  }
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "exec": "",
+                        "type": "text/javascript"
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "exec": "// Set parent resource ID\nconst fuelTaxId = pm.globals.get('fuelTaxId') || 2;\npm.variables.set('fuelTaxId', fuelTaxId);\n\n// Empty array should fail\npm.request.body.raw = JSON.stringify([]);",
+                        "type": "text/javascript"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "name": "empty array",
+                  "request": {
+                    "url": {
+                      "raw": "{{DOMAIN}}/fuelTaxes/{{fuelTaxId}}/tripFuelPurchases",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ],
+                      "path": [
+                        "fuelTaxes",
+                        "{{fuelTaxId}}",
+                        "tripFuelPurchases"
+                      ]
+                    },
+                    "header": [],
+                    "body": {
+                      "raw": "[{ \"field1\": \"value1\", \"field2\": 123 }]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      },
+                      "mode": "raw"
+                    },
+                    "method": "POST"
+                  }
+                }
+              ],
+              "name": "invalidBusinessLogic",
+              "description": "Business rule validation tests"
+            }
+          ],
+          "name": "4xx",
+          "description": "Error response tests"
+        }
+      ]
+    }
+  ]
+}

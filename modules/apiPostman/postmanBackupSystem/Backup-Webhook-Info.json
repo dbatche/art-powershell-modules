@@ -1,0 +1,18 @@
+{
+  "id": "1f0a26b4-923f-48e0-bb46-07d7e58e7b0b",
+  "createdDate": "2025-10-06 00:16:55",
+  "name": "Backup System - Manual Trigger",
+  "environment": {
+    "uid": "2332132-8d882001-d4b6-4c4d-ab14-e3fac66252ec",
+    "name": "Backup Testing"
+  },
+  "workspace": {
+    "name": "My Workspace",
+    "id": "2fe98945-c29d-438d-8ad7-328f4624b017"
+  },
+  "webhookUrl": "https://newman-api.getpostman.com/run/2332132/a1385fe7-4c09-40a9-b742-7aa8c827cc01",
+  "collection": {
+    "uid": "2332132-fdd6be92-cea2-4421-8109-0bcd3724ae20",
+    "name": "Backup System"
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "Path": "/shipmentStatus",
+  "Method": "POST",
+  "OperationId": "PostShipmentStatus",
+  "Summary": "Create shipment status",
+  "Description": "Creates a new shipment status record.\n\nShipment status updates can be used to track shipment progress.",
+  "RequestSchema": {
+    "Properties": {
+      "shipmentStatus": {
+        "Name": "shipmentStatus",
+        "Pattern": null,
+        "MinLength": null,
+        "Description": null,
+        "Format": null,
+        "Maximum": null,
+        "Enum": null,
+        "Minimum": null,
+        "WriteOnly": null,
+        "Nullable": null,
+        "ReadOnly": null,
+        "Type": "integer",
+        "MaxLength": null
+      },
+      "tripId": {
+        "Name": "tripId",
+        "Pattern": null,
+        "MinLength": null,
+        "Description": null,
+        "Format": null,
+        "Maximum": null,
+        "Enum": null,
+        "Minimum": null,
+        "WriteOnly": null,
+        "Nullable": null,
+        "ReadOnly": null,
+        "Type": "string",
+        "MaxLength": 40
+      }
+    },
+    "Required": [
+      "shipmentStatus",
+      "tripId"
+    ],
+    "SchemaName": "PostShipmentStatus",
+    "IsArray": false
+  },
+  "ResponseSchemas": {
+    "201": {
+      "ExpandedProperties": {
+        "shipmentStopNote": {
+          "Type": "array",
+          "ItemsSchema": "shipmentStatusStopNote",
+          "ItemsProperties": {
+            "shipmentStatusNote": {
+              "Name": "shipmentStatusNote",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": null,
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": null,
+              "ReadOnly": null,
+              "Type": "string",
+              "MaxLength": 40
+            }
+          }
+        },
+        "referenceNumbers": {
+          "Type": "array",
+          "ItemsSchema": "shipmentStatusReferenceNumber",
+          "ItemsProperties": {
+            "referenceNumberType": {
+              "Name": "referenceNumberType",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18"
+              ],
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": true,
+              "ReadOnly": null,
+              "Type": "integer",
+              "MaxLength": null
+            },
+            "referenceNumberValue": {
+              "Name": "referenceNumberValue",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": null,
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": null,
+              "ReadOnly": null,
+              "Type": "string",
+              "MaxLength": 40
+            },
+            "referenceNumberKey": {
+              "Name": "referenceNumberKey",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": null,
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": null,
+              "ReadOnly": null,
+              "Type": "string",
+              "MaxLength": 20
+            }
+          }
+        },
+        "userDefinedValues": {
+          "Type": "array",
+          "ItemsSchema": "userDefinedValue",
+          "ItemsProperties": {
+            "value": {
+              "Name": "value",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": null,
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": null,
+              "ReadOnly": null,
+              "Type": "string",
+              "MaxLength": 40
+            },
+            "key": {
+              "Name": "key",
+              "Pattern": null,
+              "MinLength": null,
+              "Description": null,
+              "Format": null,
+              "Maximum": null,
+              "Enum": null,
+              "Minimum": null,
+              "WriteOnly": null,
+              "Nullable": null,
+              "ReadOnly": null,
+              "Type": "string",
+              "MaxLength": 20
+            }
+          }
+        }
+      },
+      "Properties": {
+        "freightProviderReferenceNumber": {
+          "Name": "freightProviderReferenceNumber",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "string",
+          "MaxLength": 40
+        },
+        "shipmentStopNote": {
+          "Name": "shipmentStopNote",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "array",
+          "MaxLength": null
+        },
+        "shipmentStatus": {
+          "Name": "shipmentStatus",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": true,
+          "ReadOnly": null,
+          "Type": "integer",
+          "MaxLength": null
+        },
+        "carrierSCAC": {
+          "Name": "carrierSCAC",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "string",
+          "MaxLength": 10
+        },
+        "tenantExternalId": {
+          "Name": "tenantExternalId",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "integer",
+          "MaxLength": null
+        },
+        "tripId": {
+          "Name": "tripId",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "string",
+          "MaxLength": 40
+        },
+        "referenceNumbers": {
+          "Name": "referenceNumbers",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "array",
+          "MaxLength": null
+        },
+        "version": {
+          "Name": "version",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "string",
+          "MaxLength": 10
+        },
+        "userDefinedValues": {
+          "Name": "userDefinedValues",
+          "Pattern": null,
+          "MinLength": null,
+          "Description": null,
+          "Format": null,
+          "Maximum": null,
+          "Enum": null,
+          "Minimum": null,
+          "WriteOnly": null,
+          "Nullable": null,
+          "ReadOnly": null,
+          "Type": "array",
+          "MaxLength": null
+        }
+      },
+      "SchemaName": "shipmentStatus",
+      "IsArray": false
+    }
+  },
+  "Parameters": []
+}

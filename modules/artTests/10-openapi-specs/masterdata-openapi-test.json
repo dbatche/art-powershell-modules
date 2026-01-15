@@ -1,0 +1,851 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MasterData",
+    "description": "The Master Data management API allows for an external system to create, retrieve, update or delete TruckMate configuration data, such as Client, Vendor and Driver profiles, as well as sites, zones, commodity codes etc.\n\n[Download latest released OpenAPI](https://truckmatecloudhub.trimble-transportation.com/masterData/openapi.json \"download\")\n\n\n This documentation is based on the most currently released version of TruckMate. Documentation for previous versions can be accessed by navigating to the openapi.json endpoint for any given API (the service must be set up and running). For example: http://DOMAIN/openapi.json\n\n\n\n---\n\n© 2025, Trimble Inc. All rights reserved. Unauthorized copying prohibited. Software functions, including our APIs and their specification, are subject to change without notice. Information contained herein is Trimble Confidential Information, used under license.\n\n---\n\n",
+    "version": "1",
+    "x-tm-release": "25.4.80.2"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8403/masterData"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Accessorial Charge Codes",
+      "description": "Retrieves, creates, updates and deletes TruckMate accessorial charge codes. Accessorial charge codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Clients",
+      "description": "Retrieves, creates, updates and deletes TruckMate client profiles. Client profiles can be viewed and maintained in the TruckMate Customer & Vendor Profiles application."
+    },
+    {
+      "name": "Commodities",
+      "description": "Retrieves, creates, updates and deletes TruckMate commodity codes. Commodity codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Drivers",
+      "description": "Retrieves, creates, updates and deletes TruckMate driver profiles. Driver profiles can be viewed and maintained in the TruckMate Driver Profiles application."
+    },
+    {
+      "name": "Eligible Carriers",
+      "description": "Retrieves TruckMate eligible carriers based on a provided order interliner identifier and list of carrier identifiers to verify. Carriers can be viewed in the Customer & Vendor profiles application > Vendor tab."
+    },
+    {
+      "name": "Login",
+      "description": "The login authentication endpoints are used to generate a JWT (JSON Web Token) to be used as the authorization bearer token for subsequent API calls. Web users and their login credentials are configured either through the Profiles > TruckMate Customer and Vendor Profiles application  > TM4Web Configuration tab. TM4Web Access Group configuration options are setup in the TruckMate for Web > Web Admin application."
+    },
+    {
+      "name": "Service Levels",
+      "description": "Retrieves TruckMate service level codes. Service level codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Status Codes",
+      "description": "Retrieves TruckMate status codes. Status codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Trace Types",
+      "description": "Retrieves TruckMate trace number type codes. Trace number type codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Trailers",
+      "description": "Retrieves TruckMate trailer profiles and trailer special events. Trailer profiles can be viewed and maintained in the TruckMate Trailer Profiles application."
+    },
+    {
+      "name": "Un Numbers",
+      "description": "Retrieves TruckMate UN numbers. UN numbers can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Units",
+      "description": "Retrieves TruckMate units of measurement. Units can be viewed and maintained in the TruckMate Codes Maintenance application."
+    },
+    {
+      "name": "Vendors",
+      "description": "Retrieves, creates, updates and deletes TruckMate vendor profiles. Vendor profiles can be viewed and maintained in the TruckMate Customer & Vendor Profiles application."
+    },
+    {
+      "name": "Version",
+      "description": "The version endpoint allows the ART server version information to be retrieved. This will include the version number of the TruckMate ART Server (Windows Service) application."
+    },
+    {
+      "name": "Whoami",
+      "description": "Retrieves identity of the user associated with the provided authorization method."
+    },
+    {
+      "name": "Zones",
+      "description": "Retrieves, creates, updates and deletes TruckMate zone codes. Zone codes can be viewed and maintained in the TruckMate Codes Maintenance application."
+    }
+  ],
+  "externalDocs": {
+    "url": "https://learn.transportation.trimble.com/"
+  },
+  "paths": {
+    "/aChargeCodes": {
+      "get": "@{summary=Retrieve accessorial charge codes; description=Retrieves accessorial charge code records that can be used to create charges for a freight bill or a trip.\n\nAccessorial charge codes can be viewed in the Codes Maintenance application > Accessorial Charges tab.; operationId=GetAChargeCodes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create an accessorial charge code; description=Creates one or more accessorial charge code records including both header and detail portions, as well as the following assignment criteria:\n\n- Extra stop rates\n\n- Customer account assignments (detail level)\n\n- Rate sheet assignments\n\n- Service level assignments\n\n- Vendor account assignments (detail level)\n\n- Freight bill type restrictions\n\n- Valuation charges\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER WHERE DETAIL_LINE_ID = (SELECT DETAIL_LINE_ID FROM TLORDER FETCH FIRST ROW ONLY) \n\tAND\n\nAccessorial charge codes can be viewed in the Codes Maintenance application > Accessorial Charges tab.; operationId=PostACharge_Code; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/aChargeCodes/{aChargeCodeId}": {
+      "get": "@{summary=Retrieve an accessorial charge code; description=Retrieves an accessorial charge code record.\n\nAccessorial charge codes can be viewed in the Codes Maintenance application > Accessorial Charges tab.; operationId=GetAChargeCode; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code; description=Updates one or more properties of a specific accessorial charge code record including both header and detail portions, as well as the following assignment criteria:\n\n- Extra stop rates\n\n- Customer account assignments (detail level)\n\n- Rate sheet assignments\n\n- Service level assignments\n\n- Vendor account assignments (detail level)\n\n- Freight bill type restrictions\n\n- Valuation charges\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER WHERE DETAIL_LINE_ID = (SELECT DETAIL_LINE_ID FROM TLORDER FETCH FIRST ROW ONLY) \n\tAND\n\nAccessorial charge codes can be viewed in the Codes Maintenance application > Accessorial Charges tab.; operationId=PutACharge_Code; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code; description=Deletes an accessorial charge code record.\n\nAccessorial charge code records which have been assigned to a freight bill or trip cannot be deleted.\n\nAccessorial charge codes can be viewed in the Codes Maintenance application > Accessorial Charges tab.; operationId=DeleteACharge_Code; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails": {
+      "get": "@{summary=Retrieve accessorial charge code details; description=Retrieves accessorial charge code detail records for the specified accessorial charge code.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesGetAllAChargeDetails; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add accessorial charge code details; description=Adds one or more accessorial charge code detail records to the specified accessorial charge code.\n\nThe chargeBehavior property of the accessorial charge code determines which properties can be populated since it varies depending on the charge behavior.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesPostAChargeDetails; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code details; description=Deletes accessorial charge code detail records from the specified accessorial charge code.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesDeleteAllAChargeDetails; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line; description=Retrieves an accessorial charge code detail record for the specified accessorial charge code.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesGetAChargeDetails; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line; description=Updates one or more properties of a specific accessorial charge code detail record for the specified accessorial charge code.\n\nThe chargeBehavior property of the accessorial charge code determines which properties can be populated since it varies depending on the charge behavior.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesPutAChargeDetails; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line; description=Deletes an accessorial charge code detail record from the specified accessorial charge code.\n\nAccessorial charge code details can be viewed in the Codes Maintenance application > Accessorial Charges tab > Accessorial Charge Details grid.; operationId=AccessorialChargeCodesDeleteAChargeDetails; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/extraStopRates": {
+      "get": "@{summary=Retrieve accessorial charge code detail line extra stop rates; description=Retrieves extra stop rate records for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesGetExtraStopRates; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add accessorial charge code detail line extra stop rates; description=Adds one or more accessorial charge code detail extra stop rate records to the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesPostExtraStopRate; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code detail line extra stop rates; description=Deletes accessorial charge code detail extra stop rate records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesDeleteAllExtraStopRate; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/extraStopRates/{extraStopId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line extra stop rate; description=Retrieves an extra stop rate record for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesGetExtraStopRate; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line extra stop rate; description=Updates one or more properties of a specific accessorial charge code detail extra stop rate record for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesPutExtraStopRate; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line extra stop rate; description=Deletes an accessorial charge code detail extra stop rate record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line extra stop rates can be viewed in the Codes Maintenance application > Accessorial Charges tab > Extra Stops Rate grid for Charge Behavior = Extra Stops.; operationId=AccessorialChargeCodesDeleteExtraStopRate; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiClients": {
+      "get": "@{summary=Retrieve accessorial charge code detail line clients; description=Retrieves accessorial charge code detail client records for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesGetMultiClients; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add accessorial charge code detail line clients; description=Adds one or more accessorial charge code detail client records to the specified accessorial charge code detail line.\n\nYou cannot add multiple multi client records for the same clientId to an accessorial charge code. \n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesPostMultiClient; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code detail line clients; description=Deletes accessorial charge code detail client records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesDeleteAllMultiClient; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiClients/{multiClientId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line client; description=Retrieves an accessorial charge code detail client record for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesGetMultiClient; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line client; description=Updates a specific accessorial charge code detail client record for the specified accessorial charge code detail line.\n\nYou cannot add multiple multi client records for the same clientId to an Accessorial Charge Code.\n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesPutMultiClient; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line client; description=Deletes an accessorial charge code detail client record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line clients can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Client ID column in the grid.; operationId=AccessorialChargeCodesDeleteMultiClient; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiRateSheets": {
+      "get": "@{summary=Retrieve accessorial charge code detail line rate sheets; description=Retrieves accessorial charge code detail rate sheet records for the specified accessorial charge code detail line.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesGetMultiRateSheetss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add an accessorial charge code detail line rate sheet; description=Adds one or more accessorial charge code detail rate sheet records to the specified accessorial charge code detail line.\n\nMulti rate sheet records can be created for any charge behavior.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesPostMultiRateSheets; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code detail line rate sheets; description=Deletes accessorial charge code detail rate sheet records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesDeleteAllMultiRateSheets; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiRateSheets/{multiRateSheetId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line rate sheet; description=Retrieves an accessorial charge code detail rate sheet record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesGetMultiRateSheets; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line rate sheet; description=Updates a specific accessorial charge code detail rate sheet record for the specified accessorial charge code detail line.\n\nMulti rate sheet records can be created for any charge behavior.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesPutMultiRateSheets; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line rate sheet; description=Deletes an accessorial charge code detail rate sheet record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line rate sheets can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Rate Sheet ID column in the grid.; operationId=AccessorialChargeCodesDeleteMultiRateSheets; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiServiceLevels": {
+      "get": "@{summary=Retrieve accessorial charge code detail line service levels; description=Retrieves accessorial charge code detail service level records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesGetMultiServiceLevelss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add an accessorial charge code detail line service level; description=Adds one or more accessorial charge code detail service level records to the specified accessorial charge code detail line.\n\nMulti service level records can be created for any charge behavior.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesPostMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code detail line service levels; description=Deletes accessorial charge code detail service level records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesDeleteAllMultiServiceLevels; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiServiceLevels/{multiServiceLevelId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line service level; description=Retrieves an accessorial charge code detail service level record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesGetMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line service level; description=Updates a specific accessorial charge code detail service level record for the specified accessorial charge code detail line.\n\nMulti Service Level records can be created/updated for any charge behavior.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesPutMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line service level; description=Deletes an accessorial charge code detail service level record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line service levels can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Service Level column in the grid.; operationId=AccessorialChargeCodesDeleteMultiServiceLevels; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiVendors": {
+      "get": "@{summary=Retrieve accessorial charge code detail line vendors; description=Retrieves accessorial charge code detail vendor records from the specified accessorial charge code detail line.\n\n Accessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesGetMultiVendorss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add an accessorial charge code detail line vendor; description=Adds one or more accessorial charge code detail vendor records to the specified accessorial charge code detail line.\n\nMulti vendor records can be created only for accessorial charge codes that have the Vendor Code checkbox selected.\n\nMultiple multi vendor records can be created for a single accessorial charge detail record.\n\nMulti vendor records can be created for any charge behavior.\n\nYou cannot add multiple multi vendor records for the same Vendor ID to an accessorial charge code. \n\nAccessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesPostMultiVendors; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code detail line vendors; description=Deletes accessorial charge code detail vendor records from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesDeleteAllMultiVendors; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/aChargeDetails/{aChargeDetailId}/multiVendors/{multiVendorId}": {
+      "get": "@{summary=Retrieve an accessorial charge code detail line vendor; description=Retrieves an accessorial charge code detail vendor record from the specified accessorial charge code detail line.\n\n Accessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesGetMultiVendors; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code detail line vendor; description=Updates a specific accessorial charge code detail vendor record for the specified accessorial charge code detail line.\n\nThe accessorial charge being updated must have the Vendor Code checkbox selected.\n\nMulti vendor records can be created for any charge behavior.\n\nAccessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesPutMultiVendors; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code detail line vendor; description=Deletes an accessorial charge code detail vendor record from the specified accessorial charge code detail line.\n\nAccessorial charge code detail line vendors can be viewed in the Codes Maintenance application > Accessorial Charges tab by double-clicking the Vendor ID column in the grid.; operationId=AccessorialChargeCodesDeleteMultiVendors; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/aChargeCodes/{aChargeCodeId}/restrictBillTypes": {
+      "get": "@{summary=Retrieve accessorial charge code restricted freight bill types; description=Retrieves accessorial charge code restricted freight bill type records for the specified accessorial charge code.\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesGetRestrictBillTypes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add an accessorial charge code restricted freight bill type; description=Adds one or more accessorial charge code restricted freight bill type records to the specified accessorial charge code.\n\nThe accessorial charge code must be active and valid with the 'Restricted Auto-Assign' checkbox selected on the Codes Maintenance application > Accessorial Charges tab.\n\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesPostRestrictBillType; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code restricted freight bill types; description=Deletes accessorial charge code restricted freight bill type records from the specified accessorial charge code.\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesDeleteAllRestrictBillType; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/aChargeCodes/{aChargeCodeId}/restrictBillTypes/{restrictBillTypeId}": {
+      "get": "@{summary=Retrieve an accessorial charge code restricted freight bill type; description=Retrieves an accessorial charge code restricted freight bill type record for the specified accessorial charge code.\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesGetRestrictBillType; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code restricted freight bill type; description=Updates a specific accessorial charge code restricted freight bill type record for the specified accessorial charge code.\n\nThe accessorial charge code must be active and valid with the 'Restricted Auto-Assign' checkbox selected on the Codes Maintenance application > Accessorial Charges tab.\n\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesPutRestrictBillType; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code restricted freight bill type; description=Deletes an accessorial charge code restricted freight bill type record from the specified accessorial charge code.\n\nAccessorial charge code restricted freight bill types can be viewed in the Codes Maintenance application > Accessorial Charges tab by clicking the Restricted FB Types button (enabled if the Restricted Auto-Assign checkbox is selected).; operationId=AccessorialChargeCodesDeleteRestrictBillType; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/aChargeCodes/{aChargeCodeId}/valuations": {
+      "get": "@{summary=Retrieve accessorial charge code valuations; description=Retrieves accessorial charge code valuation records for the specified accessorial charge code.\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesGetValuations; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add an accessorial charge code valuation; description=Adds one or more accessorial charge code valuation records to the specified accessorial charge code.\n\nThe accessorial charge code must be active and valid with the following settings on the Codes Maintenance application > Accessorial Charges tab:\n\n- Accessorial charge code Charge Behavior = 'Valuation'\n\n- Valuation charge code Calc Order is NOT '0'\n\n- Valuation charge code Calc Order is smaller than the accessorial charge code Calc Order\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesPostValuation; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete accessorial charge code valuations; description=Deletes accessorial charge code valuation records from the specified accessorial charge code.\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesDeleteAllValuation; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/aChargeCodes/{aChargeCodeId}/valuations/{valuationChargeId}": {
+      "get": "@{summary=Retrieve an accessorial charge code valuation; description=Retrieves an accessorial charge code valuation record for the specified accessorial charge code.\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesGetValuation; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update an accessorial charge code valuation; description=Updates accessorial charge code valuation records for the specified accessorial charge code.\n\nThe accessorial charge code must be active and valid with the following settings on the Codes Maintenance application > Accessorial Charges tab:\n\n- Accessorial charge code Charge Behavior = 'Valuation'\n\n- Valuation charge code Calc Order is NOT '0'\n\n- Valuation charge code Calc Order is smaller than the accessorial charge code Calc Order\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesPutValuation; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete an accessorial charge code valuation; description=Deletes an accessorial charge code valuation record from the specified accessorial charge code.\n\nAccessorial charge code valuations can be viewed in the Codes Maintenance application > Accessorial Charges tab for Charge Behavior = Valuation.; operationId=AccessorialChargeCodesDeleteValuation; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients": {
+      "get": "@{summary=Retrieve clients; description=Retrieves client records.\n\n As of TruckMate 25.2, the apptReq and spotTrailer are no longer returning True/False values. Please\n\n refer to the openAPI request and response body schema for supported field values.\n\n Client profiles can be viewed in the Customer & Vendor Profiles application > Customer tab.; operationId=GetClients; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create a new client; description=Creates one or more client records.\n\nIf the clientId is included in the Request body, it will be used. If the clientId is not included, it can be auto generated based on the following app config option.\n\n- PROFILE.EXE > Auto Gen Client key\n\nClient profiles can be viewed in the Customer & Vendor Profiles application > Customer tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=PostClients; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/clients/{clientId}": {
+      "get": "@{summary=Retrieve a client; description=Retrieves a client record.\n\n As of TruckMate 25.2, the apptReq and spotTrailer are no longer returning True/False values. Please\n\n refer to the openAPI request and response body schema for supported field values.\n\n Client profiles can be viewed in the Customer & Vendor Profiles application > Customer tab.; operationId=GetClient; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client; description=Updates one or more properties of a specific client record.\n\nClient profiles can be viewed in the Customer & Vendor Profiles application > Customer tab.\n\nThe requested body may include child resources such as details, dangerousGoods, customDefs, etc. Keep in mind when a resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the order, and insert new ones from the request body.\n\nTo update an individual child record use the PUT method directly against the child resource record itself.\n\nFor example, to update an individual detail line use PUT /orders/{orderId}/details/{orderDetailId}; operationId=PutClients; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client; description=Deletes a specific client record.\n\nClient profiles can be viewed in the Customer & Vendor Profiles application > Customer tab.; operationId=DeleteClient; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/aChargeCodes": {
+      "get": "@{summary=Retrieve client accessorial charges; description=Retrieves client accessorial charge records for the specified client.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsGetAChargeCodess; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client accessorial charge; description=Adds one or more client accessorial charge records to the specified client.\n\nThe accessorial charge code must not be a vendor code or have the auto-assign by default enabled in the TruckMate Codes Maintenance application.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsPostAChargeCodes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client accessorial charges; description=Deletes client accessorial charge records from the specified client.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsDeleteAllAChargeCodes; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/aChargeCodes/{clientAChargeCodeId}": {
+      "get": "@{summary=Retrieve a client accessorial charge; description=Retrieves a client accessorial charge record for the specified client.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsGetAChargeCodes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client accessorial charge; description=Updates a client accessorial charge record for the specified client.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsPutAChargeCodes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client accessorial charge; description=Deletes a client accessorial charge record from the specified client.\n\nClient accessorial charges can be viewed in the Customer & Vendor Profiles application > Customer > Accessorial Charges tab.; operationId=ClientsDeleteAChargeCodes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/aChargeSubstitutes": {
+      "get": "@{summary=Retrieve client accessorial charges substitutions; description=Retrieves client accessorial charges substitution records for the specified client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsGetAChargeSubstitutess; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client accessorial charges substitution; description=Adds one or more client accessorial charges substitution records to the specified client.\n\nCreating a substitution record is different from the normal process. Instead of creating a new record, you must change one of the Auto-Assign, Substitution Code or Substitution Order values on an existing record in the Customer Profiles > Rating > Extra Charges tab grid. This will create a substitution record.\n\nAccessorial charge codes can be selected as a substitution code only if they satisfy both criteria:\n\n* The 'Custom Code Only' checkbox is selected (in Codes Maintenance > Accessorial Charges tab).\n\n* They have the same charge behavior as the charge code they are replacing.\n\nIf Auto-Assign is not included in the request, it will default to the ‘Auto-Assign by Default’ checkbox setting for the base accessorial charge code as defined in Codes Maintenance.\n\nIf you set the substitution code to be blank, it will assigned a value of '(Disallowed)' to prevent this accessorial charge from being used for this client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsPostAChargeSubstitutes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client accessorial charges substitutions; description=Deletes client accessorial charges substitution records from the specified client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsDeleteAllAChargeSubstitutes; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/aChargeSubstitutes/{originalAChargeId}": {
+      "get": "@{summary=Retrieve a client accessorial charges substitution; description=Retrieves a client accessorial charges substitution record for the specified client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsGetAChargeSubstitutes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client accessorial charges substitution; description=Updates a client accessorial charges substitution record for the specified client.\n\nAccessorial charge codes can be selected as a substitution code only if they satisfy both criteria:\n\n* The 'Custom Code Only' checkbox is selected (in Codes Maintenance > Accessorial Charges tab).\n\n* They have the same charge behavior as the charge code they are replacing.\n\nIf autoAssign is not included in the request, it will default to the ‘Auto-Assign by Default’ checkbox setting for the base accessorial charge code as defined in Codes Maintenance.\n\nIf you set the newAChargeId value to be blank, it will assigned a value of '(Disallowed)' to prevent this accessorial charge from being used for this client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsPutAChargeSubstitutes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client accessorial charges substitution; description=Deletes a client accessorial charges substitution record from the specified client.\n\nClient accessorial charges substitutions can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Extra Charges tab > Substitution Code column.; operationId=ClientsDeleteAChargeSubstitutes; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/contacts": {
+      "get": "@{summary=Retrieve client contacts; description=Retrieves client contact records for the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsGetContacts; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client contact; description=Add one or more client contact records to the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsPostContact; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client contacts; description=Deletes all contact records from the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsDeleteContacts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/contacts/{contactId}": {
+      "get": "@{summary=Retrieve a client contact; description=Retrieves a client contact record for the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsGetContact; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client contact; description=Updates one or more properties of a specific client contact record for the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsPutContact; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client contact; description=Deletes a contact record from the specified client.\n\nClient contacts can be viewed in the Customer & Vendor Profiles application > Customer > Contacts tab.; operationId=ClientsDeleteContact; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/cubePolicies": {
+      "get": "@{summary=Retrieve client cube policies; description=Retrieves client cube policy records for the specified client.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.; operationId=ClientsGetCubePoliciess; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client cube policy; description=Adds one or more client cube policy records to the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app configs.\n\n   - PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPostCubePolicies; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client cube policies; description=Deletes client cube policy records from the specified client.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.; operationId=ClientsDeleteAllCubePolicies; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/cubePolicies/{cubePolicyId}": {
+      "get": "@{summary=Retrieve a client cube policy; description=Retrieves a client cube policy record for the specified client.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.; operationId=ClientsGetCubePolicies; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client cube policy; description=Updates one or more properties of a specific client cube policy record for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app configs.\n\n   - PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe request body may include the multi service level child resource. Keep in mind when a child resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the client record, and insert the new ones from the request body.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPutCubePolicies; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client cube policy; description=Deletes a client cube policy record from the specified client.\n\nClient cube policies can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab.; operationId=ClientsDeleteCubePolicies; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/cubePolicies/{cubePolicyId}/multiServiceLevels": {
+      "get": "@{summary=Retrieve client cube policy service levels; description=Retrieves client cube policy service level records for the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsGetMultiServiceLevelss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client cube policy service level; description=Adds one or more client cube policy service level records to the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsPostMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client cube policy service level; description=Deletes client cube policy service level records from the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsDeleteAllMultiServiceLevels; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/cubePolicies/{cubePolicyId}/multiServiceLevels/{multiServiceLevelId}": {
+      "get": "@{summary=Retrieve a client cube policy service level; description=Retrieves a client cube policy service level record for the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsGetMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a cube policy service level; description=Updates a cube policy service level record for the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsPutMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client cube policy service level; description=Deletes a client cube policy service level record from the specified client cube policy.\n\nClient cube policy service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Cube Policy tab by double-clicking the Service Level column in the grid.; operationId=ClientsDeleteMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/clients/{clientId}/customDefs": {
+      "get": "@{summary=Retrieve client custom defined fields; description=Retrieves custom defined field records for the specified client.\n\nCustom defined fields can be viewed in the Customer & Vendor Profiles application > Customer > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Custom Defined Fields tab.; operationId=ClientsGetClientCustomDefs; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Set a client custom defined field; description=Sets one or more custom defined field records on the specified client.\n\nThe customLabel value is required to indicate which customDefs record to set. The customDefId value is optionally available when there are more than one customDefs record with the same label.\n\nCustom defined fields can be viewed in the Customer Service application > Custom Def's tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=ClientsPostClientCustomDefs; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client custom defined fields; description=Deletes custom defined field records from the specified client.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=ClientsDeleteClientCustomDefs; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/customDefs/{customDefId}": {
+      "get": "@{summary=Retrieve a client custom defined field; description=Retrieve a custom defined field record for the specified client.\n\nCustom defined fields can be viewed in the Customer & Vendor Profiles application > Customer > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Custom Defined Fields tab.; operationId=ClientsGetClientCustomDef; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client custom defined field; description=Updates a custom defined field record on the specified client.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=ClientsPutClientCustomDefs; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client custom defined field; description=Deletes a custom defined field record from the specified client.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=ClientsDeleteClientCustomDef; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/detentions": {
+      "get": "@{summary=Retrieve client detentions; description=Retrieves client detention records for the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsGetDetentionss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client detention; description=Adds one or more client detention records to the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsPostDetentions; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client detentions; description=Deletes client detention records from the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsDeleteAllDetentions; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/detentions/{detentionId}": {
+      "get": "@{summary=Retrieve a client detention; description=Retrieves a client detention record for the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsGetDetentions; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client detention; description=Updates a client detention record for the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsPutDetentions; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client detention; description=Deletes a client detention record from the specified client record.\n\nClient detention records can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Detention tab.; operationId=ClientsDeleteDetentions; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/discounts": {
+      "get": "@{summary=Retrieve client discounts/minimums; description=Retrieves client discount/minimum records for the specified client.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.; operationId=ClientsGetAllDiscounts; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client discount/minimum; description=Adds one or more client discount/minimum records for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n- PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nThe currency information is defaulted differently depending on the environment:\n\n- For multi-company, it defaults to the Company Profiles > Identification > Currency field.\n\n- For non multi-company, it defaults to the Code Maintenance > Unit Code Definition where the Unit Type is 'Currency' and the Base Unit checkbox is selected.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPostDiscounts; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client discounts/minimums; description=Deletes client discount/minimum records from the specified client.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.; operationId=ClientsDeleteAllDiscounts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/discounts/{discountId}": {
+      "get": "@{summary=Retrieve a client discount/minimum; description=Retrieves a client discount/minimum record for the specified client.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.; operationId=ClientsGetDiscounts; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client discount/minimum; description=Updates one or more properties of a specific client discount/minimum record for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n   - PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nThe currency information is defaulted differently depending on the environment:\n\n   - For multi-company, it defaults to the Company Profiles > Identification > Currency field.\n\n   - For non multi-company, it defaults to the Code Maintenance > Unit Code Definition where the Unit Type is 'Currency' and the Base Unit checkbox is selected.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPutDiscounts; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client discount/minimum; description=Deletes a client discount/minimum record from the specified client.\n\nClient discounts/minimums can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Discounts/Minimums tab.; operationId=ClientsDeleteDiscounts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/rateSheetLinks": {
+      "get": "@{summary=Retrieve client rate sheets; description=Retrieves client rate sheet records for the specified client.\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.; operationId=ClientsGetRateSheetLinkss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client rate sheet; description=Adds one or more client rate sheet records for the specified client.\n\nNote these customer rate sheet rules:\n\n1. A valid Rate Sheet ID or Rate Group ID must entered.\n\n2. sheetClass must 'TL' or 'LTL'.\n\n3. The effectiveFrom and effectiveTo dates are auto-populated based on these app config options:\n\n   - PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPostRateSheetLinks; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client rate sheets; description=Deletes client rate sheet records from the specified client.\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.; operationId=ClientsDeleteAllRateSheetLinks; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/rateSheetLinks/{rateSheetId}": {
+      "get": "@{summary=Retrieve a client rate sheet; description=Retrieves a client rate sheet record for the specified client.\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.; operationId=ClientsGetRateSheetLinks; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client rate sheet; description=Updates one or more properties of a specific client rate sheet record for the specified client.\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.; operationId=ClientsPutRateSheetLinks; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client rate sheet; description=Deletes a client rate sheet record from the specified client.\n\nClient rate sheets can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rate Sheets tab.; operationId=ClientsDeleteRateSheetLinks; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/ratingMethodRules": {
+      "get": "@{summary=Retrieve client rating methods; description=Retrieves client rating method records for the specified client.\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab (enabled if the app config option RATES.EXE - Rating Method Determination equals to Rules).\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsGetAllRatingMethodRules; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Insert a client rating method; description=Insert a client rating method record for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n- PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab (enabled if the app config option RATES.EXE - Rating Method Determination equals to Rules).\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPostRatingMethodRules; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client rating methods; description=Deletes client rating method records from the specified client.\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab (enabled if the app config option RATES.EXE - Rating Method Determination equals to Rules).\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsDeleteAllRatingMethodRules; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/ratingMethodRules/{ruleId}": {
+      "get": "@{summary=Retrieve a client rating method; description=Retrieves a client rating method record for the specified client.\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab (enabled if the app config option RATES.EXE - Rating Method Determination equals to Rules).\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsGetRatingMethodRules; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client rating method; description=Update a client rating method record for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n- PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPutRatingMethodRules; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client rating method; description=Deletes a client rating method record from the specified client.\n\nClient rating method can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Rating Method tab (enabled if the app config option RATES.EXE - Rating Method Determination equals to Rules).\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsDeleteRatingMethodRules; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/shippingInstructions": {
+      "get": "@{summary=Retrieve client shipping instructions; description=Retrieves client shipping instruction records for the specified client.\n\nClient shipping instructions can be viewed in the Customer & Vendor Profiles application > Customer > Shipping Instructions tab.; operationId=ClientsGetShippingInstructionss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a customer-specific shipping instruction; description=Adds one or more customer-specific shipping instruction records for the specified client.\n\nCustomer-specific shipping instructions can be viewed in the Customer & Vendor Profiles application > Customer > Shipping Instructions tab.; operationId=ClientsPostShippingInstructions; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/shippingInstructions/{clientShippingInstructionId}": {
+      "get": "@{summary=Retrieve a client shipping instruction; description=Retrieves a client shipping instruction record for the specified client.\n\nClient shipping instructions can be viewed in the Customer & Vendor Profiles application > Customer > Shipping Instructions tab.; operationId=ClientsGetShippingInstructions; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client shipping instruction; description=Updates one or more properties of a specific client shipping instruction class record for the specified client.\n\nClient shipping instructions can be viewed in the Customer & Vendor Profiles application > Customer > Shipping Instructions tab.; operationId=ClientsPutShippingInstructions; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a customer-specific shipping instruction; description=Deletes a client-specific shipping instruction record for the specific client.\n\nCustomer-specific shipping instructions can be viewed in the Customer & Vendor Profiles application > Customer > Shipping Instructions tab.; operationId=ClientsDeleteShippingInstruction; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/tariffClasses": {
+      "get": "@{summary=Retrieve client tariff classes; description=Retrieves client tariff class records for the specified client.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.; operationId=ClientsGetAllTariffClasses; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client tariff class; description=Adds one or more client tariff class records for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n- PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM CMODTY C\n\tINNER JOIN RATE_CL_TARIFF_CLASS T ON C.CLASS = T.TARIFF_CLASS\n\tWHERE T.CLIENT_ID = :clientId AND C.CLASS = :tariffClass\n\tAND\nNote: The :tariffClass refers to the tariffClassFrom value.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPostTariffClasses; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client tariff classes; description=Deletes client tariff class records from the specified client.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.; operationId=ClientsDeleteAllTariffClasses; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/clients/{clientId}/tariffClasses/{tariffClassId}": {
+      "get": "@{summary=Retrieve a client tariff class; description=Retrieves a client tariff class record for the specified client.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.; operationId=ClientsGetTariffClasses; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client tariff class; description=Updates one or more properties of a specific client tariff class record for the specified client.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Customer Rating Effective Date Logic\n\n- PROFILE.EXE > Default Customer Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe request body may include the multi service level child resource. Keep in mind when a child resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the vendor record, and insert the new ones from the request body.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM CMODTY C\n\tINNER JOIN RATE_CL_TARIFF_CLASS T ON C.CLASS = T.TARIFF_CLASS\n\tWHERE T.CLIENT_ID = :clientId AND C.CLASS = :tariffClass\n\tAND\nwhere :clientId is the client Id, :tariffClass is the Tariff Class (tariffClassFrom) in the request.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=ClientsPutTariffClasses; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client tariff class; description=Deletes a client tariff class record from the specified client.\n\nClient tariff classes can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab.; operationId=ClientsDeleteTariffClasses; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/tariffClasses/{tariffClassId}/multiServiceLevels": {
+      "get": "@{summary=Retrieve client tariff class service levels; description=Retrieves client tariff class service level records for the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsGetAllCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a client tariff class service level; description=Adds one or more client tariff class service level records for the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsPostCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete client tariff class service levels; description=Deletes client tariff class service level records from the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsDeleteAllCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/clients/{clientId}/tariffClasses/{tariffClassId}/multiServiceLevels/{multiServiceLevelId}": {
+      "get": "@{summary=Retrieve a client tariff class service level; description=Retrieves a client tariff class service level record for the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsGetCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a client tariff class service level; description=Updates a client tariff class service level record for the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsPutCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a client tariff class service level; description=Deletes a client tariff class service level record from the specified client tariff class.\n\nClient tariff class service levels can be viewed in the Customer & Vendor Profiles application > Customer > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=ClientsDeleteCTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/commodities": {
+      "get": "@{summary=Retrieve commodity codes; description=Retrieves commodity code records that can be used to describe the type of freight on a freight bill.\n\nCommodity codes can be viewed in the Codes Maintenance application > Commodity tab.; operationId=GetCommodities; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create a new commodity; description=Creates one or more commodity records.\n\nCommodity codes can be viewed in the Codes Maintenance application > Commodity tab.; operationId=PostCommodities; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/commodities/{commodityId}": {
+      "get": "@{summary=Retrieve a commodity code; description=Retrieves a commodity code record that can be used to describe the type of freight on a freight bill.\n\nCommodity codes can be viewed in the Codes Maintenance application > Commodity tab.; operationId=GetCommodity; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a commodity code; description=Updates one or more properties of a specific commodity code record.\n\nCommodity codes can be viewed in the Codes Maintenance application > Commodity tab.; operationId=PutCommodityCode; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a commodity code; description=Deletes a commodity record.\n\nCommodity codes can be viewed in the Codes Maintenance application > Commodity tab.; operationId=DeleteCommodityCode; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/drivers": {
+      "get": "@{summary=Retrieve drivers; description=Retrieves driver records.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=GetDrivers; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create a new driver; description=Creates one or more driver records.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=PostDrivers; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/drivers/{driverId}": {
+      "get": "@{summary=Retrieve a driver; description=Retrieves a driver record.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=GetDriver; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a driver; description=Updates one or more properties of a specific driver record.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=PutDriver; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a driver; description=Deletes a specific driver record.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=DeleteDriver; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/drivers/{driverId}/availability": {
+      "get": "@{summary=Retrieve a driver's projected availability; description=Retrieves a driver's projected availability record, allowing for efficient planning of available drivers for new load assignments.\n\nDriver profiles can be viewed in the Driver Profiles application.; operationId=DriversGetDriverAvailability; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/eligibleCarriers": {
+      "get": "@{summary=Retrieve eligible carriers; description=Retrieves carrier eligibility information, based on the provided order interliner identifier and a comma separated list of carrier identifiers to verify.\n\nDetermining a carrier's eligibility is based on the following criteria:\n\n- The carrier must be an active vendor record.\n\n- The vendor record must be set to one of the three acceptable carrier types - Interliner, Agent, Linehaul Carrier.\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.; operationId=GetEligibleCarriers; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/login": {
+      "get": "@{summary=Renew login session; description=Retrieves a new JWT (JSON Web Token) with a updated expiry time based on the supplied JWT authorization.; operationId=GetAuth; security=System.Object[]; tags=System.Object[]; responses=}",
+      "post": "@{summary=Generate a JWT; description=Generates and returns a JWT based on the supplied login credentials. The JWT can then be used as the authorization bearer token with subsequent API calls.; operationId=PostAuth; tags=System.Object[]; requestBody=; responses=}"
+    },
+    "/serviceLevels": {
+      "get": "@{summary=Retrieve service level codes; description=Retrieves service level code records that can be used to describe the type of service on a freight bill.\n\nService level codes can be viewed in the Codes Maintenance application > Service Level tab.; operationId=GetServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/serviceLevels/{serviceLevelId}": {
+      "get": "@{summary=Retrieve a service level code; description=Retrieves a service level code record that can be used to describe the type of service on a freight bill.\n\nService level codes can be viewed in the Codes Maintenance application > Service Level tab.; operationId=GetServiceLevel; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/statusCodes": {
+      "get": "@{summary=Retrieve status codes; description=Retrieve status code records.\n\nStatus codes can be viewed in the Codes Maintenance application > Status Codes tab.; operationId=GetStatuses; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/statusCodes/{statusCodeId}": {
+      "get": "@{summary=Retrieve a status code; description=Retrieve a status code record.\n\nStatus codes can be viewed in the Codes Maintenance application > Status Codes tab.; operationId=GetStatus; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/traceTypes": {
+      "get": "@{summary=Retrieve trace number types; description=Retrieves trace number type records.\n\nTrace number types can be viewed in the Codes Maintenance application > Trace Number Types tab.; operationId=GetTraceTypes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/traceTypes/{traceTypeId}": {
+      "get": "@{summary=Retrieve a trace number type; description=Retrieves a trace number type record.\n\nTrace number types can be viewed in the Codes Maintenance application > Trace Number Types tab.; operationId=GetTraceType; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/trailers": {
+      "get": "@{summary=Retrieve trailers; description=Retrieves trailer records.\n\nTrailer profiles can be viewed in the Trailer Profiles application.; operationId=GetTrailers; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/trailers/{trailerId}": {
+      "get": "@{summary=Retrieve a trailer; description=Retrieves a trailer record.\n\nTrailer profiles can be viewed in the Trailer Profiles application.; operationId=GetTrailer; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/trailers/{trailerId}/specialEvents": {
+      "get": "@{summary=Retrieve trailer special events; description=Retrieves trailer special event records for the specified trailer.\n\nTrailer special events can be viewed in the Special Events application > Data Entry tab.; operationId=TrailersGetSpecialEvents; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/trailers/{trailerId}/specialEvents/{specialEventId}": {
+      "get": "@{summary=Retrieve a trailer special event; description=Retrieves a trailer special event record for the specified trailer.\n\nTrailer special events can be viewed in the Special Events application > Data Entry tab.; operationId=TrailersGetSpecialEvent; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/units": {
+      "get": "@{summary=Retrieve units of measurement; description=Retrieve unit of measurement records.\n\nUnit of measurement records can be viewed in the Codes Maintenance application > Units tab.; operationId=GetUnits; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/units/{unitId}": {
+      "get": "@{summary=Retrieve a unit of measurement; description=Retrieve a unit of measurement record.\n\nUnit of measurement records can be viewed in the Codes Maintenance application > Units tab.; operationId=GetUnit; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/unNumbers": {
+      "get": "@{summary=Retrieve UN numbers; description=Retrieve UN number records.\n\nUN numbers can be viewed in the Codes Maintenance application > Dangerous Goods tab > UN Numbers.; operationId=GetUnNumbers; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}"
+    },
+    "/unNumbers/{unNumberId}": {
+      "get": "@{summary=Retrieve a UN number; description=Retrieve a UN number record.\n\nUN numbers can be viewed in the Codes Maintenance application > Dangerous Goods tab > UN Numbers.; operationId=GetUnNumber; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors": {
+      "get": "@{summary=Retrieve vendors; description=Retrieves vendor records.\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.; operationId=GetVendors; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create a new vendor; description=Creates one or more vendor records.\n\nIf the vendorId is included in the Request body, it will be used. If the vendorId is not included, it can be auto generated based on the following app config option:\n\n- PROFILE.EXE > Auto Gen Vendor key\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=PostVendors; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/vendors/{vendorId}": {
+      "get": "@{summary=Retrieve a vendor; description=Retrieves a vendor record.\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.; operationId=GetVendor; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor; description=Updates one or more properties of a specific vendor record.\n\nThe request body may include child resources such as tariff classes, rate sheet links, contacts, discounts, d83s, accessorial charge splits and codes. Keep in mind when a child resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the vendor record, and insert the new ones from the request body.\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.\n\nThe requested body may include child resources such as details, dangerousGoods, customDefs, etc. Keep in mind when a resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the order, and insert new ones from the request body.\n\nTo update an individual child record use the PUT method directly against the child resource record itself.\n\nFor example, to update an individual detail line use PUT /orders/{orderId}/details/{orderDetailId}; operationId=PutVendors; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor; description=Deletes a specific vendor record.\n\nVendor profiles can be viewed in the Customer & Vendor Profiles application > Vendor tab.; operationId=DeleteVendor; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/aChargeCodes": {
+      "get": "@{summary=Retrieve vendor accessorial charges; description=Retrieves vendor accessorial charge records for the specified vendor.\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab. ; operationId=VendorsGetAChargeCodes; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor accessorial charge; description=Adds one or more vendor accessorial charge records to the specified vendor.\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab.; operationId=VendorsPostAChargeCodes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor accessorial charges; description=Deletes vendor accessorial charge records from the specified vendor.\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab.; operationId=VendorsDeleteAllVendorAChargeCodes; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/aChargeCodes/{vendorAccChargeId}": {
+      "get": "@{summary=Retrieve a vendor accessorial charge; description=Retrieves a vendor accessorial charge record for the specified vendor.\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab. ; operationId=VendorsGetAChargeCode; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor accessorial charge; description=Updates a vendor accessorial charge record for the specified vendor.\n\nThe accessorial charge code must be active and valid with the following checkbox selected on the Codes Maintenance application > Accessorial Charges tab:\n\n* Vendor Code\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab.; operationId=VendorsPutVendorAChargeCodes; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor accessorial charge; description=Deletes a vendor accessorial charge record from the specified vendor.\n\nVendor accessorial charges can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Acc Codes tab.; operationId=VendorsDeleteVendorAChargeCodes; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/aChargeSplits": {
+      "get": "@{summary=Retrieve vendor accessorial charges splits; description=Retrieves vendor accessorial charges split records for the specified vendor.\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsGetAChargeSplits; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor accessorial charges split; description=Adds one or more vendor accessorial charges split records to the specified vendor.\n\nThe accessorial charge code must be active and valid with the following checkbox selected on the Codes Maintenance application > Accessorial Charges tab:\n\n   - Vendor Code\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsPostAChargeSplit; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor accessorial charges splits; description=Deletes vendor accessorial charges split records from the specified vendor.\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsDeleteAllChargeSplit; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/aChargeSplits/{aChargeSplitId}": {
+      "get": "@{summary=Retrieve a vendor accessorial charges split; description=Retrieves a vendor accessorial charges split record for the specified vendor.\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsGetAChargeSplit; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor accessorial charges split; description=Updates one or more properties of a specific vendor accessorial charges split record for the specified vendor.\n\nThe accessorial charge code must be active and valid with the following checkbox selected on the Codes Maintenance application > Accessorial Charges tab:\n\n   - Vendor Code\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsPutAChargeSplit; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor accessorial charges split; description=Deletes a vendor accessorial charges split record from the specified client record.\n\nVendor accessorial charges splits can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Extra Charge Splits tab.; operationId=VendorsDeleteAChargeSplit; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/contacts": {
+      "get": "@{summary=Retrieve vendor contacts; description=Retrieves vendor contact records for the specified vendor.\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsGetContacts; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor contact; description=Add one or more vendor contact records to the specified vendor.\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsPostContact; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor contacts; description=Deletes all contact records from the specified vendor.\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsDeleteContacts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/contacts/{contactId}": {
+      "get": "@{summary=Retrieve a vendor contact; description=Retrieves a vendor contact record for the specified vendor.\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsGetContact; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor contact; description=Updates one or more properties of a specific vendor contact record for the specified vendor.\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsPutContact; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor contact; description=Deletes a contact record from the specified Vendor.\n\n\n\nVendor contacts can be viewed in the Customer & Vendor Profiles application > Vendor > Contacts tab.; operationId=VendorsDeleteContact; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/customDefs": {
+      "get": "@{summary=Retrieve vendor custom defined fields; description=Retrieves the custom defined field records for the specified vendor.\n\nOnly the customDefs records with an assigned value will be returned in the response.\n\nCustom defined fields can be viewed in the Profile application > Vendor > Custom Defined Fields tab.; operationId=VendorsGetVendorCustomDefs; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Set a vendor custom defined field; description=Sets one or more custom defined field records on the specified vendor.\n\nThe customLabel value is required to indicate which customDefs record to set. The customDefId value is optionally available when there are more than one customDefs record with the same label.\n\nCustom defined fields can be viewed in the Customer Service application > Custom Def's tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=VendorsPostVendorCustomDefs; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor custom defined fields; description=Deletes custom defined field records from the specified vendor.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=VendorsDeleteVendorCustomDefs; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/customDefs/{customDefId}": {
+      "get": "@{summary=Retrieve a vendor custom defined field; description=Retrieves the detail of a specific custom defined field record for the specified vendor.\n\nCustom defined fields can be viewed in the Profile application > Vendor > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Custom Defined Fields tab.; operationId=VendorsGetVendorCustomDef; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor custom defined field; description=Updates a custom defined field record on the specified vendor.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=VendorsPutVendorCustomDefs; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor custom defined field; description=Deletes a custom defined field record from the specified vendor.\n\nCustom defined fields can be viewed in the Customer & Vendor profiles application > Custom Defined Fields tab.\n\nCustom defined fields are configured in the Codes Maintenance application > Defined Fields > Custom Defined Fields tab.; operationId=VendorsDeleteVendorCustomDef; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/d83s": {
+      "get": "@{summary=Retrieve vendor D83s; description=Retrieves vendor D83 records for the specified vendor.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsGetD83s; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor D83; description=Adds one or more vendor D83 records to the specified vendor.\n\nThe vendor profile D83 records follow these rules:\n\n1. carrierMaximum / carrierMinimum default to 0.0. If a value is entered into either, the carrierMaximum must be greater or equal to the carrierMinimum.\n\n2. effectiveFrom / effectiveTo dates default to the current date / empty. If any date is entered, the effectiveFrom date must be prior to the effectiveTo date.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsPostD83s; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor D83s; description=Deletes vendor D83 records from the specified vendor.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsDeleteAllD83; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/d83s/{d83Id}": {
+      "get": "@{summary=Retrieve a vendor D83; description=Retrieves a vendor D83 record for the specified vendor.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsGetD83; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor D83; description=Updates one or more properties of a specific vendor D83 record for the specified vendor.\n\nThe vendor profile D83 records follow these rules:\n\n1. carrierMaximum / carrierMinimum default to 0.0. If a value is entered into either, the carrierMaximum must be greater or equal to the carrierMinimum.\n\n2. effectiveFrom / effectiveTo dates default to the current date / empty. If any date is entered, the effectiveFrom date must be prior to the effectiveTo date.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsPutD83s; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor D83; description=Deletes a vendor D83 record from the specified vendor.\n\nVendor D83s can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > D83 tab.; operationId=VendorsDeleteD83; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/discounts": {
+      "get": "@{summary=Retrieve vendor discounts/minimums; description=Retrieves vendor discount/minimum records for the specified vendor.\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.; operationId=VendorsGetDiscounts; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor discount/minimum; description=Adds one or more vendor discount/minimum records to the specified vendor.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Vendor Rating Effective Date Logic\n\n- PROFILE.EXE > Default Vendor Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=VendorsPostDiscount; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor discounts/minimums; description=Deletes vendor discount/minimum records from the specified vendor.\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.; operationId=VendorsDeleteAllDiscounts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/discounts/{discountId}": {
+      "get": "@{summary=Retrieve a vendor discount/minimum; description=Retrieves a vendor discount/minimum record for the specified vendor.\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.; operationId=VendorsGetDiscount; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor discount/minimum; description=Updates one or more properties of a specific vendor discount/minimum record for the specified vendor.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on the following app config options:\n\n- PROFILE.EXE > Default Vendor Rating Effective Date Logic\n\n- PROFILE.EXE > Default Vendor Rating Expiry Date Logic\n\nThe effectiveFrom date must be prior to the effectiveTo date.\n\nThe customSQL will be added to the WHERE clause of the following SQL statement:\n\n\tSELECT COUNT(*) FROM TLORDER T\n\tINNER JOIN TLDTL D ON T.DETAIL_LINE_ID = D.ORDER_ID\n\tWHERE T.DETAIL_LINE_ID = 0 AND D.SEQUENCE = 0\n\tAND\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=VendorsPutDiscount; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor discount/minimum; description=Deletes a vendor discount/minimum record from the specified vendor.\n\nVendor discounts/minimums can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Discounts/Minimums tab.; operationId=VendorsDeleteDiscounts; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/rateSheetLinks": {
+      "get": "@{summary=Retrieve vendor rate sheets; description=Retrieves vendor rate sheet records for the specified vendor.\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.; operationId=VendorsGetRateSheetLinks; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor rate sheet; description=Adds one or more vendor rate sheet records to the specified vendor.\n\nNote these vendor rate sheet rules:\n\n1. The rateSheetId must be valid and must NOT be already  assigned to the vendor.\n\n2. The effectiveFrom and effectiveTo dates are auto-populated based on these app config options:\n\n   - PROFILE.EXE > Default Vendor Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Vendor Rating Expiry Date Logic\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=VendorsPostRateSheetLinks; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor rate sheets; description=Deletes vendor rate sheet records from the specified vendor.\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.; operationId=VendorsDeleteAllRateSheetLinks; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/rateSheetLinks/{rateSheetId}": {
+      "get": "@{summary=Retrieve a vendor rate sheet; description=Retrieves a vendor rate sheet record for the specified vendor.\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.; operationId=VendorsGetRateSheetLink; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor rate sheet; description=Updates one or more properties of a specific vendor rate sheet record for the specified vendor.\n\nThe effectiveFrom and effectiveTo dates are auto-populated based on these app config options:\n\n   - PROFILE.EXE > Default Vendor Rating Effective Date Logic\n\n   - PROFILE.EXE > Default Vendor Rating Expiry Date Logic\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.\n\nApp config options can be viewed in the Application Configurator application.; operationId=VendorsPutRateSheetLinks; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor rate sheet; description=Deletes a vendor rate sheet record from the specified vendor.\n\nVendor rate sheets can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Rate Sheets tab.; operationId=VendorsDeleteRateSheetLinks; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/tariffClasses": {
+      "get": "@{summary=Retrieve vendor tariff classes; description=Retrieves vendor tariff class records for the specified vendor.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab.; operationId=VendorsGetTariffClassess; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor tariff class; description=Adds one or more vendor tariff class records to the specified vendor.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab.; operationId=VendorsPostVendorTariffClasses; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor tariff classes; description=Deletes vendor tariff class records from the specified vendor.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Class tab.; operationId=VendorsDeleteAllTariffClasses; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    },
+    "/vendors/{vendorId}/tariffClasses/{tariffClassId}": {
+      "get": "@{summary=Retrieve a vendor tariff class; description=Retrieves a vendor tariff class record for the specified vendor.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab.; operationId=VendorsGetTariffClasses; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor tariff class; description=Updates one or more properties of a specific vendor tariff class record for the specified vendor.\n\nThe request body may include the multi service level child resource. Keep in mind when a child resource is specified in the body, it will do a complete replace of that resource. In other words, it will DELETE ALL records of the specified resource in the vendor record, and insert the new ones from the request body.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab.; operationId=VendorsPutVendorTariffClasses; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor tariff class; description=Deletes a vendor tariff class record from the specified vendor.\n\nVendor tariff classes can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Class tab.; operationId=VendorsDeleteTariffClasses; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/tariffClasses/{tariffClassId}/multiServiceLevels": {
+      "get": "@{summary=Retrieve vendor tariff class service levels; description=Retrieves vendor tariff class service level records for the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab by double-clicking on the Service Level column in the grid.; operationId=VendorsGetMultiServiceLevelss; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Add a vendor tariff class service level; description=Adds one or more vendor tariff class service level records to the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab by double-clicking on the Service Level column in the grid.; operationId=VendorsPostVTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete vendor tariff class service levels; description=Deletes vendor tariff class service level records from the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=VendorsDeleteAllVTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": " "
+    },
+    "/vendors/{vendorId}/tariffClasses/{tariffClassId}/multiServiceLevels/{multiServiceLevelId}": {
+      "get": "@{summary=Retrieve a vendor tariff class service level; description=Retrieves a vendor tariff class service level record for the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab by double-clicking on the Service Level column in the grid.; operationId=VendorsGetMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a vendor tariff class service level; description=Updates a vendor tariff class service level record for the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Classes tab by double-clicking on the Service Level column in the grid.; operationId=VendorsPutVendorTCMultiServiceLevels; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Delete a vendor tariff class service level; description=Deletes a vendor tariff class service level record from the specified vendor tariff class.\n\nVendor tariff class service levels can be viewed in the Customer & Vendor Profiles application > Vendor > Rating > Tariff Class tab by double-clicking the Service Level column in the grid.; operationId=VendorsDeleteVTariffMultiServiceLevels; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "parameters": "  "
+    },
+    "/version": {
+      "get": "@{summary=Retrieve the ART server version information; description=Retrieves the version information of the related ART server.; operationId=GetVersion; tags=System.Object[]; responses=}"
+    },
+    "/whoami": {
+      "get": "@{summary=Get authenticated user; description=Get information about this authenticated user.; operationId=GetWhoAmI; security=System.Object[]; tags=System.Object[]; responses=}"
+    },
+    "/zones": {
+      "get": "@{summary=Retrieve zone codes; description=Retrieves zone code records that can be used to specify zones for a freight bill or a trip..\n\nZone codes can be viewed in the Codes Maintenance application > Zone tab.; operationId=GetZones; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "post": "@{summary=Create a new zone code; description=Creates one or more zone code records.\n\nZone code records can be viewed in the Codes Maintenance application > Zone Codes tab.; operationId=PostZones; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}"
+    },
+    "/zones/{zoneId}": {
+      "get": "@{summary=Retrieve a zone code; description=Retrieves a zone code record that can be used to specify zones for a freight bill or a trip.\n\nZone codes can be viewed in the Codes Maintenance application > Zone tab.; operationId=GetZone; security=System.Object[]; tags=System.Object[]; parameters=System.Object[]; responses=}",
+      "put": "@{summary=Update a zone code.; description=Updates one or more properties of a specific zone code record.\n\nZone codes can be viewed in the Codes Maintenance application > Zone tab.; operationId=PutZone; security=System.Object[]; tags=System.Object[]; requestBody=; parameters=System.Object[]; responses=}",
+      "delete": "@{summary=Deletes a zone code; description=Deletes a zone code record.\n\nZone codes can be viewed in the Codes Maintenance application > Zone tab.; operationId=DeleteZone; security=System.Object[]; tags=System.Object[]; responses=}",
+      "parameters": ""
+    }
+  },
+  "components": {
+    "parameters": {
+      "limit": "@{name=limit; in=query; description=Specifies the maximum number of items to include in the response results.; required=False; style=form; explode=True; schema=}",
+      "offset": "@{name=offset; in=query; description=Specifies the number of items to skip before beginning to select the records to return.; required=False; style=form; explode=True; schema=}",
+      "filter": "@{name=$filter; in=query; description=Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter). Note, not all features of oData filter syntax are supported.; required=False; style=form; explode=True; schema=}",
+      "select": "@{name=$select; in=query; description=Select allows to request a specific set of properties, see [Selecting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361040); required=False; style=form; explode=True; schema=}",
+      "orderBy": "@{name=$orderBy; in=query; description=Field(s) to order returned resource by, with optional direction. E.g., \"fieldName desc, fieldName2\"; required=False; style=form; explode=True; schema=}",
+      "noResponseBody": "@{name=$noResponseBody; in=query; description=When enabled, an empty reponse body (response code 204) will be returned, otherwise a full response body will be returned.; required=False; style=form; explode=True; schema=}"
+    },
+    "schemas": {
+      "ARTErrors": "@{type=object; properties=}",
+      "ARTError": "@{type=object; properties=}",
+      "MenuSettings": "@{type=object; properties=}",
+      "whoami": "@{type=object; properties=}",
+      "version": "@{type=object; properties=}",
+      "LoginRequest": "@{type=object; properties=; required=System.Object[]}",
+      "login": "@{type=object; properties=}",
+      "CustomDefsActualResponse": "@{type=object; properties=}",
+      "CustomDefsRequest": "@{type=object; properties=; required=System.Object[]}",
+      "CustomDefsListRequest": "@{type=array; items=}",
+      "RefVendorsPostRequest": "@{type=object; properties=}",
+      "RefVendorPostRequest": "@{type=object; properties=}",
+      "RefVendorPutRequest": "@{type=object; properties=}",
+      "RefVendorsAchargecodePostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefVendorsAchargecodesPostArray": "@{type=array; items=}",
+      "RefVendorsAchargecodesPutRequest": "@{type=object; properties=}",
+      "RefVendorsAchargesplitPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefVendorsAchargesplitsPostArray": "@{type=array; items=}",
+      "RefVendorsAchargesplitPutRequest": "@{type=object; properties=}",
+      "RefContactRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefVendorsContactsPostArray": "@{type=array; items=}",
+      "RefVendorsD83PostRequest": "@{type=object; properties=}",
+      "RefVendorsD83sPostArray": "@{type=array; items=}",
+      "RefVendorsD83PutRequest": "@{type=object; properties=}",
+      "RefVendorsDiscountPostRequest": "@{type=object; properties=}",
+      "RefVendorsDiscountsPostArray": "@{type=array; items=}",
+      "RefVendorsDiscountPutRequest": "@{type=object; properties=}",
+      "RefVendorsRatesheetlinkPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefVendorsRatesheetlinksPostArray": "@{type=array; items=}",
+      "RefVendorsRatesheetlinkPutRequest": "@{type=object; properties=}",
+      "RefVendorsTariffclassPostRequest": "@{type=object; properties=}",
+      "RefVendorsTariffclassesPostArray": "@{type=array; items=}",
+      "RefVendorsTariffclassesPutRequest": "@{type=object; properties=}",
+      "RefVendorsTariffclassesMultiservicelevelPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefVendorsTariffclassesMultiservicelevelsPostArray": "@{type=array; items=}",
+      "RefVendorsTariffclassesMultiservicelevelsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "vendor": "@{type=object; properties=}",
+      "CustomDefsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsPostRequest": "@{type=object; properties=}",
+      "RefClientPostRequest": "@{type=object; properties=}",
+      "RefClientPutRequest": "@{type=object; properties=}",
+      "RefClientsAchargesubstitutePostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsAchargesubstitutesPostArray": "@{type=array; items=}",
+      "RefClientsAchargesubstitutePutRequest": "@{type=object; properties=}",
+      "RefClientsAchargecodePostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsAchargecodesPostArray": "@{type=array; items=}",
+      "RefClientsAchargecodePutRequest": "@{type=object; properties=}",
+      "RefClientsDetentionPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsDetentionsPostArray": "@{type=array; items=}",
+      "RefClientsDetentionPutRequest": "@{type=object; properties=}",
+      "RefClientsContactsPostArray": "@{type=array; items=}",
+      "RefContactPutRequest": "@{type=object; properties=}",
+      "RefClientsDiscountPostRequest": "@{type=object; properties=}",
+      "RefClientsDiscountsPostArray": "@{type=array; items=}",
+      "RefClientsDiscountPutRequest": "@{type=object; properties=}",
+      "RefClientsRatesheetlinkPostRequest": "@{type=object; properties=}",
+      "RefClientsRatesheetlinksPostArray": "@{type=array; items=}",
+      "RefClientsRatesheetlinkPutRequest": "@{type=object; properties=}",
+      "RefClientsShippingInstructionPostRequest": "@{type=object; properties=}",
+      "RefClientsShippingInstructionsPostArray": "@{type=array; items=}",
+      "RefClientsShippingInstructionPutRequest": "@{type=object; properties=}",
+      "RefClientsCubepolicyPostRequest": "@{type=object; properties=}",
+      "RefClientsCubepoliciesPostArray": "@{type=array; items=}",
+      "RefClientsCubepoliciesPutRequest": "@{type=object; properties=}",
+      "RefClientsCubepoliciesMultiservicelevelPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsCubepoliciesMultiservicelevelsPostArray": "@{type=array; items=}",
+      "RefClientsCubepoliciesMultiservicelevelsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsTariffclassPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsTariffclassesPostArray": "@{type=array; items=}",
+      "RefClientsTariffclassesPutRequest": "@{type=object; properties=}",
+      "RefClientsTariffclassesMultiservicelevelPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsTariffclassesMultiservicelevelsPostArray": "@{type=array; items=}",
+      "RefClientsTariffclassesMultiservicelevelsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefClientsRatingMethodRulePostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodRulePutRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodRulesPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodZonePostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodZonesPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodRBZonePostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodRBZonesPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodClientPostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodClientsPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodCmodtyPostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodCmodtysPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodCmodtyClassPostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodCmodtyClassesPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodSvclevelPostRequest": "@{type=object; properties=}",
+      "RefClientsRatingMethodSvclevelsPostArray": "@{type=array; items=}",
+      "RefClientsRatingMethodCubeCapPostRequest": "@{type=object; properties=}",
+      "client": "@{type=object; properties=}",
+      "trailer": "@{type=object; properties=}",
+      "specialEvent": "@{type=object; properties=}",
+      "DriverAvailabilityPowerUnit": "@{type=object; properties=}",
+      "DriverAvailabilityTrailers": "@{type=object; properties=}",
+      "DriverAvailabilityCountry": "@{type=object; properties=}",
+      "DriverAvailabilityState": "@{type=object; properties=}",
+      "DriverAvailabilityAddress": "@{type=object; properties=}",
+      "DriverAvailabilityCoords": "@{type=object; properties=}",
+      "DriverAvailabilityProjectedLocation": "@{type=object; properties=}",
+      "RefDriversPostRequest": "@{type=object; properties=}",
+      "RefDriverPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefDriverPutRequest": "@{type=object; properties=}",
+      "driver": "@{type=object; properties=}",
+      "traceType": "@{type=object; properties=}",
+      "RefCommoditiesPostRequest": "@{type=object; properties=}",
+      "RefCommodityPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefCommodityPutRequest": "@{type=object; properties=}",
+      "commodity": "@{type=object; properties=}",
+      "aChargeValuation": "@{type=object; properties=}",
+      "restrictBillType": "@{type=object; properties=}",
+      "aChargeDetail": "@{type=object; properties=}",
+      "extraStopRate": "@{type=object; properties=}",
+      "aChargeDetailMultiVendor": "@{type=object; properties=}",
+      "multiClient": "@{type=object; properties=}",
+      "multiRateSheet": "@{type=object; properties=}",
+      "aChargeDetailMultiServiceLevel": "@{type=object; properties=}",
+      "vendorContact": "@{type=object; properties=}",
+      "d83": "@{type=object; properties=}",
+      "aChargeSplit": "@{type=object; properties=}",
+      "discount": "@{type=object; properties=}",
+      "vendorRateSheetLink": "@{type=object; properties=}",
+      "clientTariffClass": "@{type=object; properties=}",
+      "clientTariffClassMultiServiceLevel": "@{type=object; properties=}",
+      "cubePolicy": "@{type=object; properties=}",
+      "cubePolicyMultiServiceLevel": "@{type=object; properties=}",
+      "clientAChargeSubstitute": "@{type=object; properties=}",
+      "clientContact": "@{type=object; properties=}",
+      "clientDiscount": "@{type=object; properties=}",
+      "clientRateSheetLink": "@{type=object; properties=}",
+      "detention": "@{type=object; properties=}",
+      "clientRatingMethodRule": "@{type=object; properties=}",
+      "clientRatingCubeCap": "@{type=object; properties=}",
+      "clientRatingMethodZone": "@{type=object; properties=}",
+      "clientRatingMethodToZone": "@{type=object; properties=}",
+      "clientRatingMethodRbZone": "@{type=object; properties=}",
+      "clientRatingMethodToRbZone": "@{type=object; properties=}",
+      "clientRatingMethodSvclevel": "@{type=object; properties=}",
+      "clientRatingMethodCmodty": "@{type=object; properties=}",
+      "clientRatingMethodCmodtyClass": "@{type=object; properties=}",
+      "clientRatingMethodClient": "@{type=object; properties=}",
+      "clientRatingMethodToClient": "@{type=object; properties=}",
+      "clientShippingInstruction": "@{type=object; properties=}",
+      "vendorTariffClass": "@{type=object; properties=}",
+      "vendorTariffClassMultiServiceLevel": "@{type=object; properties=}",
+      "EligibleCarrierRes": "@{type=object; properties=}",
+      "eligibleCarrier": "@{type=object; properties=}",
+      "vendorAChargeCode": "@{type=object; properties=}",
+      "RefAchargecodesPostRequest": "@{type=object; properties=}",
+      "RefAchargecodePostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodePutRequest": "@{type=object; properties=}",
+      "RefAchargecodesAchargedetailPostRequest": "@{type=object; properties=}",
+      "RefAchargecodesAchargedetailsPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsPutRequest": "@{type=object; properties=}",
+      "RefAchargecodesAchargedetailsExtrastopratePostRequest": "@{type=object; properties=}",
+      "RefAchargecodesAchargedetailsExtrastopratesPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsExtrastopratePutRequest": "@{type=object; properties=}",
+      "RefAchargecodesAchargedetailsMulticlientPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMulticlientsPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsMulticlientsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultiratesheetPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultiratesheetsPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsMultiratesheetsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultiservicelevelPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultiservicelevelsPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsMultiservicelevelsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultivendorPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesAchargedetailsMultivendorsPostArray": "@{type=array; items=}",
+      "RefAchargecodesAchargedetailsMultivendorsPutRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesRestrictbilltypePostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesRestrictbilltypesPostArray": "@{type=array; items=}",
+      "RefAchargecodesValuationPostRequest": "@{type=object; properties=; required=System.Object[]}",
+      "RefAchargecodesValuationsPostArray": "@{type=array; items=}",
+      "aChargeCode": "@{type=object; properties=}",
+      "clientAChargeCode": "@{type=object; properties=}",
+      "RefZonesPostRequest": "@{type=object; properties=}",
+      "RefZonePostRequest": "@{type=object; properties=}",
+      "RefZonePutRequest": "@{type=object; properties=}",
+      "zone": "@{type=object; properties=}",
+      "serviceLevel": "@{type=object; properties=}",
+      "unit": "@{type=object; properties=}",
+      "statusCode": "@{type=object; properties=}",
+      "travelMode": "@{type=object; properties=}",
+      "driverAvailability": "@{type=object; properties=}",
+      "unNumber": "@{type=object; properties=}",
+      "GetVendors200": "@{type=object; properties=}",
+      "PostVendors201": "@{type=object; properties=}",
+      "VendorsGetAChargeCodes200": "@{type=object; properties=}",
+      "VendorsPostAChargeCodes201": "@{type=object; properties=}",
+      "VendorsGetAChargeSplits200": "@{type=object; properties=}",
+      "VendorsPostAChargeSplit201": "@{type=object; properties=}",
+      "VendorsGetContacts200": "@{type=object; properties=}",
+      "VendorsPostContact201": "@{type=object; properties=}",
+      "VendorsGetD83s200": "@{type=object; properties=}",
+      "VendorsPostD83s201": "@{type=object; properties=}",
+      "VendorsGetDiscounts200": "@{type=object; properties=}",
+      "VendorsPostDiscount201": "@{type=object; properties=}",
+      "VendorsGetRateSheetLinks200": "@{type=object; properties=}",
+      "VendorsPostRateSheetLinks201": "@{type=object; properties=}",
+      "VendorsGetTariffClassess200": "@{type=object; properties=}",
+      "VendorsPostVendorTariffClasses201": "@{type=object; properties=}",
+      "VendorsGetMultiServiceLevelss200": "@{type=object; properties=}",
+      "VendorsPostVTariffMultiServiceLevels201": "@{type=object; properties=}",
+      "VendorsGetVendorCustomDefs200": "@{type=object; properties=}",
+      "VendorsPostVendorCustomDefs201": "@{type=object; properties=}",
+      "GetClients200": "@{type=object; properties=}",
+      "PostClients201": "@{type=object; properties=}",
+      "ClientsGetAChargeCodess200": "@{type=object; properties=}",
+      "ClientsPostAChargeCodes201": "@{type=object; properties=}",
+      "ClientsGetAChargeSubstitutess200": "@{type=object; properties=}",
+      "ClientsPostAChargeSubstitutes201": "@{type=object; properties=}",
+      "ClientsGetRateSheetLinkss200": "@{type=object; properties=}",
+      "ClientsPostRateSheetLinks201": "@{type=object; properties=}",
+      "ClientsGetAllTariffClasses200": "@{type=object; properties=}",
+      "ClientsPostTariffClasses201": "@{type=object; properties=}",
+      "ClientsGetAllCTariffMultiServiceLevels200": "@{type=object; properties=}",
+      "ClientsPostCTariffMultiServiceLevels201": "@{type=object; properties=}",
+      "ClientsGetCubePoliciess200": "@{type=object; properties=}",
+      "ClientsPostCubePolicies201": "@{type=object; properties=}",
+      "ClientsGetMultiServiceLevelss200": "@{type=object; properties=}",
+      "ClientsPostMultiServiceLevels201": "@{type=object; properties=}",
+      "ClientsGetContacts200": "@{type=object; properties=}",
+      "ClientsPostContact201": "@{type=object; properties=}",
+      "ClientsGetAllDiscounts200": "@{type=object; properties=}",
+      "ClientsPostDiscounts201": "@{type=object; properties=}",
+      "ClientsGetDetentionss200": "@{type=object; properties=}",
+      "ClientsPostDetentions201": "@{type=object; properties=}",
+      "ClientsGetAllRatingMethodRules200": "@{type=object; properties=}",
+      "ClientsPostRatingMethodRules201": "@{type=object; properties=}",
+      "ClientsGetShippingInstructionss200": "@{type=object; properties=}",
+      "ClientsPostShippingInstructions201": "@{type=object; properties=}",
+      "ClientsGetClientCustomDefs200": "@{type=object; properties=}",
+      "ClientsPostClientCustomDefs201": "@{type=object; properties=}",
+      "GetTrailers200": "@{type=object; properties=}",
+      "TrailersGetSpecialEvents200": "@{type=object; properties=}",
+      "GetDrivers200": "@{type=object; properties=}",
+      "PostDrivers201": "@{type=object; properties=}",
+      "GetTraceTypes200": "@{type=object; properties=}",
+      "GetCommodities200": "@{type=object; properties=}",
+      "PostCommodities201": "@{type=object; properties=}",
+      "GetAChargeCodes200": "@{type=object; properties=}",
+      "PostACharge_Code201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetValuations200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostValuation201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetRestrictBillTypes200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostRestrictBillType201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetAllAChargeDetails200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostAChargeDetails201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetExtraStopRates200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostExtraStopRate201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetMultiVendorss200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostMultiVendors201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetMultiClients200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostMultiClient201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetMultiRateSheetss200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostMultiRateSheets201": "@{type=object; properties=}",
+      "AccessorialChargeCodesGetMultiServiceLevelss200": "@{type=object; properties=}",
+      "AccessorialChargeCodesPostMultiServiceLevels201": "@{type=object; properties=}",
+      "GetZones200": "@{type=object; properties=}",
+      "PostZones201": "@{type=object; properties=}",
+      "GetServiceLevels200": "@{type=object; properties=}",
+      "GetUnits200": "@{type=object; properties=}",
+      "GetStatuses200": "@{type=object; properties=}",
+      "GetUnNumbers200": "@{type=object; properties=}"
+    },
+    "securitySchemes": {
+      "tidJwtAuth": "@{type=http; description=A time-limited JSON Web Token generated via separate POST request using TID; scheme=bearer}",
+      "webuserJwtAuth": "@{type=http; description=A fresh JSON Web Token expires in four hours. It can be renewed by making a GET request to /login endpoint, or generated by making a POST request to /login endpoint; scheme=bearer}",
+      "truckmateApiKeyAuth": "@{type=http; description=TruckMate API Key; scheme=bearer}"
+    }
+  }
+}

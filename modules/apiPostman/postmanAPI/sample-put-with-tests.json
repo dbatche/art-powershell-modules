@@ -1,0 +1,80 @@
+{
+  "name": "Swith to Deduction Code Controlled",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "id": "46d20a5a-6cc1-4c55-99c1-180c99819a41",
+        "exec": [
+          "tm_utils.testInvalidBusinessLogicResponse(\"You cannot switch from a controlled deduction code to uncontrolled, or vice versa\");"
+        ],
+        "type": "text/javascript",
+        "packages": {}
+      }
+    },
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "69b4c7c6-a28c-403e-ac75-01b5019f208a",
+        "exec": [
+          "let postDriverDeductionBody =\r",
+          "    {\r",
+          "        \"driverId\": pm.variables.get('DEDUCT_DRIVER_ID'),\r",
+          "        \"deductionCode\": pm.variables.get('DRIVER_DEDUCTION_CODE')\r",
+          "    }\r",
+          "\r",
+          "pm.sendRequest({\r",
+          "        url: pm.environment.get(\"DOMAIN\") + \"/driverDeductions\", \r",
+          "        method: 'POST',\r",
+          "        header: {\r",
+          "            'Authorization': 'Bearer ' + pm.variables.replaceIn('{{TRUCKMATE_API_KEY}}')\r",
+          "        },\r",
+          "        body: {\r",
+          "            mode: 'application/json',\r",
+          "            raw: [postDriverDeductionBody]\r",
+          "        }\r",
+          "        }, function (err, response) {\r",
+          "        if (err) {\r",
+          "            console.error('error:\\n', err, 'Response: \\n', response.text());\r",
+          "            throw new Error(\"An error has occurred. Check logs.\");\r",
+          "        }\r",
+          "        const jsonData = response.json();\r",
+          "        pm.globals.set('temp_driverDeductionId', jsonData.driverDeductions[0].driverDeductionId);\r",
+          "    });\r",
+          ""
+        ],
+        "type": "text/javascript",
+        "packages": {}
+      }
+    }
+  ],
+  "id": "9da374ef-8fd6-43cd-947b-fb24d1abfe43",
+  "protocolProfileBehavior": {
+    "disableBodyPruning": true
+  },
+  "request": {
+    "method": "PUT",
+    "header": [],
+    "body": {
+      "mode": "raw",
+      "raw": "{\r\n      \"deductionCode\": \"ESCROW\"\r\n}\r\n",
+      "options": {
+        "raw": {
+          "language": "json"
+        }
+      }
+    },
+    "url": {
+      "raw": "{{DOMAIN}}/driverDeductions/{{temp_driverDeductionId}}",
+      "host": [
+        "{{DOMAIN}}"
+      ],
+      "path": [
+        "driverDeductions",
+        "{{temp_driverDeductionId}}"
+      ]
+    }
+  },
+  "response": [],
+  "uid": "8229908-9da374ef-8fd6-43cd-947b-fb24d1abfe43"
+}

@@ -1,0 +1,583 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Generated scaffold for PUT apInvoices/apInvoiceId endpoint",
+    "name": "PUT apInvoices Scaffold"
+  },
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "description": "Successful update tests",
+              "item": [
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": "// TODO: Set up test data\r\n// pm.globals.set('apInvoiceId', 123);"
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    \"field1\": \"value1\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "minimal fields"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    // TODO: Add full OpenAPI schema fields\\r\\n    \"field1\": \"value1\",\\r\\n    \"field2\": 123\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "Request body based on openAPI"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    \"field1\": \"value1\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}?$select=field1,field2",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "$select"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    \"stringField\": \"\",\\r\\n    \"otherField\": \"valid value\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "blank string"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    // TODO: Customize for 'vendor update'\\r\\n    \"field1\": \"value1\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "vendor update"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    // TODO: Customize for 'invoice date update'\\r\\n    \"field1\": \"value1\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "invoice date update"
+                },
+                {
+                  "event": [
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "test"
+                    },
+                    {
+                      "script": {
+                        "type": "text/javascript",
+                        "exec": ""
+                      },
+                      "listen": "prerequest"
+                    }
+                  ],
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\\r\\n    // TODO: Customize for 'amounts update'\\r\\n    \"field1\": \"value1\"\\r\\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "path": [
+                        "apInvoices",
+                        "{{apInvoiceId}}"
+                      ],
+                      "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                      "host": [
+                        "{{DOMAIN}}"
+                      ]
+                    },
+                    "header": [],
+                    "method": "PUT"
+                  },
+                  "name": "amounts update"
+                }
+              ],
+              "name": "200"
+            },
+            {
+              "description": "Error response tests",
+              "item": [
+                {
+                  "description": "Business rule validation tests",
+                  "item": [
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "tm_utils.testInvalidBusinessLogicResponse(\"Expected error message for invoice is posted - no update allowed\");"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    // TODO: Customize for 'invoice is posted - no update allowed'\\r\\n    \"field1\": \"invalid value\"\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "invoice is posted - no update allowed"
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "tm_utils.testInvalidBusinessLogicResponse(\"Expected error message for invalid vendorId\");"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    // TODO: Customize for 'invalid vendorId'\\r\\n    \"field1\": \"invalid value\"\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "invalid vendorId"
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "tm_utils.testInvalidBusinessLogicResponse(\"Expected error message for invalid glAccount\");"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    // TODO: Customize for 'invalid glAccount'\\r\\n    \"field1\": \"invalid value\"\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "invalid glAccount"
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "tm_utils.testInvalidBusinessLogicResponse(\"Expected error message for duplicate invoice number\");"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    // TODO: Customize for 'duplicate invoice number'\\r\\n    \"field1\": \"invalid value\"\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "duplicate invoice number"
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "tm_utils.testInvalidDbValueResponse();"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    \"invalidField\": 999999\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "random invalidDBValue"
+                    },
+                    {
+                      "event": [
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": "pm.test(\"Status is 409\", () => pm.response.to.have.status(409));"
+                          },
+                          "listen": "test"
+                        },
+                        {
+                          "script": {
+                            "type": "text/javascript",
+                            "exec": ""
+                          },
+                          "listen": "prerequest"
+                        }
+                      ],
+                      "request": {
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\\r\\n    \"field1\": \"duplicate value\"\\r\\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "path": [
+                            "apInvoices",
+                            "{{apInvoiceId}}"
+                          ],
+                          "raw": "{{DOMAIN}}/apInvoices/{{apInvoiceId}}",
+                          "host": [
+                            "{{DOMAIN}}"
+                          ]
+                        },
+                        "header": [],
+                        "method": "PUT"
+                      },
+                      "name": "409 - Resource Conflict"
+                    }
+                  ],
+                  "name": "invalidBusinessLogic"
+                }
+              ],
+              "name": "4xx"
+            }
+          ],
+          "name": "PUT"
+        }
+      ],
+      "name": "apInvoiceId"
+    }
+  ]
+}

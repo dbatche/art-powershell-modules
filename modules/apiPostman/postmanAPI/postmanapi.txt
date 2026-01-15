@@ -1,0 +1,25 @@
+Postman API Documentation
+
+See the following files for comprehensive information:
+
+1. Postman-API-Overview.md - Complete guide with examples and use cases
+2. API-Quick-Reference.md - Quick lookup for common endpoints and commands
+3. Update-Collections-Guide.md - How to update entire collections or single requests
+
+Base URL: https://api.getpostman.com
+Authentication: X-Api-Key header required
+
+Key Resources:
+- Collections: GET /collections (includes owner IDs!)
+- Environments: GET /environments (includes owner IDs!)
+- Monitors: GET /monitors?owner=ID&active=true
+- User: GET /me
+- Workspaces: GET /workspaces
+- Mocks: GET /mocks
+- APIs: GET /apis
+
+Related Scripts:
+- Update-PostmanOwners.ps1 - Auto-generate owner config from API
+- List-PostmanMonitors.ps1 - Query monitors
+- Get-PostmanMonitor.ps1 - Get monitor details
+

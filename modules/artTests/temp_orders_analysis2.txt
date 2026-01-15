@@ -1,0 +1,594 @@
+Loading OpenAPI specification from file...
+  File: .\10-openapi-specs\orders-raw-repaired.json
+✓ Loaded spec: TruckMate REST API v1
+
+Analyzing: POST /orders
+
+Operation: PostOrders
+Summary: Create a new order, pickup request or rate quote
+Description: Creates one or more order, pickup request or rate quote records.
+
+The following fields will be defaulted based on the following app config options:
+
+* CSERV.EXE > Default Bill To
+
+* CSERV.EXE > Default Site
+
+ Other configuration options can affect how certain field values are populated if not provided in the request:
+
+* startZone - defaults to the provided shipper zone or the shipper's default zone
+
+* endZone - defaults to the provided consignee zone
+
+* serviceLevel - defaults to Codes Maintenance > Site Setup > Service Level default
+
+The billToCode can only be updated using the billTo override (R) option.
+
+The interliner (I) option for billTo can only be used if there is at least one interliner record with that has a receivable chargesType option set.
+
+Duplicate PO is not allowed on traceNumber for the same billTo when the app config option CSERV.EXE > Check PO is set.
+
+ Extra Stops (XStop) child bills can be created using the masterOrderId query parameter in TruckMate versions 25.1.2 and higher.
+
+* The order(s) included in the request body will be created as xStops for the orderId that is used as the masterOrderId query parameter value.
+
+* The masterOrderId must be a valid posted orderId that is not a pickup request or quote and cannot be interfaced to billing.
+
+* The orders included in the request body when creating xStops must have a billToCode, siteId and currencyCode that matches the masterOrderId.
+
+ Orders and rate quotes can be viewed in the  Customer Service application.
+
+Pickup requests can be viewed in the Order Preprocessor application.
+
+App config options can be viewed in the Application Configurator application.
+
+Parameters:
+  • type (query)
+      Type: string
+      Enum: T, P, Q
+      Default: T
+      Description: Single character string indicating the type of TruckMate order, [T, P or Q]. <br><br>-**T**ruckload<br>-**P**ickup request<br>-**Q**uote<br><br>Defaults to type T if not provided
+  • copyOrderId (query)
+      Type: integer
+      Description: Create a new order or rate quote from an existing order or rate quote
+  • saveAsDraft (query)
+      Type: string
+      Description: Save the order as a draft - incomplete web status for pickup requests or an entry truckload order
+  • masterOrderId (query)
+      Type: integer
+      Minimum: 1
+      Maximum: 2147483647
+      Description: Assigns the newly created record as a "child" (X-stop) of an existing order
+  • $select (query)
+      Type: string
+      Description: Select allows to request a specific set of properties, see [Selecting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361040)
+
+Request Body Contract:
+  Type: object
+  Required fields: orders
+  Total properties: 1
+  Schema name: OrdersPostRequest
+
+Properties:
+    • orders [REQUIRED]
+        Type: array
+
+Response Contracts:
+  Status 201:
+    Type: object
+    Properties: 1
+    Schema name: PostOrders201
+
+    Properties:
+
+    • orders (array of object objects):
+      Items Schema: order
+      Items Properties: 151
+        - aCharges
+            Type: array
+        - actualDelivery
+            Type: string
+            Nullable: True
+        - actualPickup
+            Type: string
+            Nullable: True
+        - area [ReadOnly]
+            Type: number
+            Nullable: True
+        - areaUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - billDate [ReadOnly]
+            Type: string
+            Nullable: True
+        - billing
+            Type: array
+        - billingAuditNumber [ReadOnly]
+            Type: integer
+            Nullable: True
+        - billNumber [ReadOnly]
+            Type: string
+            MaxLength: 20
+        - billNumberKey [ReadOnly]
+            Type: string
+            MaxLength: 32
+        - billTo
+            Type: string
+            Enum: C, O, D, T, I, R, 
+        - billToCode
+            Type: string
+            MaxLength: 10
+        - billToCustomer
+            Type: object
+        - billToName
+            Type: string
+            MaxLength: 40
+        - billType [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - caller
+            Type: object
+        - careOf
+            Type: object
+        - carrierAgent
+            Type: string
+            MaxLength: 10
+        - cashCollect [ReadOnly]
+            Type: string
+            Enum: False, True, 
+        - charges [ReadOnly]
+            Type: number
+            Nullable: True
+        - checklist
+            Type: array
+        - codAmount
+            Type: number
+            Nullable: True
+        - commodity
+            Type: string
+            MaxLength: 10
+        - consignee
+            Type: object
+        - createdBy [ReadOnly]
+            Type: string
+            MaxLength: 128
+        - createdTime [ReadOnly]
+            Type: string
+            Nullable: True
+        - createdTimestamp [ReadOnly]
+            Type: string
+            Nullable: True
+        - cube
+            Type: number
+            Nullable: True
+        - cubeUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - currencyCode
+            Type: string
+            MaxLength: 3
+        - currentStatusBehaviour
+            Type: string
+            MaxLength: 1
+        - currentTrip
+            Type: integer
+            Nullable: True
+        - currentZone [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - currentZoneDescription [ReadOnly]
+            Type: string
+            MaxLength: 30
+        - customDefs
+            Type: array
+        - dangerousGoods
+            Type: array
+        - declaredValue
+            Type: number
+            Nullable: True
+        - deliverBy
+            Type: string
+            Nullable: True
+        - deliverByEnd
+            Type: string
+            Nullable: True
+        - deliveryAppt
+            Type: string
+            Nullable: True
+        - deliveryApptMade
+            Type: string
+            Enum: False, True, 
+        - deliveryApptReq
+            Type: string
+            Enum: False, True, 
+        - deliveryDriver1
+            Type: string
+            MaxLength: 10
+        - deliveryDriver2
+            Type: string
+            MaxLength: 10
+        - deliveryPowerUnit1
+            Type: string
+            MaxLength: 10
+        - deliveryPowerUnit2
+            Type: string
+            MaxLength: 10
+        - deliveryTerminal [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - deliveryTrailer1
+            Type: string
+            MaxLength: 10
+        - deliveryTrailer2
+            Type: string
+            MaxLength: 10
+        - destinationSpotTrailer
+            Type: string
+            Enum: False, True, 
+        - details
+            Type: array
+        - distance [ReadOnly]
+            Type: number
+            Nullable: True
+        - distanceUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - endStopStatus
+            Type: integer
+            Nullable: True
+        - endZone
+            Type: string
+            MaxLength: 10
+        - endZoneDescription [ReadOnly]
+            Type: string
+            MaxLength: 30
+        - estimatedDeliveryDate [ReadOnly]
+            Type: string
+            Nullable: True
+        - exclusiveOverride
+            Type: string
+            Enum: False, True, 
+        - extraStops [ReadOnly]
+            Type: string
+            Enum: False, True, Child, 
+        - highValue [ReadOnly]
+            Type: string
+            Enum: False, True, 
+        - interliners
+            Type: array
+        - intermodal
+            Type: object
+        - isApproved
+            Type: string
+            Enum: False, True, 
+        - isCsa
+            Type: string
+            Enum: False, True, 
+        - isDangerousGoods
+            Type: string
+            Enum: False, True, 
+        - isExclusive
+            Type: string
+            Enum: False, True, 
+        - isFast
+            Type: string
+            Enum: False, True, 
+        - isTarped
+            Type: string
+            Enum: False, True, 
+        - latitude
+            Type: number
+            Nullable: True
+        - length
+            Type: number
+            Nullable: True
+        - lengthUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - longitude
+            Type: number
+            Nullable: True
+        - longStatusDescription
+            Type: string
+            MaxLength: 131072
+        - masterOrder [ReadOnly]
+            Type: integer
+            Nullable: True
+        - nextTrip
+            Type: integer
+            Nullable: True
+        - noCharge
+            Type: string
+            Enum: False, True, 
+        - noStops [ReadOnly]
+            Type: integer
+            Nullable: True
+        - notes
+            Type: array
+        - opCode
+            Type: string
+            MaxLength: 10
+        - orderId [ReadOnly]
+            Type: integer
+        - originSpotTrailer
+            Type: string
+            Enum: False, True, 
+        - osds
+            Type: array
+        - otherContact
+            Type: object
+        - pallets
+            Type: number
+            Nullable: True
+        - palletUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - parentOrder [ReadOnly]
+            Type: integer
+            Nullable: True
+        - pickUpAppt
+            Type: string
+            Nullable: True
+        - pickUpApptMade
+            Type: string
+            Enum: False, True, 
+        - pickUpApptReq
+            Type: string
+            Enum: False, True, 
+        - pickupAt
+            Type: object
+        - pickUpBy
+            Type: string
+            Nullable: True
+        - pickUpByEnd
+            Type: string
+            Nullable: True
+        - pickupDone
+            Type: string
+            Enum: False, True, 
+        - pickUpDriver
+            Type: string
+            MaxLength: 10
+        - pickupDriver2
+            Type: string
+            MaxLength: 10
+        - pickupPowerUnit1
+            Type: string
+            MaxLength: 10
+        - pickupPowerUnit2
+            Type: string
+            MaxLength: 10
+        - pickupTerminal [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - pickupTrailer1
+            Type: string
+            MaxLength: 10
+        - pickupTrailer2
+            Type: string
+            MaxLength: 10
+        - pieces
+            Type: integer
+            Nullable: True
+        - piecesUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - pods
+            Type: array
+        - quoteId [ReadOnly]
+            Type: integer
+            Nullable: True
+        - quoteStatus
+            Type: object
+        - ratingTerms [ReadOnly]
+            Type: string
+            Enum: adhoc, collect, notApplicable, prepaid, thirdParty, 
+        - requestedEquipment [ReadOnly]
+            Type: string
+            MaxLength: 20
+        - salesAgent
+            Type: string
+            MaxLength: 20
+        - serviceLevel
+            Type: string
+            MaxLength: 10
+        - shipInstructs
+            Type: array
+        - shipper
+            Type: object
+        - siteId
+            Type: string
+            MaxLength: 10
+        - slmDates
+            Type: object
+        - slmDaysSum [ReadOnly]
+            Type: integer
+            Nullable: True
+        - startStopStatus
+            Type: integer
+            Nullable: True
+        - startZone
+            Type: string
+            MaxLength: 10
+        - startZoneDescription [ReadOnly]
+            Type: string
+            MaxLength: 30
+        - status
+            Type: string
+            MaxLength: 10
+        - statusDescription
+            Type: string
+            MaxLength: 30
+        - statusHistory
+            Type: array
+        - tax1 [ReadOnly]
+            Type: number
+            Nullable: True
+        - tax2 [ReadOnly]
+            Type: number
+            Nullable: True
+        - temperature [ReadOnly]
+            Type: number
+            Nullable: True
+        - temperatureUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - terminalPlans
+            Type: array
+        - terminalZone [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - timeUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - totalCharges [ReadOnly]
+            Type: number
+            Nullable: True
+        - traceNumbers
+            Type: array
+        - trailerNumber [ReadOnly]
+            Type: string
+            MaxLength: 80
+        - updatedTimestamp [ReadOnly]
+            Type: string
+            Nullable: True
+        - user1
+            Type: string
+            MaxLength: 40
+        - user10
+            Type: string
+            MaxLength: 40
+        - user2
+            Type: string
+            MaxLength: 40
+        - user3
+            Type: string
+            MaxLength: 40
+        - user4
+            Type: string
+            MaxLength: 40
+        - user5
+            Type: string
+            MaxLength: 40
+        - user6
+            Type: string
+            MaxLength: 40
+        - user7
+            Type: string
+            MaxLength: 40
+        - user8
+            Type: string
+            MaxLength: 40
+        - user9
+            Type: string
+            MaxLength: 40
+        - volume [ReadOnly]
+            Type: number
+            Nullable: True
+        - volumeUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - webAccept [ReadOnly]
+            Type: string
+            Enum: False, True, 
+        - webStatus [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - webUpdate [ReadOnly]
+            Type: string
+            Enum: False, Done, WIP, 
+        - webUsername [ReadOnly]
+            Type: string
+            MaxLength: 128
+        - weight
+            Type: number
+            Nullable: True
+        - weightUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - xrefCode
+            Type: object
+        - xStops
+            Type: array
+  Status 400:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+  Status 401:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+  Status 403:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+

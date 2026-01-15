@@ -1,0 +1,799 @@
+8:01:22Preparing run.
+8:01:26Running...
+1
+08:01:28
+driverDeductions started
+2
+08:01:28
+orderId gt
+3
+08:01:28
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+4
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+5
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1
+6
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverStatements
+7
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/fuelTaxes?$filter=fuelTaxId%20eq%20undefined&expand=tripSegments,tripFuelPurchases,tripWaypoints&limit=1
+8
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/glAccounts?&limit=1
+9
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductionCodes?$filter=contractId%20eq%204%20and%20taxable%20eq%20False
+10
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/masterData/drivers?$filter=isActiveInPay%20eq%20False&limit=1
+11
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices?$filter=apInvoiceId%20eq%202&expand=ista&limit=1
+12
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverPaymentCodes?$filter=paymentCode%20eq%20BONUS&limit=1
+13
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverPaymentCodes?$filter=contractId%20eq%203%20AND%20taxable%20eq%20False&limit=1
+14
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/cashReceipts?$filter=transactionPosted%20eq%20False&limit=1
+15
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/employeePayments
+16
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductionCodes?$filter=contractId%20eq%204%20AND%20adminFee%20eq%20True%20AND%20taxDeduction%20eq%20True
+17
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices?$filter=apInvoiceId%20eq%202&expand=apDriverDeductions&limit=1
+18
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/checks?$filter=checkPosted%20eq%20True&$orderBy%20checkId%20desc
+19
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/masterData/vendors?$filter=isInactive%20eq%20True&limit=1
+20
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/apInvoices?$filter=apInvoiceId%20eq%202&expand=expenses&limit=1
+21
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/checks?$filter=checkId%20eq%202&expand=bills
+22
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverPayments?limit=1
+23
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/tm/trips?$filter=status%20eq%20ASSGN&expand=legs&limit=1&$orderBy=tripNumber%20desc
+24
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/masterData/clients?$filter=isInactive%20eq%20True&limit=1
+25
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/taxes?limit=2&expand=taxRates
+26
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/cashReceipts/378/invoices
+27
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/tm/orders?$filter=status%20eq%20AVAIL&$orderBy=orderId%20desc&limit=1
+28
+08:01:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$filter=orderId%20gt%200
+29
+08:01:32
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+30
+08:01:32
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+31
+08:01:34
+Cached driverStatementId: 1
+32
+08:01:34
+Cached cashReceiptId: 378
+33
+08:01:34
+Cached cashReceiptClientId: TM
+34
+08:01:34
+Cached payrollBatchId: 1
+35
+08:01:35
+Cached cashReceiptInvoiceId: 47004
+36
+08:01:37
+Using "_" is deprecated. Use "require('lodash')" instead.
+37
+08:01:38
+deductionState eq
+38
+08:01:38
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+39
+08:01:38
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+40
+08:01:38
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$filter=deductionState%20eq%20unapproved
+41
+08:01:40
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+42
+08:01:40
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+43
+08:01:42
+Using "_" is deprecated. Use "require('lodash')" instead.
+44
+08:01:43
+driverDeductions
+45
+08:01:43
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+46
+08:01:43
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+47
+08:01:43
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+48
+08:01:45
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+49
+08:01:45
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+50
+08:01:49
+Using "_" is deprecated. Use "require('lodash')" instead.
+51
+08:01:50
+pagination
+52
+08:01:50
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+53
+08:01:50
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+54
+08:01:50
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1&offset=2
+55
+08:01:54
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+56
+08:01:54
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+57
+08:01:58
+Using "_" is deprecated. Use "require('lodash')" instead.
+58
+08:01:59
+orderBy
+59
+08:01:59
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+60
+08:01:59
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+61
+08:01:59
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$orderBy=contractId%20desc
+62
+08:02:02
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+63
+08:02:02
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+64
+08:02:07
+Using "_" is deprecated. Use "require('lodash')" instead.
+65
+08:02:09
+performOrderByAssertion
+66
+08:02:10
+$select
+67
+08:02:10
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+68
+08:02:10
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+69
+08:02:10
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$select=deductionAmount,driverId,statementId,orderId,taxable,driverDeductionId,tax2
+70
+08:02:13
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+71
+08:02:13
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+72
+08:02:18
+Using "_" is deprecated. Use "require('lodash')" instead.
+73
+08:02:18
+$select:deductionAmount,driverId,statementId,orderId,taxable,driverDeductionId,tax2
+74
+08:02:19
+minimal fields
+75
+08:02:19
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+76
+08:02:19
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+77
+08:02:19
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+78
+08:02:20
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+79
+08:02:20
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+80
+08:02:23
+Using "_" is deprecated. Use "require('lodash')" instead.
+81
+08:02:23
+minimal fields NON-TAX
+82
+08:02:23
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+83
+08:02:23
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+84
+08:02:23
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+85
+08:02:25
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+86
+08:02:25
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+87
+08:02:27
+Using "_" is deprecated. Use "require('lodash')" instead.
+88
+08:02:28
+FB
+89
+08:02:28
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+90
+08:02:28
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+
+91
+08:02:28
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+92
+08:02:30
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+93
+08:02:30
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+94
+08:02:32
+Using "_" is deprecated. Use "require('lodash')" instead.
+95
+08:02:33
+minimal fields Admin Fee and Tax Deductions
+96
+08:02:33
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+97
+08:02:33
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+98
+08:02:33
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+99
+08:02:34
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+100
+08:02:34
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+101
+08:02:37
+Using "_" is deprecated. Use "require('lodash')" instead.
+102
+08:02:38
+array
+103
+08:02:38
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+104
+08:02:38
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+105
+08:02:38
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+106
+08:02:40
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+107
+08:02:40
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+108
+08:02:41
+Using "_" is deprecated. Use "require('lodash')" instead.
+109
+08:02:42
+Request body based on OpenAPI
+110
+08:02:42
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+111
+08:02:42
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+112
+08:02:42
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+113
+08:02:43
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+114
+08:02:43
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+115
+08:02:45
+Using "_" is deprecated. Use "require('lodash')" instead.
+116
+08:02:45
+Using "_" is deprecated. Use "require('lodash')" instead.
+117
+08:02:46
+$select
+118
+08:02:46
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+119
+08:02:46
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+120
+08:02:46
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$select=tax1,glAccount,deductionOverriden,statementId,deductionDescription,tax2
+121
+08:02:47
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+122
+08:02:47
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+123
+08:02:50
+Using "_" is deprecated. Use "require('lodash')" instead.
+124
+08:02:50
+$select:tax1,glAccount,deductionOverriden,statementId,deductionDescription,tax2
+125
+08:02:50
+No driver pay contract
+126
+08:02:50
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+127
+08:02:50
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+128
+08:02:50
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+129
+08:02:52
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+130
+08:02:52
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+131
+08:02:53
+Invalid Deduction Code
+132
+08:02:53
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+133
+08:02:53
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+134
+08:02:53
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+135
+08:02:55
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+136
+08:02:55
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+137
+08:02:57
+Deduction Code Controlled
+138
+08:02:57
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+139
+08:02:57
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+140
+08:02:57
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+141
+08:02:58
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+142
+08:02:58
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+143
+08:03:00
+minimal fields Copy
+144
+08:03:00
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+145
+08:03:00
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+146
+08:03:00
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+147
+08:03:03
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+148
+08:03:03
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+149
+08:03:04
+driverDeductionId
+150
+08:03:04
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+151
+08:03:04
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+152
+08:03:04
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1
+153
+08:03:06
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+154
+08:03:06
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+155
+08:03:07
+Using "_" is deprecated. Use "require('lodash')" instead.
+156
+08:03:08
+$select
+157
+08:03:08
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+158
+08:03:08
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+159
+08:03:08
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1?$select=deductionFunctionalTotal,deductionTotal,driverDeductionId,statementId,deductionDescription,tax1,deductionAmount
+160
+08:03:09
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+161
+08:03:09
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+162
+08:03:12
+Using "_" is deprecated. Use "require('lodash')" instead.
+163
+08:03:12
+$select:deductionFunctionalTotal,deductionTotal,driverDeductionId,statementId,deductionDescription,tax1,deductionAmount
+164
+08:03:12
+minimal fields
+165
+08:03:12
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+166
+08:03:12
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+167
+08:03:12
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+168
+08:03:12
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7045
+169
+08:03:14
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+170
+08:03:14
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+171
+08:03:18
+Using "_" is deprecated. Use "require('lodash')" instead.
+172
+08:03:18
+FB
+173
+08:03:18
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+174
+08:03:18
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+175
+08:03:18
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+176
+08:03:18
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7046
+177
+08:03:20
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+178
+08:03:20
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+179
+08:03:22
+Using "_" is deprecated. Use "require('lodash')" instead.
+180
+08:03:22
+Request body based on OpenAPI
+181
+08:03:22
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+182
+08:03:22
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+183
+08:03:22
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+184
+08:03:22
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7047
+185
+08:03:23
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+186
+08:03:23
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+187
+08:03:25
+Using "_" is deprecated. Use "require('lodash')" instead.
+188
+08:03:26
+Using "_" is deprecated. Use "require('lodash')" instead.
+189
+08:03:26
+$select
+190
+08:03:26
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+191
+08:03:26
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+192
+08:03:26
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+193
+08:03:26
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7048?$select=deductionAmount,deductionTotal,tripNumber,statementId,deductionOverriden,deductionQuantity,user2,checkDate,tax1,deductionDate
+194
+08:03:28
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+195
+08:03:28
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+196
+08:03:30
+Using "_" is deprecated. Use "require('lodash')" instead.
+197
+08:03:30
+$select:deductionAmount,deductionTotal,tripNumber,statementId,deductionOverriden,deductionQuantity,user2,checkDate,tax1,deductionDate
+198
+08:03:30
+No driver pay contract
+199
+08:03:30
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+200
+08:03:30
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+201
+08:03:30
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1
+202
+08:03:30
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1
+203
+08:03:32
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+204
+08:03:32
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+205
+08:03:34
+Swith to Deduction Code Controlled
+206
+08:03:34
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+207
+08:03:34
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+208
+08:03:34
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+209
+08:03:34
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7049
+210
+08:03:36
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+211
+08:03:36
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+212
+08:03:38
+Deduction record imported by Card Import
+213
+08:03:38
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+214
+08:03:38
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+215
+08:03:38
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/3006
+216
+08:03:40
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+217
+08:03:40
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+218
+08:03:41
+Invalid deduction code
+219
+08:03:41
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+220
+08:03:41
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+221
+08:03:41
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1
+222
+08:03:41
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1
+223
+08:03:43
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+224
+08:03:43
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+225
+08:03:45
+change State not allowed
+226
+08:03:45
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+227
+08:03:45
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+228
+08:03:45
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+229
+08:03:45
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7050
+230
+08:03:47
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+231
+08:03:47
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+232
+08:03:49
+null driverId - TM-181943
+233
+08:03:49
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+234
+08:03:49
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+235
+08:03:49
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1
+236
+08:03:49
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1
+237
+08:03:50
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+
+
+
+238
+08:03:50
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+239
+08:03:53
+random invalidDBValue
+240
+08:03:53
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+241
+08:03:53
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+242
+08:03:53
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?limit=1
+243
+08:03:53
+PUT https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/1
+244
+08:03:54
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+245
+08:03:54
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+246
+08:03:55
+Using "_" is deprecated. Use "require('lodash')" instead.
+247
+08:03:56
+driverDeductionId
+248
+08:03:56
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+249
+08:03:56
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+250
+08:03:56
+POST https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions
+251
+08:03:56
+DELETE https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7051
+252
+08:03:56
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/7051
+253
+08:03:58
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+254
+08:03:58
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+255
+08:04:00
+utils.validJson: validJson called but response body is empty
+256
+08:04:00
+confirmResourceDeleted - delete all child entities: false
+257
+08:04:00
+driverDeduction record in owe state
+258
+08:04:00
+GET https://tms-api-utils.tmwcloud.com/?packages=utils,tm_utils&types=custom,custom
+259
+08:04:00
+GET https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+260
+08:04:00
+GET https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions?$filter=deductionState%20eq%20owed&$orderBy=driverDeductionId%20desc
+261
+08:04:00
+DELETE https://tde-truckmate.tmwcloud.com/fin/finance/driverDeductions/68
+262
+08:04:02
+baseUrl not found in enviornment, defaulting from https://tde-truckmate.tmwcloud.com/fin/finance: https://tde-truckmate.tmwcloud.com/fin/finance
+263
+08:04:02
+Cached OpenAPI Endpoint: https://tde-truckmate.tmwcloud.com/fin/finance/openapi.json
+264
+08:04:04
+driverDeductions finished
+8:04:05Run complete.

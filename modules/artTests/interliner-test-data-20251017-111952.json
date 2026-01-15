@@ -1,0 +1,150 @@
+{
+  "startTime": "2025-10-17 11:19:52",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T11:19:52.7630224-04:00",
+      "keyData": {
+        "count": 5
+      },
+      "name": "GET /interlinerPayables (collection)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns data without error"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns array of payables"
+        }
+      ],
+      "description": "Retrieve list of interliner payables"
+    },
+    {
+      "startTime": "2025-10-17T11:19:53.0395821-04:00",
+      "keyData": {
+        "status": "new",
+        "originalAmount": 830,
+        "payableId": 9
+      },
+      "name": "GET /interlinerPayables/{id}",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns single payable"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Has interlinerPayableId property"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Has originalAmount property"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Has status property"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Matches requested ID"
+        }
+      ],
+      "description": "Retrieve single interliner payable"
+    },
+    {
+      "startTime": "2025-10-17T11:19:53.2608354-04:00",
+      "keyData": {
+        "newValue": -58.0,
+        "originalValue": -68.5,
+        "field": "adjustedExtras",
+        "payableId": 9
+      },
+      "name": "PUT /interlinerPayables/{id} (valid update)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Update succeeds"
+        },
+        {
+          "message": "Expected: -58, Got: -58",
+          "passed": true,
+          "name": "Returns updated value"
+        }
+      ],
+      "description": "Update adjustedExtras with valid value"
+    },
+    {
+      "startTime": "2025-10-17T11:19:53.4482102-04:00",
+      "keyData": {
+        "invalidValue": "not a number",
+        "field": "adjustedExtras",
+        "expectedError": 400,
+        "payableId": 9
+      },
+      "name": "PUT /interlinerPayables/{id} (invalid data type)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns error"
+        },
+        {
+          "message": "Got status: ",
+          "passed": true,
+          "name": "Returns 400 status"
+        }
+      ],
+      "description": "Reject string for numeric field"
+    },
+    {
+      "startTime": "2025-10-17T11:19:53.7712735-04:00",
+      "keyData": {
+        "invalidId": "ABC",
+        "expectedError": "4xx/5xx"
+      },
+      "name": "PUT /interlinerPayables/{id} (invalid ID)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns error"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns 4xx/5xx status"
+        }
+      ],
+      "description": "Reject non-numeric ID"
+    },
+    {
+      "startTime": "2025-10-17T11:19:53.9751706-04:00",
+      "keyData": {
+        "responseTimeMs": 208.24,
+        "threshold": 10000
+      },
+      "name": "GET /interlinerPayables (performance)",
+      "assertions": [
+        {
+          "message": "Took 208.24ms",
+          "passed": true,
+          "name": "Response under 10 seconds"
+        }
+      ],
+      "description": "Verify API performance"
+    }
+  ],
+  "duration": 1.441121,
+  "passed": 14,
+  "totalAssertions": 14,
+  "failed": 0,
+  "endTime": "2025-10-17 11:19:54"
+}

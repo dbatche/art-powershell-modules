@@ -1,0 +1,213 @@
+{
+  "collection": {
+    "info": {
+      "name": "Backup Test - Manual",
+      "description": "Test collection for backup functionality. This demonstrates how to copy collections using the Postman API with automatic naming conventions.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "// Collection-level Pre-Request Script",
+            "console.log(\"=\".repeat(60));",
+            "console.log(\"COLLECTION BACKUP - PRE-REQUEST SETUP\");",
+            "console.log(\"=\".repeat(60));",
+            "",
+            "// Determine backup type (manual vs auto)",
+            "const isManual = pm.environment.get(\"MANUAL_BACKUP\") === \"true\";",
+            "const backupPrefix = isManual ? \"Manual Backup\" : \"Auto Backup\";",
+            "",
+            "// Generate timestamps",
+            "const now = new Date();",
+            "const dateStamp = now.toISOString().slice(0, 10); // YYYY-MM-DD",
+            "",
+            "let timeStamp = \"\";",
+            "if (isManual) {",
+            "    const hours = String(now.getHours()).padStart(2, '0');",
+            "    const minutes = String(now.getMinutes()).padStart(2, '0');",
+            "    timeStamp = ` ${hours}-${minutes}`;",
+            "}",
+            "",
+            "// Store in collection variables",
+            "pm.collectionVariables.set(\"backupPrefix\", backupPrefix);",
+            "pm.collectionVariables.set(\"dateStamp\", dateStamp);",
+            "pm.collectionVariables.set(\"timeStamp\", timeStamp);",
+            "",
+            "console.log(`Backup Type: ${backupPrefix}`);",
+            "console.log(`Date Stamp: ${dateStamp}`);",
+            "console.log(`Time Stamp: ${timeStamp}`);",
+            "console.log(\"=\".repeat(60));"
+          ]
+        }
+      }
+    ],
+    "item": [
+      {
+        "name": "Test: Copy Collection",
+        "event": [
+          {
+            "listen": "prerequest",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "console.log(\"\\n\" + \"=\".repeat(60));",
+                "console.log(\"REQUEST: BACKUP COLLECTION\");",
+                "console.log(\"=\".repeat(60));",
+                "",
+                "// Get collection ID to backup from environment",
+                "const sourceCollectionId = pm.environment.get(\"TEST_COLLECTION_ID\");",
+                "console.log(`Source Collection ID: ${sourceCollectionId}`);",
+                "",
+                "// Fetch the source collection",
+                "pm.sendRequest({",
+                "    url: `https://api.getpostman.com/collections/${sourceCollectionId}`,",
+                "    method: 'GET',",
+                "    header: {",
+                "        'X-Api-Key': pm.environment.get(\"POSTMAN_API_KEY\")",
+                "    }",
+                "}, function (err, response) {",
+                "    if (err) {",
+                "        console.error(\"❌ Error fetching collection:\", err);",
+                "        pm.variables.set(\"backupError\", err.message);",
+                "        return;",
+                "    }",
+                "    ",
+                "    if (response.code !== 200) {",
+                "        console.error(\"❌ Failed to fetch collection:\", response.code, response.status);",
+                "        console.error(\"Response:\", response.text());",
+                "        pm.variables.set(\"backupError\", response.text());",
+                "        return;",
+                "    }",
+                "    ",
+                "    console.log(\"✓ Successfully fetched source collection\");",
+                "    ",
+                "    const collection = response.json().collection;",
+                "    const originalName = collection.info.name;",
+                "    console.log(`Original Name: ${originalName}`);",
+                "    ",
+                "    // Generate backup name",
+                "    const backupPrefix = pm.collectionVariables.get(\"backupPrefix\");",
+                "    const dateStamp = pm.collectionVariables.get(\"dateStamp\");",
+                "    const timeStamp = pm.collectionVariables.get(\"timeStamp\");",
+                "    const backupName = `${backupPrefix} ${dateStamp}${timeStamp} - ${originalName}`;",
+                "    ",
+                "    console.log(`Backup Name: ${backupName}`);",
+                "    ",
+                "    // Modify collection for backup",
+                "    collection.info.name = backupName;",
+                "    collection.info.description = `Backup of \"${originalName}\" created on ${dateStamp}${timeStamp}\\n\\nOriginal Collection ID: ${sourceCollectionId}`;",
+                "    ",
+                "    // Remove the _postman_id so a new collection is created",
+                "    delete collection.info._postman_id;",
+                "    ",
+                "    // Store for the actual request body",
+                "    const backupPayload = { collection: collection };",
+                "    pm.variables.set(\"backupCollection\", JSON.stringify(backupPayload));",
+                "    pm.variables.set(\"backupName\", backupName);",
+                "    pm.variables.set(\"originalName\", originalName);",
+                "    ",
+                "    console.log(\"✓ Backup payload prepared\");",
+                "    console.log(\"=\".repeat(60) + \"\\n\");",
+                "});"
+              ]
+            }
+          },
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "console.log(\"\\n\" + \"=\".repeat(60));",
+                "console.log(\"RESPONSE: BACKUP RESULT\");",
+                "console.log(\"=\".repeat(60));",
+                "",
+                "const backupName = pm.variables.get(\"backupName\");",
+                "const originalName = pm.variables.get(\"originalName\");",
+                "",
+                "// Test: Successful backup",
+                "pm.test(\"Backup created successfully\", function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "// Log results",
+                "if (pm.response.code === 200) {",
+                "    const response = pm.response.json();",
+                "    ",
+                "    console.log(`✅ SUCCESS: Backup created!`);",
+                "    console.log(`   Original: ${originalName}`);",
+                "    console.log(`   Backup: ${backupName}`);",
+                "    console.log(`   New Collection UID: ${response.collection.uid}`);",
+                "    console.log(`   New Collection ID: ${response.collection.id}`);",
+                "    ",
+                "    // Additional validation",
+                "    pm.test(\"Backup has correct name\", function () {",
+                "        pm.expect(response.collection.info.name).to.equal(backupName);",
+                "    });",
+                "    ",
+                "    pm.test(\"Backup has description\", function () {",
+                "        pm.expect(response.collection.info.description).to.include(\"Backup of\");",
+                "    });",
+                "    ",
+                "} else {",
+                "    console.error(`❌ FAILED: Could not create backup`);",
+                "    console.error(`   Status: ${pm.response.code} ${pm.response.status}`);",
+                "    console.error(`   Response: ${pm.response.text()}`);",
+                "}",
+                "",
+                "console.log(\"=\".repeat(60) + \"\\n\");",
+                "",
+                "// Clean up temporary variables",
+                "pm.variables.unset(\"backupCollection\");",
+                "pm.variables.unset(\"backupName\");",
+                "pm.variables.unset(\"originalName\");",
+                "pm.variables.unset(\"backupError\");"
+              ]
+            }
+          }
+        ],
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "X-Api-Key",
+              "value": "{{POSTMAN_API_KEY}}",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{{backupCollection}}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "url": {
+            "raw": "https://api.getpostman.com/collections",
+            "protocol": "https",
+            "host": [
+              "api",
+              "getpostman",
+              "com"
+            ],
+            "path": [
+              "collections"
+            ]
+          },
+          "description": "Creates a backup copy of a Postman collection with automatic naming.\n\nThe pre-request script fetches the source collection, modifies its name with a timestamp, and prepares the payload. The test script verifies the backup was created successfully."
+        },
+        "response": []
+      }
+    ]
+  }
+}
+

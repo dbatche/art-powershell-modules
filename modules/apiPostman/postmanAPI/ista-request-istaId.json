@@ -1,0 +1,25 @@
+{
+  "name": "istaId",
+  "id": "8697e635-a80a-4232-a641-066b33f4167a",
+  "protocolProfileBehavior": {
+    "disableBodyPruning": true
+  },
+  "request": {
+    "method": "DELETE",
+    "header": [],
+    "url": {
+      "raw": "{{DOMAIN}}/apInvoices/{{AP_INVOICE_ID}}/ista/{{istaId}}",
+      "host": [
+        "{{DOMAIN}}"
+      ],
+      "path": [
+        "apInvoices",
+        "{{AP_INVOICE_ID}}",
+        "ista",
+        "{{istaId}}"
+      ]
+    }
+  },
+  "response": [],
+  "uid": "8229776-8697e635-a80a-4232-a641-066b33f4167a"
+}

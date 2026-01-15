@@ -1,0 +1,664 @@
+Loading OpenAPI specification from file...
+  File: .\10-openapi-specs\orders-raw-repaired.json
+✓ Loaded spec: TruckMate REST API v1
+
+Analyzing: POST /orders/{orderId}/details
+
+Operation: OrdersPostDetail
+Summary: Add an order detail line
+Description: Adds one or more detail line records to a specified order.
+
+The order details contain specific information about the order, such as: warnings, commodity, load dimensions, rating information and more. A single order can have several order detail records.
+
+Order details can be viewed in the Customer Service application > Details tab. 
+
+Parameters:
+  • orderId (path) [REQUIRED]
+      Type: integer
+      Description: order identifier
+  • type (query)
+      Type: string
+      Enum: T, P, Q
+      Default: T
+      Description: Single character string indicating the type of TruckMate order, [T, P or Q]. <br><br>-**T**ruckload<br>-**P**ickup request<br>-**Q**uote<br><br>Defaults to type T if not provided
+  • onlyPostedResults (query)
+      Type: string
+      Description: An array of JSON objects containing the properties of the custom defined field to be created
+
+Request Body Contract:
+  Type: array of object
+  Required fields: NONE ⚠
+  Total properties: 83
+  Schema name: OrderDetailsRequest
+
+Properties:
+    • area
+        Type: number
+    • areaUnits
+        Type: string
+        MaxLength: 3
+    • asBreak
+        Type: number
+    • asRate
+        Type: number
+    • barcodes
+        Type: array
+    • commodity
+        Type: string
+        MaxLength: 10
+    • cube
+        Type: number
+    • cubePolicyValue
+        Type: number
+    • cubeUnits
+        Type: string
+        MaxLength: 3
+    • dangerousGoods
+        Type: string
+        Enum: False, True
+        Description: Is dangerous goods? 'True'/'False'
+    • description
+        Type: string
+        MaxLength: 80
+    • discount
+        Type: number
+    • distance
+        Type: number
+    • distanceUnits
+        Type: string
+        MaxLength: 3
+    • estimatedCube
+        Type: number
+    • estimatedCubePolicyValue
+        Type: number
+    • estimatedHeight
+        Type: number
+    • estimatedLength
+        Type: number
+    • estimatedPallets
+        Type: number
+    • estimatedPieces
+        Type: integer
+    • estimatedVolume
+        Type: number
+    • estimatedWeight
+        Type: number
+    • estimatedWidth
+        Type: number
+    • field1
+        Type: string
+        MaxLength: 40
+    • field10
+        Type: string
+        MaxLength: 40
+    • field11
+        Type: number
+    • field12
+        Type: number
+    • field13
+        Type: number
+    • field14
+        Type: number
+    • field15
+        Type: number
+    • field16
+        Type: number
+    • field17
+        Type: number
+    • field18
+        Type: number
+    • field19
+        Type: number
+    • field2
+        Type: string
+        MaxLength: 40
+    • field20
+        Type: number
+    • field21
+        Type: string
+        Pattern: ^\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\d)((T| )([01]\d|2[0-3]):([0-5]\d):([0-5]\d))?$
+        Description: DateTime: yyyy-MM-ddThh:mm:ss
+    • field22
+        Type: string
+        Pattern: ^\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\d)((T| )([01]\d|2[0-3]):([0-5]\d):([0-5]\d))?$
+        Description: DateTime: yyyy-MM-ddThh:mm:ss
+    • field23
+        Type: string
+        Pattern: ^\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\d)((T| )([01]\d|2[0-3]):([0-5]\d):([0-5]\d))?$
+        Description: DateTime: yyyy-MM-ddThh:mm:ss
+    • field24
+        Type: string
+        Pattern: ^\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\d)((T| )([01]\d|2[0-3]):([0-5]\d):([0-5]\d))?$
+        Description: DateTime: yyyy-MM-ddThh:mm:ss
+    • field25
+        Type: string
+        Pattern: ^\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\d)((T| )([01]\d|2[0-3]):([0-5]\d):([0-5]\d))?$
+        Description: DateTime: yyyy-MM-ddThh:mm:ss
+    • field3
+        Type: string
+        MaxLength: 40
+    • field4
+        Type: string
+        MaxLength: 40
+    • field5
+        Type: string
+        MaxLength: 40
+    • field6
+        Type: string
+        MaxLength: 40
+    • field7
+        Type: string
+        MaxLength: 40
+    • field8
+        Type: string
+        MaxLength: 40
+    • field9
+        Type: string
+        MaxLength: 40
+    • height
+        Type: number
+    • heightUnits
+        Type: string
+        MaxLength: 3
+    • highValue
+        Type: string
+        Enum: False, True
+    • items
+        Type: integer
+    • length
+        Type: number
+    • lengthUnits
+        Type: string
+        MaxLength: 3
+    • manuallyRated
+        Type: string
+        Enum: False, True
+    • pallets
+        Type: number
+    • palletUnits
+        Type: string
+        MaxLength: 3
+    • perishable
+        Type: string
+        Enum: False, True
+    • pieces
+        Type: integer
+    • piecesUnits
+        Type: string
+        MaxLength: 3
+    • rate
+        Type: number
+    • ratePer
+        Type: number
+    • rateUnits
+        Type: string
+        MaxLength: 3
+    • requestedEquipment
+        Type: string
+        MaxLength: 20
+    • subCost
+        Type: number
+    • temperature
+        Type: number
+    • temperatureControlled
+        Type: string
+        Enum: False, True
+    • temperatureUnits
+        Type: string
+        MaxLength: 3
+    • time
+        Type: number
+    • timeUnits
+        Type: string
+        MaxLength: 3
+    • unNumber
+        Type: string
+        MaxLength: 7
+    • userFieldInt1
+        Type: integer
+    • userFieldInt2
+        Type: integer
+    • userFieldInt3
+        Type: integer
+    • userFieldInt4
+        Type: integer
+    • userFieldInt5
+        Type: integer
+    • userFieldInt6
+        Type: integer
+    • volume
+        Type: number
+    • volumeUnits
+        Type: string
+        MaxLength: 3
+    • weight
+        Type: number
+    • weightUnits
+        Type: string
+        MaxLength: 3
+    • width
+        Type: number
+    • widthUnits
+        Type: string
+        MaxLength: 3
+
+Response Contracts:
+  Status 201:
+    Type: object
+    Properties: 1
+    Schema name: OrdersPostDetail201
+
+    Properties:
+
+    • details (array of object objects):
+      Items Schema: detail
+      Items Properties: 102
+        - area
+            Type: number
+            Nullable: True
+        - areaUnits
+            Type: string
+            MaxLength: 3
+        - asBreak
+            Type: number
+            Nullable: True
+        - asRate
+            Type: number
+            Nullable: True
+        - barcodes
+            Type: array
+        - commodity
+            Type: string
+            MaxLength: 10
+        - cost [ReadOnly]
+            Type: number
+            Nullable: True
+        - cube
+            Type: number
+            Nullable: True
+        - cubePolicyValue
+            Type: number
+            Nullable: True
+        - cubeUnits
+            Type: string
+            MaxLength: 3
+        - dangerousGoods
+            Type: string
+            Enum: False, True, 
+        - description
+            Type: string
+            MaxLength: 80
+        - dimWeight [ReadOnly]
+            Type: number
+            Nullable: True
+        - dimWeightUnits [ReadOnly]
+            Type: string
+            MaxLength: 3
+        - discount [ReadOnly]
+            Type: number
+            Nullable: True
+        - discountRate [ReadOnly]
+            Type: number
+            Nullable: True
+        - distance
+            Type: number
+            Nullable: True
+        - distanceUnits
+            Type: string
+            MaxLength: 3
+        - estimatedCube
+            Type: number
+            Nullable: True
+        - estimatedCubePolicyValue
+            Type: number
+            Nullable: True
+        - estimatedHeight
+            Type: number
+            Nullable: True
+        - estimatedLength
+            Type: number
+            Nullable: True
+        - estimatedPallets
+            Type: number
+            Nullable: True
+        - estimatedPieces
+            Type: integer
+            Nullable: True
+        - estimatedVolume
+            Type: number
+            Nullable: True
+        - estimatedWeight
+            Type: number
+            Nullable: True
+        - estimatedWidth
+            Type: number
+            Nullable: True
+        - field1
+            Type: string
+            MaxLength: 40
+        - field10
+            Type: string
+            MaxLength: 40
+        - field11
+            Type: number
+            Nullable: True
+        - field12
+            Type: number
+            Nullable: True
+        - field13
+            Type: number
+            Nullable: True
+        - field14
+            Type: number
+            Nullable: True
+        - field15
+            Type: number
+            Nullable: True
+        - field16
+            Type: number
+            Nullable: True
+        - field17
+            Type: number
+            Nullable: True
+        - field18
+            Type: number
+            Nullable: True
+        - field19
+            Type: number
+            Nullable: True
+        - field2
+            Type: string
+            MaxLength: 40
+        - field20
+            Type: number
+            Nullable: True
+        - field21
+            Type: string
+            Nullable: True
+        - field22
+            Type: string
+            Nullable: True
+        - field23
+            Type: string
+            Nullable: True
+        - field24
+            Type: string
+            Nullable: True
+        - field25
+            Type: string
+            Nullable: True
+        - field3
+            Type: string
+            MaxLength: 40
+        - field4
+            Type: string
+            MaxLength: 40
+        - field5
+            Type: string
+            MaxLength: 40
+        - field6
+            Type: string
+            MaxLength: 40
+        - field7
+            Type: string
+            MaxLength: 40
+        - field8
+            Type: string
+            MaxLength: 40
+        - field9
+            Type: string
+            MaxLength: 40
+        - height
+            Type: number
+            Nullable: True
+        - heightUnits
+            Type: string
+            MaxLength: 3
+        - highValue
+            Type: string
+            Enum: False, True, 
+        - itemCube [ReadOnly]
+            Type: number
+            Nullable: True
+        - itemPallets [ReadOnly]
+            Type: number
+            Nullable: True
+        - itemPieces [ReadOnly]
+            Type: number
+            Nullable: True
+        - items
+            Type: integer
+            Nullable: True
+        - itemTemperature [ReadOnly]
+            Type: number
+            Nullable: True
+        - itemVolume [ReadOnly]
+            Type: number
+            Nullable: True
+        - itemWeight [ReadOnly]
+            Type: number
+            Nullable: True
+        - length
+            Type: number
+            Nullable: True
+        - lengthUnits
+            Type: string
+            MaxLength: 3
+        - manuallyRated
+            Type: string
+            Enum: False, True, 
+        - mpSeq
+            Type: integer
+            Nullable: True
+        - orderDetailId [ReadOnly]
+            Type: integer
+        - orderId [ReadOnly]
+            Type: integer
+        - osdId
+            Type: integer
+        - pallets
+            Type: number
+            Nullable: True
+        - palletUnits
+            Type: string
+            MaxLength: 3
+        - perishable
+            Type: string
+            Enum: False, True, 
+        - pieces
+            Type: integer
+            Nullable: True
+        - piecesUnits
+            Type: string
+            MaxLength: 3
+        - rate
+            Type: number
+            Nullable: True
+        - rateFromZone [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - ratePer
+            Type: number
+            Nullable: True
+        - ratesheetCurrencyRates
+            Type: object
+        - rateToZone [ReadOnly]
+            Type: string
+            MaxLength: 10
+        - rateUnits
+            Type: string
+            MaxLength: 3
+        - regionalRestrictions
+            Type: string
+            Enum: False, True, 
+        - requestedEquipment
+            Type: string
+            MaxLength: 20
+        - subCost [ReadOnly]
+            Type: number
+            Nullable: True
+        - temperature
+            Type: number
+            Nullable: True
+        - temperatureControlled
+            Type: string
+            Enum: False, True, 
+        - temperatureUnits
+            Type: string
+            MaxLength: 3
+        - time
+            Type: number
+            Nullable: True
+        - timeUnits
+            Type: string
+            MaxLength: 3
+        - unId
+            Type: integer
+            Nullable: True
+        - unNumber
+            Type: string
+            MaxLength: 7
+        - userFieldInt1
+            Type: integer
+            Nullable: True
+        - userFieldInt2
+            Type: integer
+            Nullable: True
+        - userFieldInt3
+            Type: integer
+            Nullable: True
+        - userFieldInt4
+            Type: integer
+            Nullable: True
+        - userFieldInt5
+            Type: integer
+            Nullable: True
+        - userFieldInt6
+            Type: integer
+            Nullable: True
+        - volume
+            Type: number
+            Nullable: True
+        - volumeUnits
+            Type: string
+            MaxLength: 3
+        - weight
+            Type: number
+            Nullable: True
+        - weightUnits
+            Type: string
+            MaxLength: 3
+        - width
+            Type: number
+            Nullable: True
+        - widthUnits
+            Type: string
+            MaxLength: 3
+  Status 404:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+  Status 400:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+  Status 401:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string
+  Status 403:
+    Type: object
+    Properties: 4
+    Schema name: ARTErrors
+
+    Properties:
+      • status
+          Type: integer
+          Enum: 400, 401, 403, 404, 405, 409, 429, 500
+      • title
+          Type: string
+      • type
+          Type: string
+
+    • errors (array of object objects):
+      Items Schema: ARTError
+      Items Properties: 4
+        - code
+            Type: string
+            Deprecated: True
+        - description
+            Type: string
+            Deprecated: True
+        - title
+            Type: string
+        - type
+            Type: string

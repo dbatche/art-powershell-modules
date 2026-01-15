@@ -1,0 +1,89 @@
+{
+  "name": "Giant all-in-one Test",
+  "request": {
+    "method": "POST",
+    "header": [],
+    "body": {
+      "mode": "raw",
+      "raw": "{\n  \"shipmentStatus\": {{selectedShipmentStatus}},\n  \"tripId\": \"{{temp_tripNumber}}\"\n}",
+      "options": {
+        "raw": {
+          "language": "json"
+        }
+      }
+    },
+    "url": {
+      "raw": "{{DOMAIN}}/shipmentStatus",
+      "host": ["{{DOMAIN}}"],
+      "path": ["shipmentStatus"]
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "// Define all possible shipment statuses with their expected trip status results",
+          "const statusMapping = {",
+          "    0:  { name: 'Unknown',        expectedTripStatus: 'UNKNOWNVIS' },",
+          "    1:  { name: 'Assignment',     expectedTripStatus: 'ASSGN' },",
+          "    4:  { name: 'Dispatch',       expectedTripStatus: 'DISP' },",
+          "    5:  { name: 'Depart Shipper', expectedTripStatus: 'DEPSHIP' },",
+          "    6:  { name: 'Delivered',      expectedTripStatus: 'DELVD' },",
+          "    7:  { name: 'Enroute',        expectedTripStatus: 'ENRTE' },",
+          "    8:  { name: 'Completed',      expectedTripStatus: 'COMPLETE' },",
+          "    9:  { name: 'Cancelled',      expectedTripStatus: 'CANCL' },",
+          "    10: { name: 'Arrive Shipper', expectedTripStatus: 'ARRSHIP' }",
+          "};",
+          "",
+          "// Randomly select a shipment status",
+          "const statusCodes = Object.keys(statusMapping);",
+          "const randomIndex = Math.floor(Math.random() * statusCodes.length);",
+          "const selectedStatus = parseInt(statusCodes[randomIndex]);",
+          "",
+          "// Set variables for use in request and tests",
+          "pm.variables.set('selectedShipmentStatus', selectedStatus);",
+          "pm.variables.set('selectedStatusName', statusMapping[selectedStatus].name);",
+          "pm.variables.set('expectedTripStatus', statusMapping[selectedStatus].expectedTripStatus);",
+          "",
+          "console.log(`Selected Shipment Status: ${selectedStatus} (${statusMapping[selectedStatus].name})`);",
+          "console.log(`Expected Trip Status: ${statusMapping[selectedStatus].expectedTripStatus}`);",
+          "",
+          "// Create a trip with assigned order (same for all statuses)",
+          "utils.createTripAssignOrder(pm, undefined, (response) => {",
+          "    let responseJson = response.json();",
+          "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);",
+          "} );"
+        ],
+        "type": "text/javascript"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "const selectedStatus = pm.variables.get('selectedShipmentStatus');",
+          "const selectedStatusName = pm.variables.get('selectedStatusName');",
+          "const expectedTripStatus = pm.variables.get('expectedTripStatus');",
+          "const tripNumber = parseInt(pm.variables.get('temp_tripNumber'));",
+          "",
+          "pm.test(`Shipment Status ${selectedStatus} (${selectedStatusName}) returns 201`, () => {",
+          "    pm.response.to.have.status(201);",
+          "});",
+          "",
+          "if (pm.response.code == 201) {",
+          "    // Verify the trip status was updated correctly based on the shipment status",
+          "    utils.verifyTripStatus(pm, tripNumber, expectedTripStatus);",
+          "",
+          "    pm.test(`Trip status updated to ${expectedTripStatus} for shipment status ${selectedStatus} (${selectedStatusName})`, () => {",
+          "        // This test will be verified by utils.verifyTripStatus",
+          "        pm.expect(pm.response.code).to.equal(201);",
+          "    });",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ]
+}
+

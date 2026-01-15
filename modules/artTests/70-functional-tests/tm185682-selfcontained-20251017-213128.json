@@ -1,0 +1,26 @@
+{
+  "failed": 1,
+  "startTime": "2025-10-17 21:31:31",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:31:31.968427-04:00",
+      "keyData": {
+        "errorCode": "invalidBusinessLogic",
+        "httpStatus": 400
+      },
+      "name": "POST /orders (with details and barcodes)",
+      "description": "Create test order with 1 detail containing 2 barcodes",
+      "assertions": [
+        {
+          "passed": false,
+          "message": "Cannot proceed with test - order creation failed: invalidBusinessLogic",
+          "name": "POST order failed"
+        }
+      ]
+    }
+  ],
+  "duration": 0.5110947,
+  "passed": 0,
+  "endTime": "2025-10-17 21:31:32",
+  "totalAssertions": 1
+}

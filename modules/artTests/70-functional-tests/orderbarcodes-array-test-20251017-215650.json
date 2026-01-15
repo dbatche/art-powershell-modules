@@ -1,0 +1,85 @@
+{
+  "failed": 0,
+  "startTime": "2025-10-17 21:57:04",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:57:05.237464-04:00",
+      "keyData": {
+        "baselineBarcodeCount": 12
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId} (baseline)",
+      "description": "Capture current state before making changes",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved order detail"
+        },
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:57:07.2934835-04:00",
+      "keyData": {
+        "operation": "create",
+        "barcodeId": 163768,
+        "tm185682": "no_error"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId} (with barcodes array)",
+      "description": "TM-185682: Update detail with mixed barcode array (with/without IDs)",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "PUT request succeeded"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:57:09.1899885-04:00",
+      "keyData": {
+        "operation": "updated",
+        "tm185682": "correct_behavior",
+        "barcodeId": 163768,
+        "afterBarcodeCount": 14
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes (after PUT)",
+      "description": "Verify barcode count and changes after PUT",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes after PUT"
+        },
+        {
+          "passed": true,
+          "message": "Expected 14, got 14",
+          "name": "Barcode count increased by 2"
+        },
+        {
+          "passed": true,
+          "message": "Expected weight 999.99, got 999.99",
+          "name": "Existing barcode was UPDATED (not duplicated)"
+        },
+        {
+          "passed": true,
+          "message": "",
+          "name": "Updated barcode has new altBarcode1"
+        },
+        {
+          "passed": true,
+          "message": "Expected 2 new, found 2",
+          "name": "2 new barcodes were created"
+        }
+      ]
+    }
+  ],
+  "duration": 6.7114859,
+  "passed": 8,
+  "endTime": "2025-10-17 21:57:11",
+  "totalAssertions": 8
+}

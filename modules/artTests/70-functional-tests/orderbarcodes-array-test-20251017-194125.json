@@ -1,0 +1,87 @@
+{
+  "totalAssertions": 8,
+  "failed": 6,
+  "duration": 18.4987467,
+  "scenarios": [
+    {
+      "assertions": [
+        {
+          "name": "Retrieved order detail",
+          "message": "",
+          "passed": false
+        },
+        {
+          "name": "Retrieved barcodes",
+          "message": "",
+          "passed": true
+        }
+      ],
+      "name": "GET /orders/{orderId}/details/{orderDetailId} (baseline)",
+      "keyData": {
+        "baselineBarcodeCount": 1
+      },
+      "startTime": "2025-10-17T19:41:55.4312603-04:00",
+      "description": "Capture current state before making changes"
+    },
+    {
+      "assertions": [
+        {
+          "name": "PUT request failed [TM-185682: Possible duplicate issue?]",
+          "message": "Got error: unauthorized - This may be the TM-185682 bug!",
+          "passed": false
+        }
+      ],
+      "name": "PUT /orders/{orderId}/details/{orderDetailId} (with barcodes array)",
+      "keyData": {
+        "barcodeId": 163723,
+        "httpStatus": 401,
+        "errorCode": "unauthorized",
+        "operation": "create",
+        "tm185682": "error_occurred"
+      },
+      "startTime": "2025-10-17T19:41:58.8593819-04:00",
+      "description": "TM-185682: Update detail with mixed barcode array (with/without IDs)"
+    },
+    {
+      "assertions": [
+        {
+          "name": "Retrieved barcodes after PUT",
+          "message": "",
+          "passed": true
+        },
+        {
+          "name": "Barcode count increased by 2",
+          "message": "Expected 3, got 1",
+          "passed": false
+        },
+        {
+          "name": "Existing barcode was UPDATED (not duplicated)",
+          "message": "Expected weight 999.99, got 100.5",
+          "passed": false
+        },
+        {
+          "name": "Updated barcode has new altBarcode1",
+          "message": "",
+          "passed": false
+        },
+        {
+          "name": "2 new barcodes were created",
+          "message": "Expected 2 new, found 0",
+          "passed": false
+        }
+      ],
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes (after PUT)",
+      "keyData": {
+        "afterBarcodeCount": 1,
+        "barcodeId": 163723,
+        "tm185682": "correct_behavior",
+        "operation": "updated"
+      },
+      "startTime": "2025-10-17T19:42:00.6852008-04:00",
+      "description": "Verify barcode count and changes after PUT"
+    }
+  ],
+  "passed": 2,
+  "startTime": "2025-10-17 19:41:45",
+  "endTime": "2025-10-17 19:42:04"
+}

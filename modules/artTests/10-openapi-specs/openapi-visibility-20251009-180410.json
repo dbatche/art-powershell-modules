@@ -1,0 +1,790 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Visibility",
+    "description": "\n\n---\n\n© 2025, Trimble Inc. All rights reserved. Unauthorized copying prohibited. Software functions, including our APIs and their specification, are subject to change without notice. Information contained herein is Trimble Confidential Information, used under license.\n\n---\n\n",
+    "version": "25",
+    "x-tm-release": "25.4.76.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8603/visibility"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Shipment Status",
+      "description": "Visibility Shipment Status API."
+    },
+    {
+      "name": "Stop Status",
+      "description": "Visibility Stop Status API."
+    },
+    {
+      "name": "Version",
+      "description": "The version endpoint allows the ART server version information to be retrieved. This will include the version number of the TruckMate ART Server (Windows Service) application."
+    },
+    {
+      "name": "Whoami",
+      "description": "Retrieves identity of the user associated with the provided authorization method."
+    }
+  ],
+  "externalDocs": {
+    "url": "https://learn.transportation.trimble.com/"
+  },
+  "paths": {
+    "/shipmentStatus": {
+      "post": {
+        "summary": "Create shipment status",
+        "description": "Creates a new shipment status record.\n\nShipment status updates can be used to track shipment progress.",
+        "operationId": "PostShipmentStatus",
+        "security": [
+          {
+            "truckmateApiKeyAuth": []
+          }
+        ],
+        "tags": [
+          "Shipment Status"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostShipmentStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shipmentStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden access"
+          }
+        }
+      }
+    },
+    "/stopStatus": {
+      "post": {
+        "summary": "Create stop status",
+        "description": "Creates a new stop status record.\n\nStop status updates can be used to track stop progress.",
+        "operationId": "PostStopStatus",
+        "security": [
+          {
+            "truckmateApiKeyAuth": []
+          }
+        ],
+        "tags": [
+          "Stop Status"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostStopStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stopStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden access"
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "summary": "Retrieve the ART server version information",
+        "description": "Retrieves the version information of the related ART server.",
+        "operationId": "GetVersion",
+        "tags": [
+          "Version"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/version"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/whoami": {
+      "get": {
+        "summary": "Get authenticated user",
+        "description": "Get information about this authenticated user",
+        "operationId": "GetWhoAmI",
+        "tags": [
+          "Whoami"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/whoami"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Specifies the maximum number of items to include in the response results.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "integer",
+          "default": 20
+        }
+      },
+      "offset": {
+        "name": "offset",
+        "in": "query",
+        "description": "Specifies the number of items to skip before beginning to select the records to return.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "filter": {
+        "name": "$filter",
+        "in": "query",
+        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter). Note, not all features of oData filter syntax are supported.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "select": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select allows to request a specific set of properties, see [Selecting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361040)",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "orderBy": {
+        "name": "$orderBy",
+        "in": "query",
+        "description": "Field(s) to order returned resource by, with optional direction. E.g., \"fieldName desc, fieldName2\"",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "noResponseBody": {
+        "name": "$noResponseBody",
+        "in": "query",
+        "description": "When enabled, an empty reponse body (response code 204) will be returned, otherwise a full response body will be returned.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "default": "False"
+        }
+      }
+    },
+    "schemas": {
+      "ARTErrors": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "enum": [
+              400,
+              401,
+              403,
+              404,
+              405,
+              409,
+              429,
+              500
+            ]
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ARTError"
+            }
+          }
+        }
+      },
+      "ARTError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "deprecated": true
+          },
+          "description": {
+            "type": "string",
+            "deprecated": true
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "MenuSettings": {
+        "type": "object",
+        "properties": {
+          "menu": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "orderEntry",
+                    "quotes",
+                    "carrierTracking",
+                    "activeLoads",
+                    "loadOffers",
+                    "loadHistory"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "whoami": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "configurationSettings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuSettings"
+            }
+          }
+        }
+      },
+      "version": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "debug": {
+            "type": "string"
+          }
+        }
+      },
+      "PostShipmentStatus": {
+        "type": "object",
+        "properties": {
+          "shipmentStatus": {
+            "type": "integer"
+          },
+          "tripId": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        "required": [
+          "shipmentStatus",
+          "tripId"
+        ]
+      },
+      "PostShipmentStatusList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PostShipmentStatus"
+        }
+      },
+      "shipmentStatus": {
+        "type": "object",
+        "properties": {
+          "freightProviderReferenceNumber": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "carrierSCAC": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "shipmentStatus": {
+            "type": "integer",
+            "nullable": true
+          },
+          "tenantExternalId": {
+            "type": "integer"
+          },
+          "tripId": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "shipmentStopNote": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shipmentStatusStopNote"
+            }
+          },
+          "referenceNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shipmentStatusReferenceNumber"
+            }
+          },
+          "userDefinedValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/userDefinedValue"
+            }
+          }
+        }
+      },
+      "shipmentStatusStopNote": {
+        "type": "object",
+        "properties": {
+          "shipmentStatusNote": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "shipmentStatusReferenceNumber": {
+        "type": "object",
+        "properties": {
+          "referenceNumberType": {
+            "type": "integer",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18"
+            ],
+            "nullable": true
+          },
+          "referenceNumberKey": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "referenceNumberValue": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "userDefinedValue": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "PostStopStatus": {
+        "type": "object",
+        "properties": {
+          "stopId": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "statusDate": {
+            "type": "string",
+            "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "arrival",
+              "departure"
+            ]
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "longitude": {
+            "type": "number",
+            "pattern": "^(-?((1[0-7][0-9]|[0-9]?[0-9])(\\.\\d+)?|180(\\.0+)?))$"
+          },
+          "latitude": {
+            "type": "number",
+            "pattern": "^(-?([0-8]?[0-9](\\.\\d+)?|90(\\.0+)?))$"
+          }
+        },
+        "required": [
+          "stopId",
+          "statusDate",
+          "status",
+          "sequence",
+          "longitude",
+          "latitude"
+        ]
+      },
+      "PostStopStatusList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PostStopStatus"
+        }
+      },
+      "stopStatus": {
+        "type": "object",
+        "properties": {
+          "stopId": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "statusDate": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "sequence": {
+            "type": "integer",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "postalCode": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "stopType": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "statusDateLocal": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "statusDateUtc": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "scheduledEarliest": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "scheduledLatest": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "scheduledEarliestUtc": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "scheduledLatestUtc": {
+            "type": "string",
+            "nullable": true,
+            "oneOf": [
+              {
+                "enum": [
+                  ""
+                ]
+              },
+              {
+                "pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)((T| )([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d))?$"
+              }
+            ]
+          },
+          "referenceNumbersList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/stopStatusReferenceNumberList"
+            }
+          },
+          "carrierIdentifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/stopStatusCarrierIdentifier"
+            }
+          },
+          "shipperIdentifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/stopStatusShipperIdentifier"
+            }
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/stopStatusAssets"
+            }
+          },
+          "tripKeysList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/stopStatusTripKeyList"
+            }
+          }
+        }
+      },
+      "stopStatusReferenceNumberList": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "stopStatusCarrierIdentifier": {
+        "type": "object",
+        "properties": {
+          "organizationIdType": {
+            "type": "integer",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "stopStatusShipperIdentifier": {
+        "type": "object",
+        "properties": {
+          "organizationIdType": {
+            "type": "integer",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "stopStatusAssets": {
+        "type": "object",
+        "properties": {
+          "assetType": {
+            "type": "integer",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      },
+      "stopStatusTripKeyList": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 40
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "tidJwtAuth": {
+        "type": "http",
+        "description": "A time-limited JSON Web Token generated via separate POST request using TID",
+        "scheme": "bearer"
+      },
+      "truckmateApiKeyAuth": {
+        "type": "http",
+        "description": "TruckMate API Key",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

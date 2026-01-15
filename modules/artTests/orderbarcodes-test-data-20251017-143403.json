@@ -1,0 +1,215 @@
+{
+  "startTime": "2025-10-17 14:34:05",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T14:34:05.202384-04:00",
+      "keyData": {
+        "orderId": 2,
+        "orderDetailId": 55009
+      },
+      "name": "PREREQUISITE: Get order detail ID",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Order retrieved successfully"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Order has detail lines"
+        }
+      ],
+      "description": "Ensure we have a valid order detail to work with"
+    },
+    {
+      "startTime": "2025-10-17T14:34:05.5441842-04:00",
+      "keyData": {
+        "existingBarcodeCount": 1
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns data (not error string)"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Response is valid"
+        }
+      ],
+      "description": "Retrieve existing barcodes"
+    },
+    {
+      "startTime": "2025-10-17T14:34:05.7991596-04:00",
+      "keyData": {
+        "barcode": {
+          "pieceCount": 5,
+          "altBarcode1": "TEST-75445",
+          "weight": 100.5,
+          "weightUnits": "LB"
+        },
+        "createdBarcodeId": 992
+      },
+      "name": "POST /orders/{orderId}/details/{orderDetailId}/barcodes (create)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns data (not error string)"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Has barcodeId property"
+        },
+        {
+          "message": "Expected 'TEST-75445', got ''",
+          "passed": false,
+          "name": "Has altBarcode1 property"
+        }
+      ],
+      "description": "Create a new barcode for testing"
+    },
+    {
+      "startTime": "2025-10-17T14:34:06.3544714-04:00",
+      "keyData": {},
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId}",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns data (not error string)"
+        },
+        {
+          "message": "Expected 992, got 992",
+          "passed": true,
+          "name": "Returns correct barcodeId"
+        },
+        {
+          "message": "",
+          "passed": true,
+          "name": "Has altBarcode1 property"
+        },
+        {
+          "message": "Expected 100.5, got 0",
+          "passed": false,
+          "name": "Has weight property"
+        }
+      ],
+      "description": "Retrieve specific barcode"
+    },
+    {
+      "startTime": "2025-10-17T14:34:06.636631-04:00",
+      "keyData": {
+        "barcodeId": 992,
+        "updates": {
+          "weight": 150.75,
+          "altBarcode1": "UPDATED-93485"
+        }
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId} (valid)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Returns data (not error string)"
+        },
+        {
+          "message": "Expected 'UPDATED-93485', got 'UPDATED-93485'",
+          "passed": true,
+          "name": "altBarcode1 updated"
+        },
+        {
+          "message": "Expected 150.75, got 150.75",
+          "passed": true,
+          "name": "weight updated"
+        }
+      ],
+      "description": "Update barcode properties"
+    },
+    {
+      "startTime": "2025-10-17T14:34:07.0244996-04:00",
+      "keyData": {
+        "succeeded": true,
+        "bodyBarcodeId": 992,
+        "pathBarcodeId": 992,
+        "issue": "TM-185682"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId} (with barcodeId in body)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Update succeeds (barcodeId in body is allowed/ignored)"
+        }
+      ],
+      "description": "TM-185682: Test if including barcodeId in request body causes issues"
+    },
+    {
+      "startTime": "2025-10-17T14:34:07.3285711-04:00",
+      "keyData": {
+        "succeeded": true,
+        "bodyBarcodeId": 10991,
+        "pathBarcodeId": 992,
+        "issue": "TM-185682"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId} (different barcodeId in body)",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Update succeeds (API ignores mismatched barcodeId)"
+        }
+      ],
+      "description": "TM-185682: Test if mismatched barcodeId causes duplicate error"
+    },
+    {
+      "startTime": "2025-10-17T14:34:07.5869656-04:00",
+      "keyData": {
+        "httpStatus": 400,
+        "field": "weight",
+        "expectedError": "invalidDouble",
+        "invalidValue": "not a number",
+        "barcodeId": 992,
+        "errorCode": "invalidDouble"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId} (invalid data type)",
+      "assertions": [
+        {
+          "message": "Expected error but update succeeded",
+          "passed": true,
+          "name": "Returns error [invalidDouble]"
+        },
+        {
+          "message": "Got status: 400",
+          "passed": true,
+          "name": "Returns 400 status"
+        }
+      ],
+      "description": "Reject string for numeric field"
+    },
+    {
+      "startTime": "2025-10-17T14:34:07.9032809-04:00",
+      "keyData": {
+        "barcodeId": 992
+      },
+      "name": "CLEANUP: DELETE /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId}",
+      "assertions": [
+        {
+          "message": "",
+          "passed": true,
+          "name": "Delete succeeded"
+        }
+      ],
+      "description": "Remove test barcode"
+    }
+  ],
+  "duration": 3.0780735,
+  "passed": 17,
+  "totalAssertions": 19,
+  "failed": 2,
+  "endTime": "2025-10-17 14:34:08"
+}

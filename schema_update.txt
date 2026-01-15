@@ -1,0 +1,13 @@
+WARNING: The names of some imported commands from the module 'tmDb' include 
+unapproved verbs that might make them less discoverable. To find the commands 
+with unapproved verbs, run the Import-Module command again with the Verbose 
+parameter. For a list of approved verbs, type Get-Verb.
+copy-AllSchemaUpdates : Network Patch folders not found:  
+At line:1 char:55
++ ... e 'C:\git\tmdb-core\modules\tmDb' -Force; copy-AllSchemaUpdates *25.3
++                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorExcep 
+   tion
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorExceptio 
+   n,Copy-AllSchemaUpdates
+ 

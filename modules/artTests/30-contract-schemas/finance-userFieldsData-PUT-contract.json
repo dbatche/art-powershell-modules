@@ -1,0 +1,569 @@
+{
+  "Path": "/userFieldsData",
+  "Method": "PUT",
+  "OperationId": "PutFinanceUserFieldsData",
+  "Summary": "Update a user field",
+  "Description": "Updates a user field record for the specified source type.\n\nUser fields for apInvoices can be viewed in the AP Invoice Entry application.\n\nUser fields for driverStatements can be viewed in the Driver Pay Audit application → Pay Statement History.",
+  "RequestSchema": {
+    "Required": null,
+    "IsArray": false,
+    "Properties": {
+      "userData": {
+        "WriteOnly": null,
+        "Name": "userData",
+        "ReadOnly": null,
+        "Nullable": null,
+        "Enum": null,
+        "Minimum": null,
+        "Format": null,
+        "MaxLength": 80,
+        "Pattern": null,
+        "MinLength": null,
+        "Maximum": null,
+        "Description": null,
+        "Type": "string"
+      }
+    },
+    "SchemaName": "PutUserFieldsDataDto"
+  },
+  "ResponseSchemas": {
+    "404": {
+      "ExpandedProperties": {
+        "errors": {
+          "Type": "array",
+          "ItemsProperties": {
+            "code": {
+              "WriteOnly": null,
+              "Name": "code",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "description": {
+              "WriteOnly": null,
+              "Name": "description",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "type": {
+              "WriteOnly": null,
+              "Name": "type",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "title": {
+              "WriteOnly": null,
+              "Name": "title",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            }
+          },
+          "ItemsSchema": "ARTError"
+        }
+      },
+      "IsArray": false,
+      "Properties": {
+        "errors": {
+          "WriteOnly": null,
+          "Name": "errors",
+          "ReadOnly": null,
+          "Nullable": null,
+          "Enum": null,
+          "Minimum": null,
+          "Format": null,
+          "MaxLength": null,
+          "Pattern": null,
+          "MinLength": null,
+          "Maximum": null,
+          "Description": null,
+          "Type": "array"
+        }
+      },
+      "SchemaName": "ARTErrors"
+    },
+    "200": {
+      "ExpandedProperties": {
+        "userFieldsData": {
+          "Type": "array",
+          "ItemsProperties": {
+            "sourceType": {
+              "WriteOnly": null,
+              "Name": "sourceType",
+              "ReadOnly": null,
+              "Nullable": true,
+              "Enum": [
+                "driverStatements",
+                "apInvoices",
+                ""
+              ],
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "userData": {
+              "WriteOnly": null,
+              "Name": "userData",
+              "ReadOnly": null,
+              "Nullable": true,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": 80,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "sourceId": {
+              "WriteOnly": null,
+              "Name": "sourceId",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "integer"
+            },
+            "userField": {
+              "WriteOnly": null,
+              "Name": "userField",
+              "ReadOnly": null,
+              "Nullable": true,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": 30,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            }
+          },
+          "ItemsSchema": "userFieldData"
+        }
+      },
+      "IsArray": false,
+      "Properties": {
+        "userFieldsData": {
+          "WriteOnly": null,
+          "Name": "userFieldsData",
+          "ReadOnly": null,
+          "Nullable": null,
+          "Enum": null,
+          "Minimum": null,
+          "Format": null,
+          "MaxLength": null,
+          "Pattern": null,
+          "MinLength": null,
+          "Maximum": null,
+          "Description": null,
+          "Type": "array"
+        }
+      },
+      "SchemaName": "PutFinanceUserFieldsData200"
+    },
+    "403": {
+      "ExpandedProperties": {
+        "errors": {
+          "Type": "array",
+          "ItemsProperties": {
+            "code": {
+              "WriteOnly": null,
+              "Name": "code",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "description": {
+              "WriteOnly": null,
+              "Name": "description",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "type": {
+              "WriteOnly": null,
+              "Name": "type",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "title": {
+              "WriteOnly": null,
+              "Name": "title",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            }
+          },
+          "ItemsSchema": "ARTError"
+        }
+      },
+      "IsArray": false,
+      "Properties": {
+        "errors": {
+          "WriteOnly": null,
+          "Name": "errors",
+          "ReadOnly": null,
+          "Nullable": null,
+          "Enum": null,
+          "Minimum": null,
+          "Format": null,
+          "MaxLength": null,
+          "Pattern": null,
+          "MinLength": null,
+          "Maximum": null,
+          "Description": null,
+          "Type": "array"
+        }
+      },
+      "SchemaName": "ARTErrors"
+    },
+    "401": {
+      "ExpandedProperties": {
+        "errors": {
+          "Type": "array",
+          "ItemsProperties": {
+            "code": {
+              "WriteOnly": null,
+              "Name": "code",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "description": {
+              "WriteOnly": null,
+              "Name": "description",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "type": {
+              "WriteOnly": null,
+              "Name": "type",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "title": {
+              "WriteOnly": null,
+              "Name": "title",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            }
+          },
+          "ItemsSchema": "ARTError"
+        }
+      },
+      "IsArray": false,
+      "Properties": {
+        "errors": {
+          "WriteOnly": null,
+          "Name": "errors",
+          "ReadOnly": null,
+          "Nullable": null,
+          "Enum": null,
+          "Minimum": null,
+          "Format": null,
+          "MaxLength": null,
+          "Pattern": null,
+          "MinLength": null,
+          "Maximum": null,
+          "Description": null,
+          "Type": "array"
+        }
+      },
+      "SchemaName": "ARTErrors"
+    },
+    "400": {
+      "ExpandedProperties": {
+        "errors": {
+          "Type": "array",
+          "ItemsProperties": {
+            "code": {
+              "WriteOnly": null,
+              "Name": "code",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "description": {
+              "WriteOnly": null,
+              "Name": "description",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "type": {
+              "WriteOnly": null,
+              "Name": "type",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            },
+            "title": {
+              "WriteOnly": null,
+              "Name": "title",
+              "ReadOnly": null,
+              "Nullable": null,
+              "Enum": null,
+              "Minimum": null,
+              "Format": null,
+              "MaxLength": null,
+              "Pattern": null,
+              "MinLength": null,
+              "Maximum": null,
+              "Description": null,
+              "Type": "string"
+            }
+          },
+          "ItemsSchema": "ARTError"
+        }
+      },
+      "IsArray": false,
+      "Properties": {
+        "errors": {
+          "WriteOnly": null,
+          "Name": "errors",
+          "ReadOnly": null,
+          "Nullable": null,
+          "Enum": null,
+          "Minimum": null,
+          "Format": null,
+          "MaxLength": null,
+          "Pattern": null,
+          "MinLength": null,
+          "Maximum": null,
+          "Description": null,
+          "Type": "array"
+        }
+      },
+      "SchemaName": "ARTErrors"
+    }
+  },
+  "Parameters": [
+    {
+      "Name": "sourceType",
+      "In": "query",
+      "Required": true,
+      "Type": "string",
+      "Format": null,
+      "Description": "Specify the type of user fields",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": [
+        "driverStatements",
+        "apInvoices"
+      ]
+    },
+    {
+      "Name": "sourceId",
+      "In": "query",
+      "Required": false,
+      "Type": "integer",
+      "Format": null,
+      "Description": "sourceId",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": null
+    },
+    {
+      "Name": "userField",
+      "In": "query",
+      "Required": true,
+      "Type": "string",
+      "Format": null,
+      "Description": "userField",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": null
+    },
+    {
+      "Name": "limit",
+      "In": "query",
+      "Required": false,
+      "Type": "integer",
+      "Format": null,
+      "Description": "Specifies the maximum number of items to include in the response results.",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": null
+    },
+    {
+      "Name": "offset",
+      "In": "query",
+      "Required": false,
+      "Type": "integer",
+      "Format": null,
+      "Description": "Specifies the number of items to skip before beginning to select the records to return.",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": null
+    },
+    {
+      "Name": "$select",
+      "In": "query",
+      "Required": false,
+      "Type": "string",
+      "Format": null,
+      "Description": "Select allows to request a specific set of properties, see [Selecting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361040)",
+      "Minimum": null,
+      "Maximum": null,
+      "MinLength": null,
+      "MaxLength": null,
+      "Pattern": null,
+      "Enum": null
+    }
+  ]
+}

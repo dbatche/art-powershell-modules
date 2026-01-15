@@ -1,0 +1,168 @@
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+
+
+apInvoiceId            : 2
+auditNumber            : 
+vendorId               : VENDOR
+vendorBillNumber       : AB12345
+vendorBillAmount       : 100
+vendorBillDate         : 12/31/2022 12:00:00 AM
+vendorBillReference    : REFERENCE
+currencyCode           : CAD
+poNumber               : 
+equipmentId            : 
+powerUnitId            : 
+trailerId              : 
+tax1                   : 0
+tax2                   : 0
+payableFunctionalTotal : 100
+transactionDate        : 
+payableType            : bill
+payableHold            : False
+payableTerms           : 
+payableAgingDate       : 12/31/2022 12:00:00 AM
+payableDiscount        : 0
+payableDiscountDate    : 12/31/2022 12:00:00 AM
+payableDueDate         : 12/31/2022 12:00:00 AM
+glAccount              : 
+autoForeignExchange    : True
+isIntercompany         : False
+

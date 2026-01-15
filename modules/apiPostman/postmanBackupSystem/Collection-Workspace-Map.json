@@ -1,0 +1,52 @@
+{
+  "Contract Tests": {
+    "CollectionId": "8229908-8d36f75f-8c41-41bd-8bb9-3b476d4e8ccd",
+    "WorkspaceId": "5f0299ec-ffb6-42b4-9d53-9c4766132d60",
+    "WorkspaceName": "TM - TruckMate"
+  },
+  "TM - TruckMate": {
+    "CollectionId": "8229908-9882ef5d-1ba8-483c-b609-1b507180f67c",
+    "WorkspaceId": "5f0299ec-ffb6-42b4-9d53-9c4766132d60",
+    "WorkspaceName": "TM - TruckMate"
+  },
+  "TM - Master Data": {
+    "CollectionId": "8229908-2c4dc1fc-b5d0-4923-b20d-501a8c2b4d68",
+    "WorkspaceId": "04a93675-32b1-4c85-b8f7-8aa0196a8e6b",
+    "WorkspaceName": "TM - Master Data"
+  },
+  "TM - Trips": {
+    "CollectionId": "11896768-ead65354-bd5a-467b-ad53-e4c8fb8d471a",
+    "WorkspaceId": "ac6817f5-408f-474f-802c-6189417e5775",
+    "WorkspaceName": "TM - Trips"
+  },
+  "TM - Trips POST/PUT": {
+    "CollectionId": "11896768-19dca00d-e47a-44be-8267-43ccc1242729",
+    "WorkspaceId": "ac6817f5-408f-474f-802c-6189417e5775",
+    "WorkspaceName": "TM - Trips"
+  },
+  "TM - Orders": {
+    "CollectionId": "8229908-048191f7-b6f7-44ad-8d62-4178b8944f08",
+    "WorkspaceId": "ae0ddd82-8128-4c1e-ae7a-ff9dd5708b29",
+    "WorkspaceName": "TM - Orders"
+  },
+  "Finance Functional Tests": {
+    "CollectionId": "8229908-779780a9-97d0-4004-9a96-37e8c64c3405",
+    "WorkspaceId": "73c399a6-2cac-439d-be7e-cfcb3aef519a",
+    "WorkspaceName": "TM - Finance"
+  },
+  "TM - CloudHub Functional Tests": {
+    "CollectionId": "7660761-6515a3e4-158d-45b5-80c0-05645d794d3e",
+    "WorkspaceId": "8336cc29-ee97-43dd-883d-ff8d36bfe143",
+    "WorkspaceName": "TM - CloudHub"
+  },
+  "TM - Visibility": {
+    "CollectionId": "11896768-e6367dcf-d508-467e-aa2b-96bfa593a331",
+    "WorkspaceId": "419cd1fe-8bd3-4334-b574-6feba34d48d3",
+    "WorkspaceName": "TM - Visibility"
+  },
+  "Functional Tests": {
+    "CollectionId": "8229908-b15b8488-7ab0-43a9-a532-fee56e26f738",
+    "WorkspaceId": "dfd62437-98b0-4af0-8466-dccdc2f4082c",
+    "WorkspaceName": "TM - ConnectedDock"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "event": [
+    {
+      "script": {
+        "exec": [
+          "line1"
+        ]
+      },
+      "listen": "test"
+    }
+  ],
+  "item": [],
+  "name": "200"
+}

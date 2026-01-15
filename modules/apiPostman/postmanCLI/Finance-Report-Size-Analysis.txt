@@ -1,0 +1,41 @@
+
+Analyzing: Finance-Functional-Tests-2025-10-02-09-59-53.json
+Total File Size: 73.11 MB
+
+Reading JSON file (this may take a moment)...
+Total Executions: 532
+Sampling 100 executions for analysis...
+
+ + ================================================================================
+SIZE BREAKDOWN (Estimated based on 100 samples)
+================================================================================
+
+Component                     SizeMB Percentage AvgPerExecution
+---------                     ------ ---------- ---------------
+Response Bodies (stream.data)  14.44 19.8%      27.79 KB
+Response Headers                0.26 0.4%       509 bytes
+Request Headers                 0.37 0.5%       735 bytes
+Other Metadata                  4.16 5.7%       8193 bytes
+Meta/Summary (overhead)         0.00 0%         N/A
+
+
+Estimated Total (executions): 19.22 MB
+Actual File Size: 73.11 MB
+Difference (JSON formatting overhead): 53.89 MB
+
+ + ================================================================================
+RECOMMENDATIONS
+================================================================================
+
+FileName           : Finance-Functional-Tests-2025-10-02-09-59-53.json
+TotalSizeMB        : 73.11
+TotalExecutions    : 532
+ResponseBodiesMB   : 14.44
+ResponseBodiesPct  : 19.8
+ResponseHeadersMB  : 0.26
+ResponseHeadersPct : 0.4
+RequestHeadersMB   : 0.37
+RequestHeadersPct  : 0.5
+MetadataMB         : 4.16
+MetadataPct        : 5.7
+

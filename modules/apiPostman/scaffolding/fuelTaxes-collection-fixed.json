@@ -1,0 +1,1359 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "Finance API - FuelTaxes Automated Tests",
+    "description": "Auto-generated from PowerShell test files. Created: 2025-10-10 17:21:44"
+  },
+  "item": [
+    {
+      "name": "POST tripFuelPurchases",
+      "item": [
+        {
+          "name": "201",
+          "item": [
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 201', function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 201) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - minimal fields",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 201', function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 201) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - all fields",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseCardNumber\":\"1234\",\"purchaseDate\":\"2025-01-15T14:30:00\",\"fuelType1\":\"DIESEL\",\"fuelCost2\":75.0,\"fuelType2\":\"DEF\",\"fuelCost1\":300.0,\"odometerReading\":125000,\"fuelVolume2\":50.0,\"fuelVolume1\":200.0,\"purchaseLocation\":\"Test Truck Stop\",\"vendorId\":\"VENDOR01\",\"invoiceNumber\":\"INV-TEST-001\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 201', function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 201) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - multiple items",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "[{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T08:00:00\",\"fuelCost1\":150.0,\"purchaseLocation\":\"Location A\",\"fuelVolume1\":100.0},{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T16:00:00\",\"fuelCost1\":187.5,\"purchaseLocation\":\"Location B\",\"fuelVolume1\":125.0}]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 201', function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 201) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - with second fuel type",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":270.0,\"fuelVolume1\":180.0,\"fuelType2\":\"DEF\",\"fuelType1\":\"DIESEL\",\"purchaseLocation\":\"Full Service Station\",\"fuelVolume2\":45.0,\"purchaseDate\":\"2025-01-15T12:00:00\",\"fuelCost2\":67.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 201', function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 201) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "Edge - very large volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":149999.99,\"purchaseLocation\":\"Bulk Purchase\",\"fuelVolume1\":99999.99}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            }
+          ]
+        },
+        {
+          "name": "4xx",
+          "item": [
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - not an array",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - invalid date format",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - negative volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":-50.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - negative amount",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":-100.0,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - empty fuelType",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - volume without amount",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelType1\":\"DIESEL\",\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - amount without volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelType1\":\"DIESEL\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - volume as string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":\"not-a-number\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - amount as string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":\"not-a-number\",\"purchaseLocation\":\"Test Location\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "POST tripFuelPurchases - invalid vendorId",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"vendorId\":\"INVALID_VENDOR_9999\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelVolume1\":150.5,\"purchaseLocation\":\"Test Location\",\"fuelCost1\":225.75}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "Edge - zero volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":0,\"purchaseLocation\":\"Test\",\"fuelVolume1\":0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "Edge - empty array",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "[]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "Edge - very long location string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-15T10:30:00\",\"fuelCost1\":225.75,\"purchaseLocation\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"fuelVolume1\":150.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "POST"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUT tripFuelPurchases",
+      "item": [
+        {
+          "name": "200",
+          "item": [
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - minimal update",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":263.25,\"fuelVolume1\":175.5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - update multiple fields",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"DIESEL\",\"purchaseDate\":\"2025-01-16T14:30:00\",\"fuelCost1\":300.0,\"purchaseLocation\":\"Updated Test Location\",\"fuelVolume1\":200.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - add second fuel type",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume2\":45.0,\"fuelType1\":\"DIESEL\",\"fuelVolume1\":180.0,\"fuelCost2\":67.5,\"fuelType2\":\"DEF\",\"fuelCost1\":270.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - update with all optional fields",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseCardNumber\":\"5678\",\"purchaseDate\":\"2025-01-17T10:00:00\",\"fuelType1\":\"DIESEL\",\"vendorId\":\"VENDOR01\",\"fuelCost1\":375.0,\"odometerReading\":130000,\"fuelVolume1\":250.0,\"purchaseLocation\":\"Full Update Location\",\"invoiceNumber\":\"INV-UPDATE-001\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - remove second fuel type",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume2\":null,\"fuelType1\":\"DIESEL\",\"fuelVolume1\":150.0,\"fuelCost2\":null,\"fuelType2\":\"\",\"fuelCost1\":225.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - update with $select",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42?$select=tripFuelPurchaseId,fuelVolume1,fuelCost1",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":232.5,\"fuelVolume1\":155.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - very large volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":149999.99,\"fuelVolume1\":99999.99}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - minimal decimal values",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":0.01,\"fuelVolume1\":0.01}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - update only location",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseLocation\":\"New Location Only\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 200', function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "if (pm.response.code === 200) {",
+                      "    pm.test('Response is valid JSON', function () {",
+                      "        pm.response.to.be.json;",
+                      "    });",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - update only date",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseDate\":\"2025-01-20T08:00:00\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            }
+          ]
+        },
+        {
+          "name": "4xx",
+          "item": [
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - negative volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume1\":-50.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - negative amount",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":-100.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - zero volume",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume1\":0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - empty fuelType",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelType1\":\"\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - invalid date format",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseDate\":\"2025-01-17\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - invalid vendorId",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"vendorId\":\"INVALID_VENDOR_9999\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - volume as string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume1\":\"not-a-number\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - amount as string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelCost1\":\"not-a-number\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - odometer as string",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"odometerReading\":\"not-a-number\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - very long location",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{\"purchaseLocation\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - empty body",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42",
+                "header": [],
+                "body": {
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - invalid query param",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42?invalidParam=test",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume1\":150.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            },
+            {
+              "event": [
+                {
+                  "script": {
+                    "exec": [
+                      "pm.test('Status code is 400', function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  },
+                  "listen": "test"
+                }
+              ],
+              "name": "PUT tripFuelPurchases - $select with invalid field",
+              "request": {
+                "url": "{{DOMAIN}}/fuelTaxes/2/tripFuelPurchases/42?$select=nonExistentField",
+                "header": [],
+                "body": {
+                  "raw": "{\"fuelVolume1\":150.0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  },
+                  "mode": "raw"
+                },
+                "method": "PUT"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

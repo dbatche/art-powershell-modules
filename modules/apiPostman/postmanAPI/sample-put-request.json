@@ -1,0 +1,62 @@
+{
+  "name": "minimal fields",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "id": "21f9f166-3510-44c0-9b43-110d1700bccd",
+        "exec": [
+          ""
+        ],
+        "type": "text/javascript",
+        "packages": {}
+      }
+    },
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "ab364f60-3241-4c0c-8307-eb1af269f429",
+        "exec": [
+          "pm.collectionVariables.set('temp_randomCurrency', lodash.sample(['CAD', 'USD', 'AUD', 'NZD']));"
+        ],
+        "type": "text/javascript",
+        "packages": {}
+      }
+    }
+  ],
+  "id": "785538e4-1137-4c7a-bb43-48aec0b90d24",
+  "protocolProfileBehavior": {
+    "disableBodyPruning": true
+  },
+  "request": {
+    "method": "PUT",
+    "header": [],
+    "body": {
+      "mode": "raw",
+      "raw": "{\r\n    \"currencyCode\": \"{{temp_randomCurrency}}\",\r\n    \"exchangeDate\": \"{{randDate}}\",\r\n    \"exchangeRate\": {{$randomPrice}}\r\n}",
+      "options": {
+        "raw": {
+          "language": "json"
+        }
+      }
+    },
+    "url": {
+      "raw": "{{DOMAIN}}/currencyRates/{{tempCurrencyRateId}}?location={{tempRandLocation}}",
+      "host": [
+        "{{DOMAIN}}"
+      ],
+      "path": [
+        "currencyRates",
+        "{{tempCurrencyRateId}}"
+      ],
+      "query": [
+        {
+          "key": "location",
+          "value": "{{tempRandLocation}}"
+        }
+      ]
+    }
+  },
+  "response": [],
+  "uid": "8229908-785538e4-1137-4c7a-bb43-48aec0b90d24"
+}

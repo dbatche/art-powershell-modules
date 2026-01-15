@@ -1,0 +1,606 @@
+{
+  "name": "201",
+  "item": [
+    {
+      "name": "Arrive Shipper - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "13c171a8-b7a6-4b4a-a55f-4e369184141a",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'ARRSHIP');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "0091fd19-7023-48b2-828b-c41e887e3a84",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 10,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-0091fd19-7023-48b2-828b-c41e887e3a84"
+    },
+    {
+      "name": "Assignment Status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7dbdbc27-768e-4bb8-b740-2edcc77f1c5b",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'ASSGN');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "44af9e5a-1520-45b5-ab4b-4874bfa9ce6a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 1,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-44af9e5a-1520-45b5-ab4b-4874bfa9ce6a"
+    },
+    {
+      "name": "Cancelled Status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7dbdbc27-768e-4bb8-b740-2edcc77f1c5b",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'CANCL');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "81597288-2daf-492c-9db0-c179ffb15e63",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 9,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-81597288-2daf-492c-9db0-c179ffb15e63"
+    },
+    {
+      "name": "Depart Shipper - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6e123ff0-52e1-4579-a396-d36a980f6b34",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'DEPSHIP');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "95b27fe3-ed7a-469b-a94a-d3fa1478556f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 5,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-95b27fe3-ed7a-469b-a94a-d3fa1478556f"
+    },
+    {
+      "name": "Delivered - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripUpdateStatus(pm, 'ARRSHIP', (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6e123ff0-52e1-4579-a396-d36a980f6b34",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'DELVD');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "e245d959-4c4d-4f7c-b88f-0faf14a45a11",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 6,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-e245d959-4c4d-4f7c-b88f-0faf14a45a11"
+    },
+    {
+      "name": "Dispatch status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "222f4073-6b71-4937-b543-cd82e1e79a74",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'DISP');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "078e7dfb-8c99-48ca-84ab-b1e5ceb60ee1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 4,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-078e7dfb-8c99-48ca-84ab-b1e5ceb60ee1"
+    },
+    {
+      "name": "Enroute status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "222f4073-6b71-4937-b543-cd82e1e79a74",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'ENRTE');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "96db3497-37a2-400c-9055-e8717301ac80",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 7,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-96db3497-37a2-400c-9055-e8717301ac80"
+    },
+    {
+      "name": "Completed status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "222f4073-6b71-4937-b543-cd82e1e79a74",
+            "exec": [
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'COMPLETE');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "f4fb99d6-2f34-4293-a673-0c12d4ee6765",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 8,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-f4fb99d6-2f34-4293-a673-0c12d4ee6765"
+    },
+    {
+      "name": "Unknown status [0] > Other Status - TM-184208",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "415d92ed-0f85-496b-bed4-f148171811b3",
+            "exec": [
+              "utils.createTripAssignOrder(pm, undefined, (response) => {\r",
+              "    let responseJson = response.json();\r",
+              "    pm.variables.set('temp_tripNumber', responseJson.tripNumber);\r",
+              "} );"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "11c270ca-f1e3-44dc-96de-37ec946fea1f",
+            "exec": [
+              "//utils.testInvalidBusinessLogicResponse('Entry code behavior status cannot be applied to shipments');\r",
+              "if (pm.response.code == 201){\r",
+              "    utils.verifyTripStatus(pm, parseInt(pm.variables.get('temp_tripNumber')), 'UNKNOWNVIS');\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "4476eb3c-3b13-4190-9126-4b03c842ecd4",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"shipmentStatus\": 0,\r\n  \"tripId\": \"{{temp_tripNumber}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-4476eb3c-3b13-4190-9126-4b03c842ecd4"
+    },
+    {
+      "name": "Giant all-in-one Test",
+      "id": "87a24701-ea5d-4a3b-bd08-9b0e53d46495",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{DOMAIN}}/shipmentStatus",
+          "host": [
+            "{{DOMAIN}}"
+          ],
+          "path": [
+            "shipmentStatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "11896768-87a24701-ea5d-4a3b-bd08-9b0e53d46495"
+    }
+  ],
+  "id": "42d7e1db-9b52-4f3f-b7a3-c3e861dd1c4e",
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "1c11a481-4934-4374-814a-08f3de93e72a",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "caf8e4d4-c817-48ed-81d8-b6dd54c01cdb",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "if (utils.testStatusCode(201).status) {\r",
+          "     utils.validateJsonSchemaIfCode(201);\r",
+          "\r",
+          "    let responseJson = pm.response.json();\r",
+          "    let jsonRequest = JSON.parse(pm.request.body.raw);\r",
+          "    utils.validateFieldValuesIfCode(201, responseJson, jsonRequest); \r",
+          "}"
+        ]
+      }
+    }
+  ],
+  "uid": "11896768-42d7e1db-9b52-4f3f-b7a3-c3e861dd1c4e"
+}

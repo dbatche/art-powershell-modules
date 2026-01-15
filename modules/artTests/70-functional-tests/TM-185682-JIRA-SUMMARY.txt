@@ -1,0 +1,71 @@
+================================================================================
+TM-185682: Duplicate Barcode ID with PUT in REST API
+TEST RESULTS SUMMARY - October 17, 2025
+================================================================================
+
+RESOLUTION: ✅ NOT A BUG - WORKING AS DESIGNED
+
+ISSUE TESTED:
+What happens when barcodeId is included in the PUT request body for:
+  PUT /orders/{orderId}/details/{orderDetailId}/barcodes/{barcodeId}
+
+TEST RESULTS:
+-------------
+Test #1: Including same barcodeId in request body as path parameter
+  Result: ✅ Update succeeds
+  Behavior: API ignores barcodeId field in body
+  
+Test #2: Including different barcodeId in request body than path parameter  
+  Result: ✅ Update succeeds
+  Behavior: API ignores barcodeId field in body
+
+CONCLUSION:
+-----------
+The API demonstrates CORRECT RESTful design:
+  • Path parameter defines the resource identity
+  • Request body only contains properties to update
+  • barcodeId in request body is properly ignored
+  • No duplicate errors occur because API uses path parameter only
+  
+This is the expected and proper behavior for RESTful APIs.
+
+RECOMMENDATION:
+---------------
+✅ Mark ticket as "Working as Designed"
+✅ Close ticket - No code changes needed
+
+EVIDENCE:
+---------
+Test script: artTests/70-functional-tests/OrderDetailBarcodes-Scenario.ps1
+Test log: orderbarcodes-test-data-20251017-143403.json
+Documentation: artTests/70-functional-tests/TM-185682-README.md
+
+Test execution: 9 scenarios, 19 assertions
+  - TM-185682 specific tests: 2/2 passed
+  - Supporting tests: 15/17 passed
+  - Failed tests unrelated to TM-185682 (POST issue - see below)
+
+================================================================================
+SEPARATE ISSUE DISCOVERED (Not part of TM-185682):
+================================================================================
+
+ISSUE: POST /orders/{orderId}/details/{orderDetailId}/barcodes 
+       doesn't save optional field values
+
+SYMPTOMS:
+  • POST creates barcode with barcodeId successfully
+  • All optional fields (altBarcode1, weight, etc.) default to empty/zero
+  • PUT successfully updates values after creation
+  
+POSSIBLE CAUSES:
+  1. By Design: POST creates "skeleton", PUT updates values (two-step workflow)
+  2. Business Rules: Certain fields only settable via PUT
+  3. Bug: POST should save optional fields but doesn't
+
+RECOMMENDATION:
+  • Verify with TM development team if this is expected behavior
+  • If bug, create separate Jira ticket
+  • If by design, update API documentation to clarify workflow
+
+================================================================================
+

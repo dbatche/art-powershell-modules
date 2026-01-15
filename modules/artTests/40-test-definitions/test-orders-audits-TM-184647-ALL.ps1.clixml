@@ -1,0 +1,1598 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Collections.Hashtable</T>
+      <T>System.Object</T>
+    </TN>
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - valid audit for pickUpBy field</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="1">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="2">
+                <TN RefId="1">
+                  <T>System.Object[]</T>
+                  <T>System.Array</T>
+                  <T>System.Object</T>
+                </TN>
+                <LST>
+                  <Obj RefId="3">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Customer requested earlier pickup time</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">CUSTREQ</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="4">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - multiple audit fields</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="5">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">deliverBy</S>
+              <S N="Value">2025-10-15T18:00:00</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="6">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="7">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Customer requested earlier pickup</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">CUSTREQ</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="8">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Delivery window adjusted per customer</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">DELCHANGE</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="9">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - missing reasonCode in audit (expect 400)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="10">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="11">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="12">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Missing reasonCode - should fail validation</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">400</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="13">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - missing auditField (expect 400)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="14">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="15">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="16">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Missing auditField - should fail validation</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">CUSTREQ</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">400</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="17">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - missing comment (expect 400)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="18">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="19">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="20">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">CUSTREQ</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">400</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="21">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - reasonCode exceeds 10 chars (expect 400)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="22">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="23">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="24">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">ReasonCode exceeds 10 character max limit</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">TOOLONGCODE123</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">400</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="25">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for pickUpApptMade boolean</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="26">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">pickUpApptMade</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="27">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="28">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Appointment confirmed by customer service</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">APPTCONF</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpApptMade</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="29">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - empty audits array (valid)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="30">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="31">
+                <TNRef RefId="1" />
+                <LST />
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="32">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit with custom status code</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/583498</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="33">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T10:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="34">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="35">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Custom audit status code test</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">OVERRIDE</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">CUSTOM</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <I32 N="Value">583498</I32>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="36">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for pickUpByEnd field</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="37">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpByEnd</S>
+              <S N="Value">2025-10-15T18:00:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="38">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="39">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Extended pickup window for customer convenience</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">WINDCHANGE</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpByEnd</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">{orderId}</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="40">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for deliverByEnd field</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="41">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">deliverByEnd</S>
+              <S N="Value">2025-10-16T23:59:00</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="42">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="43">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Extended delivery window due to weather delay</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">DELAYEXT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverByEnd</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">{orderId}</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="44">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for pickUpApptReq boolean</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="45">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">pickUpApptReq</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="46">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="47">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Appointment now required per customer request</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">APPTREQ</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpApptReq</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">{orderId}</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="48">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit with time defaulting (no time component)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="49">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="50">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="51">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing date-only format - API should default time to 00:00</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">DATEONLY</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">{orderId}</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="52">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit with multiple date/time fields</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="53">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">pickUpByEnd</S>
+              <S N="Value">2025-10-15T17:00:00</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="54">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="55">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Updated pickup window</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">WINDOWUPD</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="56">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Updated pickup window end</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">WINDOWUPD</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpByEnd</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="57">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Updated delivery window</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">WINDOWUPD</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverBy</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="58">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Updated delivery window end</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">WINDOWUPD</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverByEnd</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-15T08:00:00</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">{orderId}</S>
+            </En>
+            <En>
+              <S N="Key">deliverBy</S>
+              <S N="Value">2025-10-16T09:00:00</S>
+            </En>
+            <En>
+              <S N="Key">deliverByEnd</S>
+              <S N="Value">2025-10-16T18:00:00</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="59">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">GET orders/{orderId} - verify audits NOT returned (write-only)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">GET</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Nil N="Value" />
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="60">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">GET orders/{orderId} - attempt =audits (should not work)</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">GET</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}?$expand=audits</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Nil N="Value" />
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="61">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">GET orders - list with  attempt</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">GET</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders?$top=1&amp;$expand=audits</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Nil N="Value" />
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="62">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/{orderId}</S>
+      </En>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">GET orders/{orderId} - verify order after audit update</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">GET</S>
+      </En>
+      <En>
+        <S N="Key">Comment</S>
+        <S N="Value">After PUT with audit, GET should show updated field values but NOT the audits themselves</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Nil N="Value" />
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="63">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for deliveryApptReq boolean</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/PLACEHOLDER_ORDER_ID</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="64">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">deliveryApptReq</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">PLACEHOLDER_ORDER_ID</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="65">
+                <TNRef RefId="0" />
+                <DCT>
+                  <En>
+                    <S N="Key">comment</S>
+                    <S N="Value">Delivery appointment required changed</S>
+                  </En>
+                  <En>
+                    <S N="Key">reasonCode</S>
+                    <S N="Value">DELAPPTREQ</S>
+                  </En>
+                  <En>
+                    <S N="Key">auditField</S>
+                    <S N="Value">deliveryApptReq</S>
+                  </En>
+                  <En>
+                    <S N="Key">auditStatus</S>
+                    <S N="Value">AUDIT</S>
+                  </En>
+                </DCT>
+              </Obj>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="66">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit for deliveryApptMade boolean</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/PLACEHOLDER_ORDER_ID</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="67">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">deliveryApptMade</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">PLACEHOLDER_ORDER_ID</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="68">
+                <TNRef RefId="0" />
+                <DCT>
+                  <En>
+                    <S N="Key">comment</S>
+                    <S N="Value">Delivery appointment confirmed/made</S>
+                  </En>
+                  <En>
+                    <S N="Key">reasonCode</S>
+                    <S N="Value">DELAPPTSET</S>
+                  </En>
+                  <En>
+                    <S N="Key">auditField</S>
+                    <S N="Value">deliveryApptMade</S>
+                  </En>
+                  <En>
+                    <S N="Key">auditStatus</S>
+                    <S N="Value">AUDIT</S>
+                  </En>
+                </DCT>
+              </Obj>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+  <Obj RefId="69">
+    <TNRef RefId="0" />
+    <DCT>
+      <En>
+        <S N="Key">Name</S>
+        <S N="Value">PUT orders - audit ALL 8 auditable fields at once</S>
+      </En>
+      <En>
+        <S N="Key">Method</S>
+        <S N="Value">PUT</S>
+      </En>
+      <En>
+        <S N="Key">Url</S>
+        <S N="Value">/orders/PLACEHOLDER_ORDER_ID</S>
+      </En>
+      <En>
+        <S N="Key">Body</S>
+        <Obj N="Value" RefId="70">
+          <TNRef RefId="0" />
+          <DCT>
+            <En>
+              <S N="Key">deliverByEnd</S>
+              <S N="Value">2025-10-21T17:00:00</S>
+            </En>
+            <En>
+              <S N="Key">deliveryApptMade</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">pickUpByEnd</S>
+              <S N="Value">2025-10-20T12:00:00</S>
+            </En>
+            <En>
+              <S N="Key">pickUpApptMade</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">isExclusive</S>
+              <S N="Value">False</S>
+            </En>
+            <En>
+              <S N="Key">deliverBy</S>
+              <S N="Value">2025-10-21T08:00:00</S>
+            </En>
+            <En>
+              <S N="Key">deliveryApptReq</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">orderId</S>
+              <S N="Value">PLACEHOLDER_ORDER_ID</S>
+            </En>
+            <En>
+              <S N="Key">audits</S>
+              <Obj N="Value" RefId="71">
+                <TNRef RefId="1" />
+                <LST>
+                  <Obj RefId="72">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - pickUpBy</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpBy</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="73">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - pickUpByEnd</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpByEnd</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="74">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - deliverBy</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverBy</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="75">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - deliverByEnd</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliverByEnd</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="76">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - pickUpApptReq</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpApptReq</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="77">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - pickUpApptMade</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">pickUpApptMade</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="78">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - deliveryApptReq</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliveryApptReq</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                  <Obj RefId="79">
+                    <TNRef RefId="0" />
+                    <DCT>
+                      <En>
+                        <S N="Key">comment</S>
+                        <S N="Value">Testing all 8 auditable fields - deliveryApptMade</S>
+                      </En>
+                      <En>
+                        <S N="Key">reasonCode</S>
+                        <S N="Value">ALLFIELDS</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditField</S>
+                        <S N="Value">deliveryApptMade</S>
+                      </En>
+                      <En>
+                        <S N="Key">auditStatus</S>
+                        <S N="Value">AUDIT</S>
+                      </En>
+                    </DCT>
+                  </Obj>
+                </LST>
+              </Obj>
+            </En>
+            <En>
+              <S N="Key">pickUpBy</S>
+              <S N="Value">2025-10-20T08:00:00</S>
+            </En>
+            <En>
+              <S N="Key">pickUpApptReq</S>
+              <S N="Value">True</S>
+            </En>
+            <En>
+              <S N="Key">exclusiveOverride</S>
+              <S N="Value">False</S>
+            </En>
+          </DCT>
+        </Obj>
+      </En>
+      <En>
+        <S N="Key">ExpectedStatus</S>
+        <I32 N="Value">200</I32>
+      </En>
+    </DCT>
+  </Obj>
+</Objs>

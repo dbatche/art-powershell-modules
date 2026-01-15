@@ -1,0 +1,114 @@
+# ==============================================================================
+# PowerShell API Testing Modules - .gitignore
+# ==============================================================================
+
+# Sensitive Data
+# ------------------------------------------------------------------------------
+*.token
+*.key
+*.apikey
+.env*
+*secret*
+*password*
+
+# API Keys and Tokens (be careful with naming!)
+# Don't commit files with these patterns
+TRUCKMATE_API_KEY*
+POSTMAN_API_KEY*
+
+# Test Results and Outputs
+# ------------------------------------------------------------------------------
+TestResults/
+test-results/
+*-results/
+*.trx
+*.xml
+!*.feature # Keep Gherkin feature files
+TestOutput.txt
+TestOutput.xml
+result.csv
+test-errors.log
+
+# Postman CLI Reports (large JSON files)
+# ------------------------------------------------------------------------------
+postman-cli-reports/
+**/postman-cli-reports/
+
+# Logs
+# ------------------------------------------------------------------------------
+*.log
+*.log.*
+
+# Test Data Files (optional - uncomment if you don't want to track these)
+# *-test-data-*.json
+# *-test-data-*.xml
+
+# PowerShell Module Build Artifacts
+# ------------------------------------------------------------------------------
+*.psm1.bak
+*.psd1.bak
+*.ps1.bak
+
+# Postman Collections (keep templates, exclude downloaded/generated)
+# ------------------------------------------------------------------------------
+# Uncomment these if you want to exclude Postman collection downloads
+# postman-collection-*.json
+# collection-raw.json
+# postman-all-*-requests-*.json
+
+# Node Modules (for JavaScript testing tools)
+# ------------------------------------------------------------------------------
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Java/Karate artifacts
+# ------------------------------------------------------------------------------
+target/
+*.jar
+allure-results/
+allure-report/
+
+# IDE and Editor Files
+# ------------------------------------------------------------------------------
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+.idea/
+
+# OS Files
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary Files
+# ------------------------------------------------------------------------------
+*.tmp
+*.temp
+~$*
+
+# Python (if any)
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Database Files (exclude test databases)
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# Specific to your modules
+# ------------------------------------------------------------------------------
+# Exclude unsorted/messy directories if they get copied
+@To Sort/
+Untitled/
+
+# Backup files
+*.backup
+

@@ -1,0 +1,32 @@
+{
+  "failed": 0,
+  "startTime": "2025-10-17 21:30:42",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:30:42.7399057-04:00",
+      "keyData": {
+        "orderId": 585924
+      },
+      "name": "POST /orders",
+      "description": "Create test order (quote type)",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Order created"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:30:44.6779686-04:00",
+      "keyData": {},
+      "assertions": [],
+      "name": "POST /orders/{orderId}/details",
+      "description": "Add detail line to order"
+    }
+  ],
+  "duration": 2.3701124,
+  "passed": 1,
+  "endTime": "2025-10-17 21:30:45",
+  "totalAssertions": 1
+}

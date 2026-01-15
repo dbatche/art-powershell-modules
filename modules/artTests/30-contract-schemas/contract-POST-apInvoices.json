@@ -1,0 +1,468 @@
+{
+  "Path": "/apInvoices",
+  "Method": "POST",
+  "OperationId": "PostApInvoices",
+  "Summary": "Create a new accounts payable invoice",
+  "Description": "Creates one or more accounts payable invoice records.\n\nAccounts payable invoices can be viewed in the AP Invoice Entry application.",
+  "RequestSchema": {
+    "Properties": {
+      "currencyCode": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "currencyCode",
+        "MaxLength": 3,
+        "Enum": null
+      },
+      "vendorBillDate": {
+        "Pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)$",
+        "ReadOnly": null,
+        "Nullable": false,
+        "Description": "Date: yyyy-MM-dd",
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "vendorBillDate",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "equipmentId": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "equipmentId",
+        "MaxLength": 10,
+        "Enum": null
+      },
+      "trailerId": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "trailerId",
+        "MaxLength": 10,
+        "Enum": null
+      },
+      "autoForeignExchange": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "autoForeignExchange",
+        "MaxLength": null,
+        "Enum": [
+          "False",
+          "True"
+        ]
+      },
+      "payableDueDate": {
+        "Pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)$",
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": "Date: yyyy-MM-dd",
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableDueDate",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "payableAgingDate": {
+        "Pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)$",
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": "Date: yyyy-MM-dd",
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableAgingDate",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "payableDiscountDate": {
+        "Pattern": "^\\d{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12]\\d)$",
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": "Date: yyyy-MM-dd",
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableDiscountDate",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "vendorBillNumber": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": false,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "vendorBillNumber",
+        "MaxLength": 20,
+        "Enum": null
+      },
+      "payableDiscount": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "number",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableDiscount",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "isIntercompany": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "isIntercompany",
+        "MaxLength": null,
+        "Enum": [
+          "False",
+          "True"
+        ]
+      },
+      "vendorId": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": false,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "vendorId",
+        "MaxLength": 10,
+        "Enum": null
+      },
+      "apDriverDeductions": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "array",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "apDriverDeductions",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "ista": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "array",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "ista",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "poNumber": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "poNumber",
+        "MaxLength": 25,
+        "Enum": null
+      },
+      "payableType": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableType",
+        "MaxLength": null,
+        "Enum": [
+          "bill",
+          "credit",
+          "debit"
+        ]
+      },
+      "payableTerms": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableTerms",
+        "MaxLength": 10,
+        "Enum": null
+      },
+      "glAccount": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "glAccount",
+        "MaxLength": 50,
+        "Enum": null
+      },
+      "vendorBillAmount": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "number",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "vendorBillAmount",
+        "MaxLength": null,
+        "Enum": null
+      },
+      "vendorBillReference": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "vendorBillReference",
+        "MaxLength": 40,
+        "Enum": null
+      },
+      "payableHold": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "payableHold",
+        "MaxLength": null,
+        "Enum": [
+          "False",
+          "True"
+        ]
+      },
+      "powerUnitId": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "string",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "powerUnitId",
+        "MaxLength": 10,
+        "Enum": null
+      },
+      "expenses": {
+        "Pattern": null,
+        "ReadOnly": null,
+        "Nullable": null,
+        "Description": null,
+        "Type": "array",
+        "WriteOnly": null,
+        "Maximum": null,
+        "Format": null,
+        "Minimum": null,
+        "MinLength": null,
+        "Name": "expenses",
+        "MaxLength": null,
+        "Enum": null
+      }
+    },
+    "SchemaName": "PostApInvoiceList",
+    "Required": [
+      "vendorId",
+      "vendorBillNumber",
+      "vendorBillDate",
+      "currencyCode"
+    ],
+    "IsArray": true
+  },
+  "ResponseSchemas": {
+    "403": {
+      "Properties": {
+        "errors": {
+          "Pattern": null,
+          "ReadOnly": null,
+          "Nullable": null,
+          "Description": null,
+          "Type": "array",
+          "WriteOnly": null,
+          "Maximum": null,
+          "Format": null,
+          "Minimum": null,
+          "MinLength": null,
+          "Name": "errors",
+          "MaxLength": null,
+          "Enum": null
+        }
+      },
+      "SchemaName": "ARTErrors",
+      "IsArray": false
+    },
+    "201": {
+      "Properties": {
+        "apInvoices": {
+          "Pattern": null,
+          "ReadOnly": null,
+          "Nullable": null,
+          "Description": null,
+          "Type": "array",
+          "WriteOnly": null,
+          "Maximum": null,
+          "Format": null,
+          "Minimum": null,
+          "MinLength": null,
+          "Name": "apInvoices",
+          "MaxLength": null,
+          "Enum": null
+        }
+      },
+      "SchemaName": "PostApInvoices201",
+      "IsArray": false
+    },
+    "400": {
+      "Properties": {
+        "errors": {
+          "Pattern": null,
+          "ReadOnly": null,
+          "Nullable": null,
+          "Description": null,
+          "Type": "array",
+          "WriteOnly": null,
+          "Maximum": null,
+          "Format": null,
+          "Minimum": null,
+          "MinLength": null,
+          "Name": "errors",
+          "MaxLength": null,
+          "Enum": null
+        }
+      },
+      "SchemaName": "ARTErrors",
+      "IsArray": false
+    },
+    "401": {
+      "Properties": {
+        "errors": {
+          "Pattern": null,
+          "ReadOnly": null,
+          "Nullable": null,
+          "Description": null,
+          "Type": "array",
+          "WriteOnly": null,
+          "Maximum": null,
+          "Format": null,
+          "Minimum": null,
+          "MinLength": null,
+          "Name": "errors",
+          "MaxLength": null,
+          "Enum": null
+        }
+      },
+      "SchemaName": "ARTErrors",
+      "IsArray": false
+    }
+  },
+  "Parameters": [
+    {
+      "$ref": "#/components/parameters/select"
+    }
+  ]
+}

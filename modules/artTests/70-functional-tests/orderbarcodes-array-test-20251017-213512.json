@@ -1,0 +1,87 @@
+{
+  "failed": 5,
+  "startTime": "2025-10-17 21:35:16",
+  "scenarios": [
+    {
+      "startTime": "2025-10-17T21:35:17.0431344-04:00",
+      "keyData": {
+        "baselineBarcodeCount": 1
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId} (baseline)",
+      "description": "Capture current state before making changes",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved order detail"
+        },
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:35:17.6716795-04:00",
+      "keyData": {
+        "operation": "create",
+        "httpStatus": 400,
+        "errorCode": "invalidBusinessLogic",
+        "barcodeId": 163723,
+        "tm185682": "error_occurred"
+      },
+      "name": "PUT /orders/{orderId}/details/{orderDetailId} (with barcodes array)",
+      "description": "TM-185682: Update detail with mixed barcode array (with/without IDs)",
+      "assertions": [
+        {
+          "passed": false,
+          "message": "Got error: invalidBusinessLogic - This may be the TM-185682 bug!",
+          "name": "PUT request failed [TM-185682: Possible duplicate issue?]"
+        }
+      ]
+    },
+    {
+      "startTime": "2025-10-17T21:35:17.9889844-04:00",
+      "keyData": {
+        "operation": "updated",
+        "tm185682": "correct_behavior",
+        "barcodeId": 163723,
+        "afterBarcodeCount": 1
+      },
+      "name": "GET /orders/{orderId}/details/{orderDetailId}/barcodes (after PUT)",
+      "description": "Verify barcode count and changes after PUT",
+      "assertions": [
+        {
+          "passed": true,
+          "message": "",
+          "name": "Retrieved barcodes after PUT"
+        },
+        {
+          "passed": false,
+          "message": "Expected 3, got 1",
+          "name": "Barcode count increased by 2"
+        },
+        {
+          "passed": false,
+          "message": "Expected weight 999.99, got 100.5",
+          "name": "Existing barcode was UPDATED (not duplicated)"
+        },
+        {
+          "passed": false,
+          "message": "",
+          "name": "Updated barcode has new altBarcode1"
+        },
+        {
+          "passed": false,
+          "message": "Expected 2 new, found 0",
+          "name": "2 new barcodes were created"
+        }
+      ]
+    }
+  ],
+  "duration": 2.8880872,
+  "passed": 3,
+  "endTime": "2025-10-17 21:35:18",
+  "totalAssertions": 8
+}

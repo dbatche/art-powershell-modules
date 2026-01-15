@@ -1,0 +1,26 @@
+{
+  "collections": {
+    "779780a9-97d0-4004-9a96-37e8c64c3405": {
+      "name": "Finance Functional Tests",
+      "owner": "8229908"
+    }
+  },
+  "environments": {
+    "68887950-1feb-4817-87c5-f5dcffa370cb": {
+      "name": "TDE-SQL03",
+      "owner": "11896768"
+    },
+    "eeccbae6-5da9-441a-8160-f1dc635bd429": {
+      "name": "TM - tm Automation (TDE)",
+      "owner": "11896768"
+    }
+  },
+  "notes": [
+    "This file maps Postman collection/environment UUIDs to their owner IDs.",
+    "Owner IDs are required by Postman CLI but not stored in report files.",
+    "To find owner IDs:",
+    "  - Collections: Check _collection_link in exported .postman_collection.json",
+    "  - Environments: Check URL when viewing in Postman web UI"
+  ]
+}
+
