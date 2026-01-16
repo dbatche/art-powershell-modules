@@ -236,7 +236,7 @@ function Setup-EnvironmentVariables-Internal {
         $env:VISIBILITY_API_URL = "https://tde-truckmate-cur.tmwcloud.com/visibility"
         Write-Host "  [OK] VISIBILITY_API_URL" -ForegroundColor Green
 
-        $env:MASTERDATA_API_URL = "https://tde-truckmate.tmwcloud.com/cur/masterData"
+        $env:MASTERDATA_API_URL = "https://tde-truckmate-cur.tmwcloud.com/masterData"
         Write-Host "  [OK] MASTERDATA_API_URL" -ForegroundColor Green
 
         # Generic fallback (points to TM service)
@@ -259,17 +259,26 @@ function Setup-EnvironmentVariables-Internal {
     Write-Host ("=" * 80) -ForegroundColor Cyan
     Write-Host ""
 
-    # Test 1: Get-ApiVersion (should work without parameters)
-    Write-Host "Test 1: Get-ApiVersion - uses VISIBILITY_API_URL + TRUCKMATE_API_KEY" -ForegroundColor Yellow
-    try {
-        $ver = Get-ApiVersion -Quiet
-        if ($ver.Success) {
-            Write-Host "  [SUCCESS] API Version: $($ver.Version)" -ForegroundColor Green
-        } else {
-            Write-Host "  [FAILED] $($ver.Error)" -ForegroundColor Red
+    # Test all service URLs
+    $services = @(
+        @{ Name = "TM API"; Url = $env:TM_API_URL }
+        @{ Name = "Finance API"; Url = $env:FINANCE_API_URL }
+        @{ Name = "Visibility API"; Url = $env:VISIBILITY_API_URL }
+        @{ Name = "MasterData API"; Url = $env:MASTERDATA_API_URL }
+    )
+
+    foreach ($service in $services) {
+        Write-Host "Testing $($service.Name) - $($service.Url)" -ForegroundColor Yellow
+        try {
+            $ver = Get-ApiVersion -BaseUrl $service.Url -Token $env:TRUCKMATE_API_KEY -Quiet
+            if ($ver.Success) {
+                Write-Host "  [SUCCESS] Version: $($ver.Version)" -ForegroundColor Green
+            } else {
+                Write-Host "  [FAILED] $($ver.Error)" -ForegroundColor Red
+            }
+        } catch {
+            Write-Host "  [ERROR] $_" -ForegroundColor Red
         }
-    } catch {
-        Write-Host "  [ERROR] $_" -ForegroundColor Red
     }
 
     Write-Host ""
