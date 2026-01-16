@@ -233,7 +233,7 @@ function Setup-EnvironmentVariables-Internal {
         $env:FINANCE_API_URL = "https://tde-truckmate.tmwcloud.com/fin/finance"
         Write-Host "  [OK] FINANCE_API_URL" -ForegroundColor Green
 
-        $env:VISIBILITY_API_URL = "https://tde-truckmate.tmwcloud.com/cur/visibility"
+        $env:VISIBILITY_API_URL = "https://tde-truckmate-cur.tmwcloud.com/visibility"
         Write-Host "  [OK] VISIBILITY_API_URL" -ForegroundColor Green
 
         $env:MASTERDATA_API_URL = "https://tde-truckmate.tmwcloud.com/cur/masterData"
