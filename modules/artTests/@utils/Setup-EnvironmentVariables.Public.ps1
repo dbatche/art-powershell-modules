@@ -240,7 +240,7 @@ function Setup-EnvironmentVariables-Internal {
         Write-Host "  [OK] MASTERDATA_API_URL" -ForegroundColor Green
 
         # Generic fallback (points to TM service)
-        $env:DOMAIN = "https://tde-truckmate-cur.tmwcloud.com/tm"
+        $env:DOMAIN = "https://tde-truckmate.tmwcloud.com/cur/tm"
         Write-Host "  [OK] DOMAIN (generic fallback)" -ForegroundColor Green
     }
 
