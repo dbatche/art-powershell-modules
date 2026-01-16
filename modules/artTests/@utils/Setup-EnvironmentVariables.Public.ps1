@@ -210,7 +210,7 @@ function Setup-EnvironmentVariables-Internal {
         Write-Host "  [OK] DOMAIN (Local, generic fallback)" -ForegroundColor Green
     } else {
         # TruckMate Services (Cloud)
-        $env:TM_API_URL = "https://tde-truckmate.tmwcloud.com/cur/tm"
+        $env:TM_API_URL = "https://tde-truckmate-cur.tmwcloud.com/tm"
         Write-Host "  [OK] TM_API_URL" -ForegroundColor Green
 
         $env:FINANCE_API_URL = "https://tde-truckmate.tmwcloud.com/fin/finance"
