@@ -50,6 +50,7 @@ function Setup-EnvironmentVariables {
         - ART_TRUCKMATE_API_KEY
         - ART_TRUCKMATE_API_KEY_LOCAL (optional, for local dev)
         - ART_JIRA_API_TOKEN
+        - git:https://github.com (GitHub token, typically stored automatically by Git Credential Manager)
     #>
     [CmdletBinding()]
     param(
@@ -181,6 +182,22 @@ function Setup-EnvironmentVariables-Internal {
         Write-Host "  [OK] JIRA_API_TOKEN (default)" -ForegroundColor Green
         Write-Host "      To use Credential Manager: cmdkey /generic:ART_JIRA_API_TOKEN /user:api-key /pass:YOUR_TOKEN" -ForegroundColor DarkGray
         Write-Host "      Note: You can edit this in Windows Credential Manager > Windows Credentials" -ForegroundColor DarkGray
+    }
+
+    # GitHub Token - Try Generic Credentials (Windows Credentials) first
+    # Note: Git Credential Manager stores this as "git:https://github.com"
+    $githubToken = Get-GenericCredential -TargetName "git:https://github.com"
+    
+    if ($githubToken) {
+        $env:GITHUB_TOKEN = $githubToken
+        $env:GH_TOKEN = $githubToken  # Also set GH_TOKEN for compatibility
+        Write-Host "  [OK] GITHUB_TOKEN (from Generic Credentials)" -ForegroundColor Green
+    }
+    else {
+        Write-Host "  [WARN] GITHUB_TOKEN not found in Credential Manager" -ForegroundColor DarkYellow
+        Write-Host "      GitHub token is optional. To store it:" -ForegroundColor DarkGray
+        Write-Host "      cmdkey /generic:git:https://github.com /user:YOUR_USERNAME /pass:YOUR_TOKEN" -ForegroundColor DarkGray
+        Write-Host "      Or use Git Credential Manager which stores it automatically" -ForegroundColor DarkGray
     }
 
     Write-Host ""
