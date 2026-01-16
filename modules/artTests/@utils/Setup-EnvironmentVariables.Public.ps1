@@ -222,6 +222,12 @@ function Setup-EnvironmentVariables-Internal {
         $env:MASTERDATA_API_URL = "http://localhost:8199/masterData"
         Write-Host "  [OK] MASTERDATA_API_URL (Local)" -ForegroundColor Green
 
+        $env:DOCK_API_URL = "http://localhost:8199/dock"
+        Write-Host "  [OK] DOCK_API_URL (Local)" -ForegroundColor Green
+
+        $env:MOBCOMM_API_URL = "http://localhost:8199/mobcomm"
+        Write-Host "  [OK] MOBCOMM_API_URL (Local)" -ForegroundColor Green
+
         # Generic fallback (points to TM service)
         $env:DOMAIN = "http://localhost:8199/tm"
         Write-Host "  [OK] DOMAIN (Local, generic fallback)" -ForegroundColor Green
@@ -238,6 +244,12 @@ function Setup-EnvironmentVariables-Internal {
 
         $env:MASTERDATA_API_URL = "https://tde-truckmate-cur.tmwcloud.com/masterData"
         Write-Host "  [OK] MASTERDATA_API_URL" -ForegroundColor Green
+
+        $env:DOCK_API_URL = "https://tde-truckmate-cur.tmwcloud.com/dock"
+        Write-Host "  [OK] DOCK_API_URL" -ForegroundColor Green
+
+        $env:MOBCOMM_API_URL = "https://tde-truckmate-cur.tmwcloud.com/mobcomm"
+        Write-Host "  [OK] MOBCOMM_API_URL" -ForegroundColor Green
 
         # Generic fallback (points to TM service)
         $env:DOMAIN = "https://tde-truckmate.tmwcloud.com/cur/tm"
@@ -265,6 +277,8 @@ function Setup-EnvironmentVariables-Internal {
         @{ Name = "Finance API"; Url = $env:FINANCE_API_URL }
         @{ Name = "Visibility API"; Url = $env:VISIBILITY_API_URL }
         @{ Name = "MasterData API"; Url = $env:MASTERDATA_API_URL }
+        @{ Name = "Dock API"; Url = $env:DOCK_API_URL }
+        @{ Name = "MobComm API"; Url = $env:MOBCOMM_API_URL }
     )
 
     foreach ($service in $services) {
